@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Torkade Luktvioler Viola Odorata – Handplockade – BEGRÄNSAD MÄNGD</title>
+  <meta name="description" content="Torkade violblommor – handplockade i Tyskland, utan bekämpningsmedel. Lyxigt örtte med subtil blommighet. Begränsad tillgång!">
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #fff8f9; color: #333; }
+    .container { padding: 1em; max-width: 600px; margin: auto; padding-bottom: 160px; }
+    .hero-img { width: 100%; border-radius: 12px; }
+    h1 { font-size: 1.8em; color: #551a8b; }
+    .subtitle { font-style: italic; color: #9644a2; margin-bottom: 1em; }
+    .section-title { font-weight: bold; margin-top: 1.5em; color: #551a8b; }
+    .facts, .spider, .curiosa, .health, .faq, .social, .map, .refs, .personal { background: #fceef9; padding: 1em; border-radius: 10px; margin: 1em 0; }
+    canvas { display: block; margin: auto; }
+    select { width: 100%; font-size: 1em; margin-top: 0.5em; padding: 0.5em; }
+    .buy-panel { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffffee; border-top: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center; padding: 1em; }
+    .buy-panel button { background: #9644a2; color: white; border: none; padding: 0.6em 1.2em; border-radius: 8px; font-size: 1em; }
+    a { color: #9644a2; text-decoration: none; margin-right: 0.5em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://i.imgur.com/PlY2FoM.jpeg" alt="Torkat violblomste i kopp" class="hero-img" />
+    <h1>Torkade Luktvioler – Viola Odorata</h1>
+    <p class="subtitle">Handplockade i Tyskland – Bäst före juni 2026 – Begränsad mängd</p>
+
+    <div class="facts">
+      <p><strong>Ursprung:</strong> Tea & Coffie Factory, Tyskland</p>
+      <p><strong>Förpackning:</strong> Återvinningsbart papper</p>
+      <p><strong>Bäst före:</strong> Juni 2026</p>
+      <p><strong>Odlingsmetod:</strong> Producerat utan gödnings- och bekämpningsmedel</p>
+      <p><strong>Förvaring:</strong> Torrt, mörkt och lufttätt</p>
+    </div>
+
+    <div class="section-title">📦 Välj mängd</div>
+    <select id="sizeSelect" onchange="updatePrice()">
+      <option value="5">5g – 125 kr</option>
+      <option value="10">10g – 250 kr</option>
+      <option value="25">25g – 600 kr</option>
+      <option value="100">100g – 2000 kr</option>
+    </select>
+
+    <p class="section-title">📊 Smakprofil</p>
+    <div class="spider">
+      <canvas id="spiderChart" width="350" height="350"></canvas>
+    </div>
+
+    <p class="section-title">🍵 Användning</p>
+    <p>1g per 100ml vatten. 85°C. Låt dra i 10 minuter. Kan även användas till bakverk, dekoration eller sirap.</p>
+
+    <p class="section-title">Hur känns det i munnen</p>
+    <p>Elegant och silkeslen, med en viskande mjukhet. En mild, svalkande känsla ligger kvar som morgondimma på tungan.</p>
+
+    <p class="section-title">Hur smakar det</p>
+    <p>En sofistikerad symfoni av florala och gröna toner. Violens röst är lågmäld men tydlig – inlindad i nyanser av vårgrönska och subtil sötma.</p>
+
+    <p class="section-title">Eftersmak</p>
+    <p>Eftersmaken är lång, len och meditativ. En blommig viskning som dröjer sig kvar som en hemlighet viskad mot huden.</p>
+
+    <div class="curiosa">
+      <p><strong>Visste du att…</strong> Napoleon bar ofta violettpomada bakom örat. I vissa traditioner har violrot använts som ett milt laxermedel.</p>
+    </div>
+
+    <div class="health">
+      <p><strong>Hälsopåverkan</strong></p>
+      <p>Traditionellt använt mot hosta, sömnproblem och inflammation. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank">Läs mer på PubMed</a>.</p>
+    </div>
+
+    <div class="faq">
+      <p class="section-title">❓ Vanliga frågor</p>
+      <p><strong>Hur använder jag torkade violblommor?</strong><br/>Brygg som te eller använd som dekoration i bakverk.</p>
+      <p><strong>Är produkten ekologisk?</strong><br/>Den är odlad utan bekämpnings- och gödningsmedel, men ej certifierad.</p>
+      <p><strong>Vad smakar det?</strong><br/>Subtila gröna toner och blommig sötma.</p>
+      <p><strong>Hur många koppar får jag?</strong><br/>Cirka 5 koppar per gram vid lätt bryggning.</p>
+    </div>
+
+    <div class="personal">
+      <p class="section-title">🫶 Min personliga relation till teet</p>
+      <p>Det fanns en tid i mitt liv då jag alltid drogs åt det extrema. Mer. Starkare. Mörkare. Större. Men med tiden förändrades jag. Jag lärde mig uppskatta nyanserna mer än ytterligheterna. Visst, jag kan fortfarande uppskatta det smakrika – men nu också det subtila. Det är i de subtila smakerna detta te rör sig. En lyxig mjukhet. En blommig rundhet. Det är fint. Jag gillar det jättemycket.</p>
+    </div>
+
+    <div class="refs">
+      <p class="section-title">🧠 Andra som skriver om detta, skriver…</p>
+      <p>Vid en genomgång av trovärdiga källor om <strong>Viola Odorata</strong> framkommer användning i traditionell örtmedicin, bland annat vid hosta, hudbesvär och oro. Dock är evidensläget blandat. Många bloggar och alternativa hälsosidor lyfter fram fördelar, men ofta utan vetenskaplig källhänvisning. Vissa studier stöder antioxidativa effekter. Sammanfattningsvis bör violblommor användas med nyfikenhet – inte som medicin – och alltid med ett källkritiskt sinne.</p>
+    </div>
+
+    <div class="social">
+      <p class="section-title">📤 Dela denna produkt</p>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://driedvioletflowers.com" target="_blank">📘 Facebook</a>
+      <a href="https://twitter.com/intent/tweet?url=https://driedvioletflowers.com" target="_blank">🐦 X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://driedvioletflowers.com" target="_blank">🔗 LinkedIn</a>
+      <a href="https://www.instagram.com/" target="_blank">📸 Instagram</a>
+      <a href="https://www.tiktok.com/" target="_blank">🎵 TikTok</a>
+      <a href="#" onclick="window.open('https://www.pinterest.com/pin/create/button/?url='+encodeURIComponent(location.href)+'&media='+encodeURIComponent(document.querySelector('img').src)+'&description=Torkade violblommor från Tyskland','pinterest','width=750,height=550'); return false;">📌 Pinterest</a>
+    </div>
+
+    <div class="map">
+      <p class="section-title">🗺️ Odlingsregion</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1015082.2654372658!2d9.398152410532478!3d51.49684749088909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bdfcbb32f4f91b%3A0x41eec8c6a3b7bc0!2sTyskland!5e0!3m2!1ssv!2sse!4v1721920000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <div class="buy-panel">
+    <span id="totalPrice">5g – 125 kr</span>
+    <button>Lägg i korgen</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const prices = {5: 125, 10: 250, 25: 600, 100: 2000};
+    function updatePrice() {
+      const g = document.getElementById('sizeSelect').value;
+      document.getElementById('totalPrice').textContent = `${g}g – ${prices[g]} kr`;
+    }
+    const ctx = document.getElementById('spiderChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Torrhet','Umami toner','Gröna toner / gräsighet','Blommighet','Fruktighet','Kryddighet','Träighet','Jordighet','Rostighet','Rökighet','Nötighet','Krämighet'],
+        datasets: [{
+          label: 'Smakprofil',
+          data: [2, 4, 6, 5, 2, 1, 2, 2, 1, 0, 2, 3],
+          backgroundColor: 'rgba(136, 77, 167, 0.2)',
+          borderColor: 'rgba(136, 77, 167, 1)',
+          pointBackgroundColor: 'rgba(136, 77, 167, 1)'
+        }]
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        scales: {
+          r: {
+            beginAtZero: true,
+            min: 0,
+            max: 10,
+            ticks: { stepSize: 1 }
+          }
+        },
+        plugins: { legend: { display: false } }
+      }
+    });
+  </script>
+</body>
+</html>
