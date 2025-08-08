@@ -2,119 +2,303 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Torkade Luktvioler Viola Odorata – Handplockade – BEGRÄNSAD MÄNGD</title>
-  <meta name="description" content="Torkade violblommor – handplockade i Tyskland, utan bekämpningsmedel. Lyxigt örtte med subtil blommighet. Begränsad tillgång!">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Torkade Luktvioler – Viola odorata | Handplockade | Begränsad mängd</title>
+  <meta name="description" content="Torkade violblommor (Viola odorata) – handplockade i Tyskland, producerade utan gödnings- och bekämpningsmedel. Subtil, lyxig blommighet. Fri frakt i Sverige över 500 kr.">
+
+  <!-- Canonical & hreflang (placeholders för kommande språkversioner) -->
+  <link rel="canonical" href="https://www.driedvioletflowers.com/">
+  <link rel="alternate" hreflang="sv" href="https://www.driedvioletflowers.com/">
+  <link rel="alternate" hreflang="en" href="https://www.driedvioletflowers.com/en/">
+  <link rel="alternate" hreflang="de" href="https://www.driedvioletflowers.com/de/">
+  <link rel="alternate" hreflang="fr" href="https://www.driedvioletflowers.com/fr/">
+  <link rel="alternate" hreflang="es" href="https://www.driedvioletflowers.com/es/">
+  <link rel="alternate" hreflang="x-default" href="https://www.driedvioletflowers.com/en/">
+
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:site_name" content="Dried Violet Flowers">
+  <meta property="og:title" content="Torkade Luktvioler – Viola odorata | Handplockade | Begränsad mängd">
+  <meta property="og:description" content="Lyxigt, subtilt och blommigt. Producerat utan gödnings- och bekämpningsmedel. Fri frakt i Sverige över 500 kr.">
+  <meta property="og:url" content="https://www.driedvioletflowers.com/">
+  <meta property="og:image" content="https://www.driedvioletflowers.com/SweetViolaTea.webp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Torkade Luktvioler – Viola odorata | Handplockade">
+  <meta name="twitter:description" content="Subtil blommighet, handplockad kvalitet. Fri frakt över 500 kr.">
+  <meta name="twitter:image" content="https://www.driedvioletflowers.com/SweetViolaTea.webp">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6ZKS3J0ZJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6ZKS3J0ZJ');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "sriurg95n5");
+  </script>
+
   <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; background: #fff8f9; color: #333; }
-    .container { padding: 1em; max-width: 600px; margin: auto; padding-bottom: 160px; }
-    .hero-img { width: 100%; border-radius: 12px; }
-    h1 { font-size: 1.8em; color: #551a8b; }
-    .subtitle { font-style: italic; color: #9644a2; margin-bottom: 1em; }
-    .section-title { font-weight: bold; margin-top: 1.5em; color: #551a8b; }
-    .facts, .spider, .curiosa, .health, .faq, .social, .map, .refs, .personal { background: #fceef9; padding: 1em; border-radius: 10px; margin: 1em 0; }
-    canvas { display: block; margin: auto; }
-    select { width: 100%; font-size: 1em; margin-top: 0.5em; padding: 0.5em; }
-    .buy-panel { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffffee; border-top: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center; padding: 1em; }
-    .buy-panel button { background: #9644a2; color: white; border: none; padding: 0.6em 1.2em; border-radius: 8px; font-size: 1em; }
-    a { color: #9644a2; text-decoration: none; margin-right: 0.5em; }
-    .map iframe { width: 100%; height: 400px; border: 0; border-radius: 12px; }
+    :root {
+      --violet:#551a8b; --violet-soft:#9644a2; --panel:#fceef9; --ink:#333; --bg:#fff8f9;
+    }
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;color:var(--ink);background:var(--bg)}
+    a{color:var(--violet-soft);text-decoration:none}
+    .container{max-width:780px;margin:0 auto;padding:16px 16px 180px}
+    .hero-img{width:100%;border-radius:12px;display:block}
+    h1{color:var(--violet);margin:.6rem 0 .2rem;font-size:1.9rem}
+    .subtitle{color:var(--violet-soft);font-style:italic;margin-bottom:1rem}
+    .section-title{color:var(--violet);font-weight:800;margin:1.25rem 0 .5rem}
+    .panel{background:var(--panel);border-radius:12px;padding:16px;margin:14px 0}
+    select,button,input{font-size:1rem}
+    select{width:100%;padding:.6rem .8rem;border:1px solid #ddd;border-radius:10px;background:#fff}
+    .buy-panel{position:fixed;left:0;right:0;bottom:0;background:#ffffffee;backdrop-filter:blur(6px);border-top:1px solid #ddd;padding:.9rem 1rem;display:flex;gap:.8rem;justify-content:space-between;align-items:center;z-index:20}
+    .buy-panel button{background:var(--violet-soft);color:#fff;border:0;border-radius:10px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer}
+    .price{font-weight:800;color:var(--violet)}
+    .social a{display:inline-block;margin-right:.6rem}
+    .map iframe{width:100%;height:420px;border:0;border-radius:12px}
+    footer{margin:24px 0 140px;text-align:center;color:#666}
+    .footer-links{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:.4rem}
+    .small{font-size:.92rem;color:#555}
+    /* modal */
+    #emailModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;z-index:50}
+    #emailModal .card{background:#fff;border-radius:14px;padding:16px;width:min(520px,92vw)}
+    #emailThanks{display:none;color:green;margin-top:.6rem}
+    @media(min-width:840px){ h1{font-size:2.1rem} }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="SweetViolaTea.webp" alt="Torkade violblommor i kopp" class="hero-img" />
-    <h1>Torkade Luktvioler – Viola Odorata</h1>
-    <p class="subtitle">Handplockade i Tyskland – Bäst före juni 2026 – Begränsad mängd</p>
+  <header class="container" id="top">
+    <img src="SweetViolaTea.webp" alt="Torkade violblommor – bryggt te i kopp" class="hero-img">
+    <h1>Torkade Luktvioler – <em>Viola odorata</em></h1>
+    <p class="subtitle">Handplockade i Tyskland · Bäst före juni 2026 · Begränsad mängd · Producerat utan gödnings- och bekämpningsmedel</p>
+  </header>
 
-    <div class="facts">
-      <p><strong>Ursprung:</strong> Tea & Coffie Factory, Tyskland</p>
-      <p><strong>Förpackning:</strong> Återvinningsbart papper</p>
-      <p><strong>Bäst före:</strong> Juni 2026</p>
-      <p><strong>Odlingsmetod:</strong> Producerat utan gödnings- och bekämpningsmedel</p>
-      <p><strong>Förvaring:</strong> Torrt, mörkt och lufttätt</p>
-    </div>
+  <main class="container">
+    <!-- Fakta -->
+    <section class="panel" aria-labelledby="facts">
+      <h2 id="facts" class="section-title">Fakta</h2>
+      <ul class="small" style="margin:0;padding-left:18px">
+        <li><strong>Ursprung:</strong> Tyskland</li>
+        <li><strong>Producent:</strong> Tea & Coffee Factory</li>
+        <li><strong>Batch:</strong> AB00439 · <strong>Lager:</strong> 900 g</li>
+        <li><strong>Förpackning:</strong> Återvinningsbart papper</li>
+        <li><strong>Förvaring:</strong> Torrt, mörkt och lufttätt</li>
+        <li><strong>Pris:</strong> 25 kr/g (20 kr/g vid köp ≥ 500 g)</li>
+      </ul>
+    </section>
 
-    <div class="section-title">📦 Välj mängd</div>
-    <select id="sizeSelect" onchange="updatePrice()">
-      <option value="5">5g – 125 kr</option>
-      <option value="10">10g – 250 kr</option>
-      <option value="25">25g – 600 kr</option>
-      <option value="100">100g – 2000 kr</option>
-    </select>
+    <!-- Storlek -->
+    <section aria-labelledby="size" class="panel">
+      <h2 id="size" class="section-title">📦 Välj mängd</h2>
+      <select id="sizeSelect" aria-label="Välj mängd" onchange="updatePrice()">
+        <option value="5">5 g – 125 kr</option>
+        <option value="10">10 g – 250 kr</option>
+        <option value="25">25 g – 600 kr</option>
+        <option value="100">100 g – 2000 kr</option>
+      </select>
+      <p class="small" style="margin:.6rem 0 0">Enhetligt pris: 25 kr/g (20 kr/g vid köp ≥ 500 g).</p>
+    </section>
 
-    <p class="section-title">📊 Smakprofil</p>
-    <div class="spider">
-      <canvas id="spiderChart" width="350" height="350"></canvas>
-    </div>
+    <!-- Smakprofil -->
+    <section aria-labelledby="flavor" class="panel">
+      <h2 id="flavor" class="section-title">📊 Smakprofil</h2>
+      <canvas id="spiderChart" width="350" height="350" aria-label="Spindeldiagram: smakprofil" role="img"></canvas>
+      <p class="small" style="margin-top:.6rem">
+        <strong>Skala 0–10:</strong> Torrhet 2 · Umami 4 · Gröna toner 6 · Blommighet 5 · Fruktighet 2 · Kryddighet 1 · Träighet 2 · Jordighet 2 · Rostighet 1 · Rökighet 0 · Nötighet 2 · Krämighet 3
+      </p>
+    </section>
 
-    <p class="section-title">🍵 Användning</p>
-    <p>1g per 100ml vatten. 85°C. Låt dra i 10 minuter. Kan även användas till bakverk, dekoration eller sirap.</p>
+    <!-- Bryggning & sensorik – ALL INPUT -->
+    <section class="panel" aria-labelledby="brew">
+      <h2 id="brew" class="section-title">🍵 Bryggning & sensorik</h2>
+      <p class="small"><strong>Rekommenderad bryggning:</strong> 1 g per 100 ml · 85 °C · 10 minuter.</p>
 
-    <p class="section-title">Hur känns det i munnen</p>
-    <p>Elegant och silkeslen, med en viskande mjukhet. En mild, svalkande känsla ligger kvar som morgondimma på tungan.</p>
+      <h3 class="section-title" style="margin-top:1rem">Torra blommor – utseende</h3>
+      <p>Små knoppar med lila blommor, ~2–3 mm. Knopparna visar nyanser av lila med gröna/gula fästen – ett spektrum av mjuka violetta toner.</p>
 
-    <p class="section-title">Hur smakar det</p>
-    <p>En sofistikerad symfoni av florala och gröna toner. Violens röst är lågmäld men tydlig – inlindad i nyanser av vårgrönska och subtil sötma.</p>
+      <h3 class="section-title">Torra blommor – doft</h3>
+      <p>Gröna, örtiga toppnoter med en subtil violhint som redan här känns rund och varm.</p>
 
-    <p class="section-title">Eftersmak</p>
-    <p>Eftersmaken är lång, len och meditativ. En blommig viskning som dröjer sig kvar som en hemlighet viskad mot huden.</p>
+      <h3 class="section-title">Våta blommor – utseende</h3>
+      <p>De lila nyanserna mjuknar mot lavendel; de gröna/gula delarna blir ljusare, nästan transparenta. Knopparna sväller lätt när de blivit våta.</p>
 
-    <div class="curiosa">
-      <p><strong>Visste du att…</strong> Napoleon bar ofta violettpomada bakom örat. I vissa traditioner har violrot använts som ett milt laxermedel.</p>
-    </div>
+      <h3 class="section-title">Våta blommor – doft</h3>
+      <p>Mer vegetabilisk grönhet framträder. Violens ton ligger kvar som en varm, lågmäld slöja.</p>
 
-    <div class="health">
-      <p><strong>Hälsopåverkan</strong></p>
-      <p>Traditionellt använt mot hosta, sömnproblem och inflammation. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank">Läs mer på PubMed</a>.</p>
-    </div>
+      <h3 class="section-title">Det bryggda teet – färg</h3>
+      <p>Guld med en aning mystik – klart, guldskimrande, inte lila.</p>
 
-    <div class="faq">
-      <p class="section-title">❓ Vanliga frågor</p>
-      <p><strong>Hur använder jag torkade violblommor?</strong><br/>Brygg som te eller använd som dekoration i bakverk.</p>
-      <p><strong>Är produkten ekologisk?</strong><br/>Den är odlad utan bekämpnings- och gödningsmedel, men ej certifierad.</p>
-      <p><strong>Vad smakar det?</strong><br/>Subtila gröna toner och blommig sötma.</p>
-      <p><strong>Hur många koppar får jag?</strong><br/>Cirka 5 koppar per gram vid lätt bryggning.</p>
-    </div>
+      <h3 class="section-title">Hur känns det i munnen</h3>
+      <p>Elegant och silkeslen med mjuk viskositet. En lätt svalkande känsla dröjer i eftersmaken.</p>
 
-    <div class="personal">
-      <p class="section-title">🫶 Min personliga relation till teet</p>
-      <p>Det fanns en tid i mitt liv då jag alltid drogs åt det extrema. Mer. Starkare. Mörkare. Större. Men med tiden förändrades jag. Jag lärde mig uppskatta nyanserna mer än ytterligheterna. Visst, jag kan fortfarande uppskatta det smakrika – men nu också det subtila. Det är i de subtila smakerna detta te rör sig. En lyxig mjukhet. En blommig rundhet. Det är fint. Jag gillar det jättemycket.</p>
-    </div>
+      <h3 class="section-title">Hur smakar det</h3>
+      <p>Lyxig, finstämd grönhet med en varm, rund violton. Subtil sötma bär smaken snarare än att dominera.</p>
 
-    <div class="refs">
-      <p class="section-title">🧠 Andra som skriver om detta, skriver…</p>
-      <p>Vid en genomgång av trovärdiga källor om <strong>Viola Odorata</strong> framkommer användning i traditionell örtmedicin, bland annat vid hosta, hudbesvär och oro. Dock är evidensläget blandat. Många bloggar och alternativa hälsosidor lyfter fram fördelar, men ofta utan vetenskaplig källhänvisning. Vissa studier stöder antioxidativa effekter. Sammanfattningsvis bör violblommor användas med nyfikenhet – inte som medicin – och alltid med ett källkritiskt sinne.</p>
-    </div>
+      <h3 class="section-title">Eftersmak</h3>
+      <p>Len och lång. En blommig viskning som vilar kvar.</p>
 
-    <div class="social">
-      <p class="section-title">📤 Dela denna produkt</p>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://driedvioletflowers.com" target="_blank">📘 Facebook</a>
-      <a href="https://twitter.com/intent/tweet?url=https://driedvioletflowers.com" target="_blank">🐦 X</a>
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://driedvioletflowers.com" target="_blank">🔗 LinkedIn</a>
-      <a href="https://www.instagram.com/" target="_blank">📸 Instagram</a>
-      <a href="https://www.tiktok.com/" target="_blank">🎵 TikTok</a>
-      <a href="#" onclick="window.open('https://www.pinterest.com/pin/create/button/?url='+encodeURIComponent(location.href)+'&media='+encodeURIComponent(document.querySelector('img').src)+'&description=Torkade violblommor från Tyskland','pinterest','width=750,height=550'); return false;">📌 Pinterest</a>
-    </div>
+      <h3 class="section-title">Tom kopp – doft</h3>
+      <p>En mjuk, ren violton som stannar kvar i koppen, diskret men ihärdig.</p>
 
-    <div class="map">
-      <p class="section-title">🗺️ Odlingsregion</p>
+      <h3 class="section-title">Servering & parningar</h3>
+      <p>Strålande till smakerna på en sushitallrik: fet fisk, sälta, inlagd ingefära, umami från riset. Alternativt till något sött och knaprigt – exempelvis baklava.</p>
+    </section>
+
+    <!-- Kuriosa -->
+    <section class="panel" aria-labelledby="curiosa">
+      <h2 id="curiosa" class="section-title">Kuriosa</h2>
+      <p><strong>Visste du att…</strong> Napoleon bar violettpomada bakom örat. I vissa traditioner har violrot använts som ett milt laxermedel.</p>
+    </section>
+
+    <!-- Hälsa -->
+    <section class="panel" aria-labelledby="health">
+      <h2 id="health" class="section-title">🩺 Hälsopåverkan</h2>
+      <p>Traditionellt använt mot hosta, sömnproblem och inflammation. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank" rel="noopener">Sök studier om <em>Viola odorata</em> på PubMed</a>.</p>
+    </section>
+
+    <!-- Personligt -->
+    <section class="panel" aria-labelledby="personal">
+      <h2 id="personal" class="section-title">🫶 Min personliga relation till teet</h2>
+      <p>Det fanns en tid då jag drogs åt det extrema – mer, starkare, mörkare. Med tiden förändrades jag och började uppskatta nyanserna mer än ytterligheterna. Det är i det subtila som detta te rör sig: lyxig mjukhet och blommig rundhet. Jag tycker mycket om det.</p>
+    </section>
+
+    <!-- Källkritik -->
+    <section class="panel" aria-labelledby="refs">
+      <h2 id="refs" class="section-title">🧠 Andra som skriver om detta, skriver…</h2>
+      <p>En genomgång av källor om <strong>Viola odorata</strong> visar traditionell användning vid hosta, hudbesvär och oro. Evidensläget är blandat: många bloggar lyfter fördelar utan primärkällor, medan vissa studier antyder antioxidativa effekter. Slutsats: använd med nyfikenhet – inte som medicin – och var källkritisk.</p>
+    </section>
+
+    <!-- Dela -->
+    <section class="panel social" aria-labelledby="share">
+      <h2 id="share" class="section-title">📤 Dela denna produkt</h2>
+      <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href));return false;">📘 Facebook</a>
+      <a href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(location.href));return false;">🐦 X</a>
+      <a href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href));return false;">🔗 LinkedIn</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">📸 Instagram</a>
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener">🎵 TikTok</a>
+      <a href="#" onclick="window.open('https://www.pinterest.com/pin/create/button/?url='+encodeURIComponent(location.href)+'&media='+encodeURIComponent(document.querySelector(\'img.hero-img\')?.src||location.href)+'&description='+encodeURIComponent(document.title));return false;">📌 Pinterest</a>
+    </section>
+
+    <!-- Karta -->
+    <section class="panel map" aria-labelledby="map">
+      <h2 id="map" class="section-title">🗺️ Odlingsregion</h2>
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1015082.2654372658!2d9.398152410532478!3d51.49684749088909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bdfcbb32f4f91b%3A0x41eec8c6a3b7bc0!2sTyskland!5e0!3m2!1ssv!2sse!4v1721920000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- Hygien / policies -->
+    <section id="shipping" class="panel" aria-labelledby="shipping-title">
+      <h2 id="shipping-title" class="section-title">🚚 Frakt & leverans</h2>
+      <ul class="small" style="margin:0;padding-left:18px">
+        <li><strong>Sverige:</strong> 49 kr · Fri frakt över 500 kr.</li>
+        <li><strong>EU/Internationellt:</strong> <span id="dynamicShipping">Dynamisk frakt via Sendcloud (beräknas vid beställning)</span>. Fri frakt över 1000 kr.</li>
+        <li><strong>Spårning:</strong> Ja, spårad frakt som standard.</li>
+        <li><strong>Hanteringstid:</strong> 1–2 arbetsdagar. Skickas från Ryd, Tingsryds kommun.</li>
+      </ul>
+    </section>
+
+    <section id="returns" class="panel" aria-labelledby="returns-title">
+      <h2 id="returns-title" class="section-title">↩️ Returer & byten</h2>
+      <p><em>“Didn’t love it? Give it to someone who might!”</em></p>
+      <ul class="small" style="margin:0;padding-left:18px">
+        <li>Ångerrätt 14 dagar. Produkten måste vara oöppnad.</li>
+        <li>Kund står för returfrakt. Vid godkänd retur: återbetalning eller tillgodohavande.</li>
+        <li>Kontakta oss innan retur: <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a></li>
+      </ul>
+    </section>
+
+    <section id="payment" class="panel" aria-labelledby="payment-title">
+      <h2 id="payment-title" class="section-title">💳 Betalning & säkerhet</h2>
+      <ul class="small" style="margin:0;padding-left:18px">
+        <li><strong>Flöde:</strong> Välj storlek → klicka “Skicka betalningslänk” → ange e-post → vi skickar unik <strong>Revolut</strong>-betalningslänk.</li>
+        <li><strong>Efter betalning:</strong> Vi packar (vi filmar gärna din order) och skickar spårbart.</li>
+        <li><strong>Säkerhet:</strong> Betalning sker via Revolut på säker sida. Inga kortuppgifter lagras hos oss.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Sticky buy panel -->
+  <div class="buy-panel" role="region" aria-label="Köp">
+    <span class="price" id="totalPrice">5 g – 125 kr</span>
+    <button type="button" onclick="openEmailCapture()">Skicka betalningslänk</button>
+  </div>
+
+  <!-- Email capture modal -->
+  <div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
+    <div class="card">
+      <h3 id="emailTitle" style="margin:.2rem 0 .4rem">Vi skickar betalningslänken till din e-post</h3>
+      <p class="small">Fyll i din e-postadress så skickar vi en betalningslänk och din ordersammanfattning.</p>
+      <label for="emailInput" class="small" style="display:block;margin-bottom:.3rem">E-postadress</label>
+      <input id="emailInput" type="email" placeholder="namn@exempel.se" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+      <div style="display:flex;gap:.6rem;justify-content:flex-end;margin-top:.8rem">
+        <button onclick="closeEmailCapture()" style="background:#eee;color:#333;border:0;border-radius:10px;padding:.6rem .9rem">Avbryt</button>
+        <button onclick="fakeSubmitEmail()" style="background:var(--violet-soft);color:#fff;border:0;border-radius:10px;padding:.6rem 1rem">Skicka</button>
+      </div>
+      <p id="emailThanks">Tack! Om en liten stund får du ett mejl med betalningslänk. 💌</p>
     </div>
   </div>
 
-  <div class="buy-panel">
-    <span id="totalPrice">5g – 125 kr</span>
-    <button>Lägg i korgen</button>
-  </div>
+  <footer class="container" id="contact">
+    <div class="section-title">Kontakt & policyer</div>
+    <p class="small">E-post: <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a> · Skickas från Ryd, Tingsryds kommun, Sverige.</p>
+    <div class="footer-links small">
+      <a href="#shipping">Frakt & Leverans</a>
+      <a href="#returns">Returer & Byten</a>
+      <a href="#payment">Betalning & Säkerhet</a>
+      <a href="#top">Till toppen ↑</a>
+    </div>
+    <p class="small" style="margin-top:.6rem">© <span id="year"></span> Dried Violet Flowers</p>
+  </footer>
 
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- App scripts -->
   <script>
-    const prices = {5: 125, 10: 250, 25: 600, 100: 2000};
-    function updatePrice() {
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Pricing logic
+    const prices = {5:125, 10:250, 25:600, 100:2000};
+    function updatePrice(){
       const g = document.getElementById('sizeSelect').value;
-      document.getElementById('totalPrice').textContent = `${g}g – ${prices[g]} kr`;
+      document.getElementById('totalPrice').textContent = `${g} g – ${prices[g]} kr`;
     }
+
+    // Email capture modal (placeholder: wire to backend/Apps Script + Revolut senare)
+    function openEmailCapture(){
+      const m = document.getElementById('emailModal');
+      m.style.display='flex'; m.setAttribute('aria-hidden','false');
+      document.getElementById('emailThanks').style.display='none';
+      setTimeout(()=>document.getElementById('emailInput').focus(),50);
+    }
+    function closeEmailCapture(){
+      const m = document.getElementById('emailModal');
+      m.style.display='none'; m.setAttribute('aria-hidden','true');
+    }
+    function fakeSubmitEmail(){
+      const email = document.getElementById('emailInput').value.trim();
+      if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+        alert('Ange en giltig e-postadress.'); return;
+      }
+      // TODO: Skicka {email, size, price, product} till backend/Apps Script som skapar Revolut-betalningslänk och skickar mejl
+      document.getElementById('emailThanks').style.display='block';
+      setTimeout(()=>{ closeEmailCapture(); }, 1400);
+    }
+
+    // Flavor radar
     const ctx = document.getElementById('spiderChart').getContext('2d');
     new Chart(ctx, {
       type: 'radar',
@@ -122,26 +306,64 @@
         labels: ['Torrhet','Umami toner','Gröna toner / gräsighet','Blommighet','Fruktighet','Kryddighet','Träighet','Jordighet','Rostighet','Rökighet','Nötighet','Krämighet'],
         datasets: [{
           label: 'Smakprofil',
-          data: [2, 4, 6, 5, 2, 1, 2, 2, 1, 0, 2, 3],
-          backgroundColor: 'rgba(136, 77, 167, 0.2)',
-          borderColor: 'rgba(136, 77, 167, 1)',
-          pointBackgroundColor: 'rgba(136, 77, 167, 1)'
+          data: [2,4,6,5,2,1,2,2,1,0,2,3],
+          backgroundColor: 'rgba(136,77,167,.18)',
+          borderColor: 'rgba(136,77,167,1)',
+          pointBackgroundColor: 'rgba(136,77,167,1)'
         }]
       },
       options: {
         responsive: false,
-        maintainAspectRatio: false,
-        scales: {
-          r: {
-            beginAtZero: true,
-            min: 0,
-            max: 10,
-            ticks: { stepSize: 1 }
-          }
-        },
-        plugins: { legend: { display: false } }
+        scales: { r: { beginAtZero:true, min:0, max:10, ticks:{ stepSize:1 } } },
+        plugins: { legend: { display:false } }
       }
     });
+  </script>
+
+  <!-- Structured data: Product + AggregateOffer -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Torkade Luktvioler – Viola odorata",
+    "description":"Torkade violblommor, handplockade i Tyskland. Subtil, lyxig blommighet. Producerat utan gödnings- och bekämpningsmedel.",
+    "image":"https://www.driedvioletflowers.com/SweetViolaTea.webp",
+    "brand":{"@type":"Brand","name":"Dried Violet Flowers"},
+    "sku":"AB00439",
+    "category":"HerbalTea",
+    "additionalProperty":[
+      {"@type":"PropertyValue","name":"Bäst före","value":"2026-06"},
+      {"@type":"PropertyValue","name":"Batch","value":"AB00439"},
+      {"@type":"PropertyValue","name":"Odlingsmetod","value":"Producerat utan gödnings- och bekämpningsmedel"}
+    ],
+    "offers":{
+      "@type":"AggregateOffer",
+      "priceCurrency":"SEK",
+      "lowPrice":"125",
+      "highPrice":"2000",
+      "offerCount":"4",
+      "offers":[
+        {"@type":"Offer","price":"125","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/#size-5","itemCondition":"https://schema.org/NewCondition"},
+        {"@type":"Offer","price":"250","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/#size-10","itemCondition":"https://schema.org/NewCondition"},
+        {"@type":"Offer","price":"600","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/#size-25","itemCondition":"https://schema.org/NewCondition"},
+        {"@type":"Offer","price":"2000","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/#size-100","itemCondition":"https://schema.org/NewCondition"}
+      ]
+    }
+  }
+  </script>
+
+  <!-- Structured data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Hur brygger jag te på torkade violblommor?","acceptedAnswer":{"@type":"Answer","text":"Använd 1 g per 100 ml vatten vid 85 °C i cirka 10 minuter. Smaken är subtil – justera tid och mängd efter tycke."}},
+      {"@type":"Question","name":"Är produkten ekologisk?","acceptedAnswer":{"@type":"Answer","text":"Den är producerad utan gödnings- och bekämpningsmedel, men har ingen ekologisk certifiering."}},
+      {"@type":"Question","name":"Hur ska jag förvara blommorna?","acceptedAnswer":{"@type":"Answer","text":"Förvara torrt, mörkt och lufttätt för att bevara aromen."}},
+      {"@type":"Question","name":"Hur många koppar får jag per gram?","acceptedAnswer":{"@type":"Answer","text":"Cirka fem koppar per gram vid lätt bryggning. Experimentera gärna med styrkan."}}
+    ]
+  }
   </script>
 </body>
 </html>
