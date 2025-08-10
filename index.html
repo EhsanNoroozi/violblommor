@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Torkade Luktvioler – Viola odorata | Handplockade | Begränsad mängd</title>
-  <meta name="description" content="Torkade violblommor (Viola odorata) – handplockade i Tyskland, producerade utan gödnings- och bekämpningsmedel. Subtil, lyxig blommighet. Fri frakt i Sverige över 500 kr.">
+  <meta name="description" content="Torkade violblommor (Viola odorata), handplockade i Tyskland och producerade utan gödnings- och bekämpningsmedel. Subtil, lyxig blommighet. Fri frakt i Sverige över 500 kr.">
 
   <!-- Canonical & hreflang (placeholders för kommande språkversioner) -->
   <link rel="canonical" href="https://www.driedvioletflowers.com/">
@@ -38,6 +38,22 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-X6ZKS3J0ZJ');
+
+    // GA4: sidans språk + events
+    const CONTENT_LANG = document.documentElement.lang || 'sv';
+    gtag('set', 'user_properties', { content_language: CONTENT_LANG });
+    gtag('event', 'page_view', { content_language: CONTENT_LANG });
+
+    function trackSelectSize(g){
+      gtag('event', 'select_size', { value_grams: g, content_language: CONTENT_LANG });
+    }
+    function trackEmailCapture(price, grams){
+      gtag('event', 'email_capture_submit', {
+        price_sek: price,
+        value_grams: grams,
+        content_language: CONTENT_LANG
+      });
+    }
   </script>
 
   <!-- Microsoft Clarity -->
@@ -50,40 +66,45 @@
   </script>
 
   <style>
-    :root {
-      --violet:#551a8b; --violet-soft:#9644a2; --panel:#fceef9; --ink:#333; --bg:#fff8f9;
+    :root{
+      --ink:#0f172a; --muted:#334155; --bg:#ffffff; --panel:#f8fafc; --line:#e5e7eb;
+      --cta:#111827; --cta-ink:#ffffff; --link:#1f2937;
     }
     *{box-sizing:border-box}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;color:var(--ink);background:var(--bg)}
-    a{color:var(--violet-soft);text-decoration:none}
-    .container{max-width:780px;margin:0 auto;padding:16px 16px 180px}
-    .hero-img{width:100%;border-radius:12px;display:block}
-    h1{color:var(--violet);margin:.6rem 0 .2rem;font-size:1.9rem}
-    .subtitle{color:var(--violet-soft);font-style:italic;margin-bottom:1rem}
-    .section-title{color:var(--violet);font-weight:800;margin:1.25rem 0 .5rem}
-    .panel{background:var(--panel);border-radius:12px;padding:16px;margin:14px 0}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--link);text-decoration:none}
+    .container{max-width:820px;margin:0 auto;padding:16px 16px 180px}
+    header.container{padding-bottom:8px}
+    .hero{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .hero-img{width:100%;border-radius:14px;display:block}
+    h1{color:var(--muted);margin:.75rem 0 .25rem;font-size:2rem}
+    .subtitle{color:#475569;margin:0 0 .75rem;font-style:italic}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+    .section-title{color:var(--muted);font-weight:800;margin:1rem 0 .5rem}
+    .small{font-size:.95rem;color:#475569}
     select,button,input{font-size:1rem}
-    select{width:100%;padding:.6rem .8rem;border:1px solid #ddd;border-radius:10px;background:#fff}
-    .buy-panel{position:fixed;left:0;right:0;bottom:0;background:#ffffffee;backdrop-filter:blur(6px);border-top:1px solid #ddd;padding:.9rem 1rem;display:flex;gap:.8rem;justify-content:space-between;align-items:center;z-index:20}
-    .buy-panel button{background:var(--violet-soft);color:#fff;border:0;border-radius:10px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer}
-    .price{font-weight:800;color:var(--violet)}
+    select{width:100%;padding:.6rem .8rem;border:1px solid var(--line);border-radius:10px;background:#fff}
+    .buy-panel{position:fixed;left:0;right:0;bottom:0;background:#ffffffee;backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.9rem 1rem;display:flex;gap:.8rem;justify-content:space-between;align-items:center;z-index:20}
+    .buy-panel button{background:var(--cta);color:var(--cta-ink);border:0;border-radius:10px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer}
+    .price{font-weight:800;color:var(--muted)}
     .social a{display:inline-block;margin-right:.6rem}
     .map iframe{width:100%;height:420px;border:0;border-radius:12px}
-    footer{margin:24px 0 140px;text-align:center;color:#666}
+    footer{margin:28px 0 140px;text-align:center;color:#64748b}
     .footer-links{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:.4rem}
-    .small{font-size:.92rem;color:#555}
     /* modal */
     #emailModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;z-index:50}
-    #emailModal .card{background:#fff;border-radius:14px;padding:16px;width:min(520px,92vw)}
-    #emailThanks{display:none;color:green;margin-top:.6rem}
-    @media(min-width:840px){ h1{font-size:2.1rem} }
+    #emailModal .card{background:#fff;border-radius:14px;padding:16px;width:min(520px,92vw);border:1px solid var(--line)}
+    #emailThanks{display:none;color:#16a34a;margin-top:.6rem}
+    /* video */
+    .video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px}
+    @media(min-width:860px){ h1{font-size:2.2rem} }
   </style>
 </head>
 <body>
-  <header class="container" id="top">
+  <header class="container hero" id="top">
     <img src="SweetViolaTea.webp" alt="Torkade violblommor – bryggt te i kopp" class="hero-img">
     <h1>Torkade Luktvioler – <em>Viola odorata</em></h1>
-    <p class="subtitle">Handplockade i Tyskland · Bäst före juni 2026 · Begränsad mängd · Producerat utan gödnings- och bekämpningsmedel</p>
+    <p class="subtitle">Handplockade i Tyskland · Bäst före juni 2026 · Producerat utan gödnings- och bekämpningsmedel · Begränsad mängd</p>
   </header>
 
   <main class="container">
@@ -95,7 +116,7 @@
         <li><strong>Producent:</strong> Tea & Coffee Factory</li>
         <li><strong>Batch:</strong> AB00439 · <strong>Lager:</strong> 900 g</li>
         <li><strong>Förpackning:</strong> Återvinningsbart papper</li>
-        <li><strong>Förvaring:</strong> Torrt, mörkt och lufttätt</li>
+        <li><strong>Förvaring:</strong> Torrt, mörkt, lufttätt</li>
         <li><strong>Pris:</strong> 25 kr/g (20 kr/g vid köp ≥ 500 g)</li>
       </ul>
     </section>
@@ -112,6 +133,16 @@
       <p class="small" style="margin:.6rem 0 0">Enhetligt pris: 25 kr/g (20 kr/g vid köp ≥ 500 g).</p>
     </section>
 
+    <!-- Betalning & säkerhet (uppflyttad) -->
+    <section id="payment" class="panel" aria-labelledby="payment-title">
+      <h2 id="payment-title" class="section-title">💳 Betalning & säkerhet</h2>
+      <ul class="small" style="margin:0;padding-left:18px">
+        <li><strong>Flöde:</strong> Välj storlek → klicka “Skicka betalningslänk” → ange e‑post + adress → vi mejlar unik <strong>Revolut</strong>-betalningslänk.</li>
+        <li><strong>Efter betalning:</strong> Vi packar (vi filmar gärna din order) och skickar spårbart från Ryd, Tingsryds kommun.</li>
+        <li><strong>Säkerhet:</strong> Betalning sker på Revoluts säkra sida. Vi lagrar inga kortuppgifter.</li>
+      </ul>
+    </section>
+
     <!-- Smakprofil -->
     <section aria-labelledby="flavor" class="panel">
       <h2 id="flavor" class="section-title">📊 Smakprofil</h2>
@@ -121,40 +152,30 @@
       </p>
     </section>
 
-    <!-- Bryggning & sensorik – ALL INPUT -->
+    <!-- Lång produkttext – ALL sensorik -->
+    <section class="panel" aria-labelledby="story">
+      <h2 id="story" class="section-title">Om teet – sensorik & karaktär</h2>
+      <p>
+        De torra violblommorna är små, täta knoppar på 2–3 millimeter – nyanser av lila som bryts av med gröna och gula fästen. När du öppnar förpackningen möts du av en stillsam, grön örtighet där en varm violton redan viskar om vad som väntar. Vid bryggning – 1 g per 100 ml, 85 °C, 10 minuter – sväller knopparna mjukt och färgerna lättar mot lavendel; de gröna och gula delarna blir transparenta, nästan ljusa som glas. Doften skiftar till mer vegetabilisk grönhet, medan violens värme ligger kvar som en låg, rund basnot.
+      </p>
+      <p>
+        I koppen är vätskan klar och guldskimrande, inte lila utan bärande på ett milt mysterium. Texturen är elegant och silkeslen; en diskret viskositet som bär smakerna över tungan. Smakbilden är finstämd: vårgrön örtighet möter en varm, rund viol som aldrig blir parfymerad utan förblir behärskad och lyxig. En lätt sötma håller helheten samman. Eftersmaken är lång och len – en blommig viskning som dröjer sig kvar, och i den tomma koppen stannar en ren violton kvar som ett eko av något stillsamt.
+      </p>
+      <p>
+        Serveras med fördel till smakerna du finner på en sushitallrik: fet fisk, sälta, inlagd ingefära och den klibbiga umamin från riset. Alternativt till något sött och knaprigt – som baklava – där teets runda blomma lyfter både honung och nötter utan att tävla.
+      </p>
+    </section>
+
+    <!-- Video -->
+    <section class="panel video" aria-labelledby="video">
+      <h2 id="video" class="section-title">Se teet bryggas</h2>
+      <iframe src="https://www.youtube.com/embed/ArntqsUnERs" title="Bryggning av violblommor – video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
+
+    <!-- Bryggning (kort) -->
     <section class="panel" aria-labelledby="brew">
-      <h2 id="brew" class="section-title">🍵 Bryggning & sensorik</h2>
-      <p class="small"><strong>Rekommenderad bryggning:</strong> 1 g per 100 ml · 85 °C · 10 minuter.</p>
-
-      <h3 class="section-title" style="margin-top:1rem">Torra blommor – utseende</h3>
-      <p>Små knoppar med lila blommor, ~2–3 mm. Knopparna visar nyanser av lila med gröna/gula fästen – ett spektrum av mjuka violetta toner.</p>
-
-      <h3 class="section-title">Torra blommor – doft</h3>
-      <p>Gröna, örtiga toppnoter med en subtil violhint som redan här känns rund och varm.</p>
-
-      <h3 class="section-title">Våta blommor – utseende</h3>
-      <p>De lila nyanserna mjuknar mot lavendel; de gröna/gula delarna blir ljusare, nästan transparenta. Knopparna sväller lätt när de blivit våta.</p>
-
-      <h3 class="section-title">Våta blommor – doft</h3>
-      <p>Mer vegetabilisk grönhet framträder. Violens ton ligger kvar som en varm, lågmäld slöja.</p>
-
-      <h3 class="section-title">Det bryggda teet – färg</h3>
-      <p>Guld med en aning mystik – klart, guldskimrande, inte lila.</p>
-
-      <h3 class="section-title">Hur känns det i munnen</h3>
-      <p>Elegant och silkeslen med mjuk viskositet. En lätt svalkande känsla dröjer i eftersmaken.</p>
-
-      <h3 class="section-title">Hur smakar det</h3>
-      <p>Lyxig, finstämd grönhet med en varm, rund violton. Subtil sötma bär smaken snarare än att dominera.</p>
-
-      <h3 class="section-title">Eftersmak</h3>
-      <p>Len och lång. En blommig viskning som vilar kvar.</p>
-
-      <h3 class="section-title">Tom kopp – doft</h3>
-      <p>En mjuk, ren violton som stannar kvar i koppen, diskret men ihärdig.</p>
-
-      <h3 class="section-title">Servering & parningar</h3>
-      <p>Strålande till smakerna på en sushitallrik: fet fisk, sälta, inlagd ingefära, umami från riset. Alternativt till något sött och knaprigt – exempelvis baklava.</p>
+      <h2 id="brew" class="section-title">🍵 Bryggning (kort)</h2>
+      <p class="small">Rekommenderat: 1 g per 100 ml · 85 °C · 10 min. Justera tid/mängd efter önskad intensitet.</p>
     </section>
 
     <!-- Kuriosa -->
@@ -184,12 +205,12 @@
     <!-- Dela -->
     <section class="panel social" aria-labelledby="share">
       <h2 id="share" class="section-title">📤 Dela denna produkt</h2>
-      <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href));return false;">📘 Facebook</a>
-      <a href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(location.href));return false;">🐦 X</a>
-      <a href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href));return false;">🔗 LinkedIn</a>
-      <a href="https://www.instagram.com/" target="_blank" rel="noopener">📸 Instagram</a>
-      <a href="https://www.tiktok.com/" target="_blank" rel="noopener">🎵 TikTok</a>
-      <a href="#" onclick="window.open('https://www.pinterest.com/pin/create/button/?url='+encodeURIComponent(location.href)+'&media='+encodeURIComponent(document.querySelector(\'img.hero-img\')?.src||location.href)+'&description='+encodeURIComponent(document.title));return false;">📌 Pinterest</a>
+      <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href));return false;">Facebook</a>
+      <a href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(location.href));return false;">X</a>
+      <a href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href));return false;">LinkedIn</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+      <a href="#" onclick="window.open('https://www.pinterest.com/pin/create/button/?url='+encodeURIComponent(location.href)+'&media='+encodeURIComponent(document.querySelector(\'img.hero-img\')?.src||location.href)+'&description='+encodeURIComponent(document.title));return false;">Pinterest</a>
     </section>
 
     <!-- Karta -->
@@ -198,7 +219,7 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1015082.2654372658!2d9.398152410532478!3d51.49684749088909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bdfcbb32f4f91b%3A0x41eec8c6a3b7bc0!2sTyskland!5e0!3m2!1ssv!2sse!4v1721920000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    <!-- Hygien / policies -->
+    <!-- Frakt & Retur -->
     <section id="shipping" class="panel" aria-labelledby="shipping-title">
       <h2 id="shipping-title" class="section-title">🚚 Frakt & leverans</h2>
       <ul class="small" style="margin:0;padding-left:18px">
@@ -211,20 +232,11 @@
 
     <section id="returns" class="panel" aria-labelledby="returns-title">
       <h2 id="returns-title" class="section-title">↩️ Returer & byten</h2>
-      <p><em>“Didn’t love it? Give it to someone who might!”</em></p>
+      <p class="small"><em>“Didn’t love it? Give it to someone who might!”</em></p>
       <ul class="small" style="margin:0;padding-left:18px">
         <li>Ångerrätt 14 dagar. Produkten måste vara oöppnad.</li>
         <li>Kund står för returfrakt. Vid godkänd retur: återbetalning eller tillgodohavande.</li>
         <li>Kontakta oss innan retur: <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a></li>
-      </ul>
-    </section>
-
-    <section id="payment" class="panel" aria-labelledby="payment-title">
-      <h2 id="payment-title" class="section-title">💳 Betalning & säkerhet</h2>
-      <ul class="small" style="margin:0;padding-left:18px">
-        <li><strong>Flöde:</strong> Välj storlek → klicka “Skicka betalningslänk” → ange e-post → vi skickar unik <strong>Revolut</strong>-betalningslänk.</li>
-        <li><strong>Efter betalning:</strong> Vi packar (vi filmar gärna din order) och skickar spårbart.</li>
-        <li><strong>Säkerhet:</strong> Betalning sker via Revolut på säker sida. Inga kortuppgifter lagras hos oss.</li>
       </ul>
     </section>
   </main>
@@ -235,31 +247,59 @@
     <button type="button" onclick="openEmailCapture()">Skicka betalningslänk</button>
   </div>
 
-  <!-- Email capture modal -->
+  <!-- Email capture modal (insamlar namn, adress, e-post) -->
   <div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
     <div class="card">
-      <h3 id="emailTitle" style="margin:.2rem 0 .4rem">Vi skickar betalningslänken till din e-post</h3>
-      <p class="small">Fyll i din e-postadress så skickar vi en betalningslänk och din ordersammanfattning.</p>
-      <label for="emailInput" class="small" style="display:block;margin-bottom:.3rem">E-postadress</label>
+      <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Vi skickar betalningslänken till din e‑post</h3>
+      <p class="small">Fyll i uppgifterna nedan så skickar vi en unik betalningslänk (Revolut) + ordersammanfattning.</p>
+
+      <label class="small" for="fullName" style="display:block;margin-top:.4rem">Namn</label>
+      <input id="fullName" type="text" placeholder="För- och efternamn" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+
+      <label class="small" for="emailInput" style="display:block;margin-top:.6rem">E‑postadress</label>
       <input id="emailInput" type="email" placeholder="namn@exempel.se" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
-      <div style="display:flex;gap:.6rem;justify-content:flex-end;margin-top:.8rem">
-        <button onclick="closeEmailCapture()" style="background:#eee;color:#333;border:0;border-radius:10px;padding:.6rem .9rem">Avbryt</button>
-        <button onclick="fakeSubmitEmail()" style="background:var(--violet-soft);color:#fff;border:0;border-radius:10px;padding:.6rem 1rem">Skicka</button>
+
+      <label class="small" for="addr1" style="display:block;margin-top:.6rem">Adress</label>
+      <input id="addr1" type="text" placeholder="Gata och nummer" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+      <input id="addr2" type="text" placeholder="Lgh, c/o (valfritt)" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px;margin-top:.4rem">
+
+      <div style="display:flex;gap:.6rem;margin-top:.6rem">
+        <input id="postal" type="text" placeholder="Postnr" style="flex:0 0 120px;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+        <input id="city" type="text" placeholder="Ort" style="flex:1;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+      </div>
+
+      <label class="small" for="country" style="display:block;margin-top:.6rem">Land</label>
+      <input id="country" type="text" value="Sverige" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+
+      <div style="display:flex;gap:.6rem;justify-content:flex-end;margin-top:.9rem">
+        <button onclick="closeEmailCapture()" style="background:#eef2f7;color:#111;border:0;border-radius:10px;padding:.6rem .9rem">Avbryt</button>
+        <button onclick="submitOrder()" style="background:var(--cta);color:var(--cta-ink);border:0;border-radius:10px;padding:.6rem 1rem">Skicka</button>
       </div>
       <p id="emailThanks">Tack! Om en liten stund får du ett mejl med betalningslänk. 💌</p>
     </div>
   </div>
 
   <footer class="container" id="contact">
-    <div class="section-title">Kontakt & policyer</div>
-    <p class="small">E-post: <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a> · Skickas från Ryd, Tingsryds kommun, Sverige.</p>
+    <div class="section-title" style="text-align:center">Kontakt & policyer</div>
+    <p class="small" style="text-align:center">E‑post: <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a> · Skickas från Ryd, Tingsryds kommun, Sverige.</p>
     <div class="footer-links small">
       <a href="#shipping">Frakt & Leverans</a>
       <a href="#returns">Returer & Byten</a>
       <a href="#payment">Betalning & Säkerhet</a>
       <a href="#top">Till toppen ↑</a>
     </div>
-    <p class="small" style="margin-top:.6rem">© <span id="year"></span> Dried Violet Flowers</p>
+
+    <!-- Revolut badge -->
+    <div style="display:flex;justify-content:center;margin-top:14px">
+      <span aria-label="Payment by Revolut" title="Payment by Revolut" style="display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:999px;padding:.45rem .8rem;background:#fff">
+        <svg width="78" height="18" viewBox="0 0 78 18" role="img" aria-label="Revolut" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="14" font-size="14" font-weight="700" fill="#111827" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Revolut</text>
+        </svg>
+        <span class="small" style="color:#111827">Payment by Revolut</span>
+      </span>
+    </div>
+
+    <p class="small" style="margin-top:.6rem;text-align:center">© <span id="year"></span> Dried Violet Flowers</p>
   </footer>
 
   <!-- Chart.js -->
@@ -267,35 +307,81 @@
 
   <!-- App scripts -->
   <script>
-    // Year in footer
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Pricing logic
+    // Pricing logic + GA event
     const prices = {5:125, 10:250, 25:600, 100:2000};
     function updatePrice(){
       const g = document.getElementById('sizeSelect').value;
       document.getElementById('totalPrice').textContent = `${g} g – ${prices[g]} kr`;
+      if (typeof trackSelectSize === 'function') trackSelectSize(g);
     }
 
-    // Email capture modal (placeholder: wire to backend/Apps Script + Revolut senare)
+    // Email capture modal
     function openEmailCapture(){
       const m = document.getElementById('emailModal');
       m.style.display='flex'; m.setAttribute('aria-hidden','false');
       document.getElementById('emailThanks').style.display='none';
-      setTimeout(()=>document.getElementById('emailInput').focus(),50);
+      setTimeout(()=>document.getElementById('fullName').focus(),50);
     }
     function closeEmailCapture(){
       const m = document.getElementById('emailModal');
       m.style.display='none'; m.setAttribute('aria-hidden','true');
     }
-    function fakeSubmitEmail(){
+
+    // Submit order → Apps Script backend
+    async function submitOrder(){
+      const grams = document.getElementById('sizeSelect').value;
+      const price = prices[grams];
+
+      const fullName = document.getElementById('fullName').value.trim();
       const email = document.getElementById('emailInput').value.trim();
-      if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-        alert('Ange en giltig e-postadress.'); return;
+      const addr1 = document.getElementById('addr1').value.trim();
+      const addr2 = document.getElementById('addr2').value.trim();
+      const postal = document.getElementById('postal').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const country = document.getElementById('country').value.trim();
+
+      if(!fullName || !email || !addr1 || !postal || !city || !country){
+        alert('Fyll i namn, e‑post och adress (minst rad 1, postnr, ort, land).'); return;
       }
-      // TODO: Skicka {email, size, price, product} till backend/Apps Script som skapar Revolut-betalningslänk och skickar mejl
-      document.getElementById('emailThanks').style.display='block';
-      setTimeout(()=>{ closeEmailCapture(); }, 1400);
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+        alert('Ange en giltig e‑postadress.'); return;
+      }
+
+      if (typeof trackEmailCapture === 'function') trackEmailCapture(price, grams);
+
+      const payload = {
+        product_sku: "AB00439",
+        product_name: "Torkade Luktvioler – Viola odorata",
+        grams: Number(grams),
+        price_sek: Number(price),
+        language: (document.documentElement.lang || 'sv'),
+        full_name: fullName,
+        email: email,
+        address1: addr1,
+        address2: addr2,
+        postal: postal,
+        city: city,
+        country: country,
+        utm_source: "onsite",
+        utm_medium: "email_link_request",
+        utm_campaign: "checkout"
+      };
+
+      try{
+        const res = await fetch("YOUR_APPS_SCRIPT_WEBAPP_URL", {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        document.getElementById('emailThanks').style.display='block';
+        setTimeout(()=>{ closeEmailCapture(); }, 1400);
+      }catch(e){
+        alert('Något gick fel vid skickandet. Testa igen om en stund.');
+      }
     }
 
     // Flavor radar
@@ -307,9 +393,9 @@
         datasets: [{
           label: 'Smakprofil',
           data: [2,4,6,5,2,1,2,2,1,0,2,3],
-          backgroundColor: 'rgba(136,77,167,.18)',
-          borderColor: 'rgba(136,77,167,1)',
-          pointBackgroundColor: 'rgba(136,77,167,1)'
+          backgroundColor: 'rgba(17,24,39,.10)',
+          borderColor: 'rgba(17,24,39,1)',
+          pointBackgroundColor: 'rgba(17,24,39,1)'
         }]
       },
       options: {
