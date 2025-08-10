@@ -54,6 +54,12 @@
         content_language: CONTENT_LANG
       });
     }
+    function trackShippingChoice(choice){
+      gtag('event', 'select_shipping_method', {
+        method: choice,
+        content_language: CONTENT_LANG
+      });
+    }
   </script>
 
   <!-- Microsoft Clarity -->
@@ -133,11 +139,31 @@
       <p class="small" style="margin:.6rem 0 0">Enhetligt pris: 25 kr/g (20 kr/g vid köp ≥ 500 g).</p>
     </section>
 
+    <!-- Välj frakt (placeholder) -->
+    <section class="panel" aria-labelledby="shipchoose">
+      <h2 id="shipchoose" class="section-title">🚚 Välj frakt</h2>
+      <p class="small" style="margin-top:0">Välj ett alternativ. Exakta priser för EU/internationellt beräknas via Sendcloud i nästa steg.</p>
+      <div role="group" aria-label="Fraktalternativ" class="small">
+        <label style="display:block;margin:.4rem 0">
+          <input type="radio" name="shipping" value="SE_tracked_49" checked onchange="trackShippingChoice('SE_tracked_49')">
+          Sverige – Spårad frakt 49 kr (fri frakt över 500 kr)
+        </label>
+        <label style="display:block;margin:.4rem 0">
+          <input type="radio" name="shipping" value="EU_dynamic" onchange="trackShippingChoice('EU_dynamic')">
+          EU – Dynamisk frakt (Sendcloud)
+        </label>
+        <label style="display:block;margin:.4rem 0">
+          <input type="radio" name="shipping" value="INTL_dynamic" onchange="trackShippingChoice('INTL_dynamic')">
+          Internationellt – Dynamisk frakt (Sendcloud)
+        </label>
+      </div>
+    </section>
+
     <!-- Betalning & säkerhet (uppflyttad) -->
     <section id="payment" class="panel" aria-labelledby="payment-title">
       <h2 id="payment-title" class="section-title">💳 Betalning & säkerhet</h2>
       <ul class="small" style="margin:0;padding-left:18px">
-        <li><strong>Flöde:</strong> Välj storlek → klicka “Skicka betalningslänk” → ange e‑post + adress → vi mejlar unik <strong>Revolut</strong>-betalningslänk.</li>
+        <li><strong>Flöde:</strong> Välj storlek + frakt → klicka “Skicka betalningslänk” → ange e-post + adress → vi mejlar unik <strong>Revolut</strong>-betalningslänk.</li>
         <li><strong>Efter betalning:</strong> Vi packar (vi filmar gärna din order) och skickar spårbart från Ryd, Tingsryds kommun.</li>
         <li><strong>Säkerhet:</strong> Betalning sker på Revoluts säkra sida. Vi lagrar inga kortuppgifter.</li>
       </ul>
@@ -166,10 +192,41 @@
       </p>
     </section>
 
-    <!-- Video -->
-    <section class="panel video" aria-labelledby="video">
-      <h2 id="video" class="section-title">Se teet bryggas</h2>
-      <iframe src="https://www.youtube.com/embed/ArntqsUnERs" title="Bryggning av violblommor – video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <!-- Hälsa – längre, rich-snippet-vänlig -->
+    <section class="panel" aria-labelledby="health">
+      <h2 id="health" class="section-title">🩺 Hälsopåverkan – vad säger källorna?</h2>
+      <p class="small" style="margin-top:0">
+        <strong>Sammanfattning:</strong> Torkade blommor av <em>Viola odorata</em> förekommer i traditionella örtbeskrivningar för <strong>hosta och luftvägar</strong>, <strong>lugn/sömn</strong>, <strong>mild inflammation</strong> samt <strong>hudbesvär</strong>. Den moderna forskningen är <strong>begränsad</strong> och resultaten varierar mellan studier. <strong>Använd inte som medicinsk behandling</strong>; se detta som en kulinarisk och sensorisk upplevelse. Rådgör alltid med vård vid frågor om hälsa.
+      </p>
+      <ul class="small" style="margin:.6rem 0;padding-left:18px">
+        <li><strong>Luftvägar & hosta:</strong> I traditionella sammanhang har viol använts i teer och siraper som ett mildrande inslag. Vetenskaplig evidens är inte entydig.</li>
+        <li><strong>Lugn & sömn:</strong> Förekommer i folklig användning för att komma till ro. Vetenskapliga data är begränsade; effekten kan vara subtil och subjektiv.</li>
+        <li><strong>Inflammation/antioxidativt:</strong> Vissa laboratoriestudier påpekar möjliga antioxidativa/antiinflammatoriska mekanismer, men kliniska slutsatser är osäkra.</li>
+        <li><strong>Hud:</strong> Traditionellt omnämnt i salvor/utvärtes bruk. Kliniskt stöd är begränsat.</li>
+      </ul>
+      <p class="small">
+        <strong>Källkritik:</strong> Många artiklar på nätet återger traditioner utan primärkällor. För en översikt av publicerad forskning, se
+        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank" rel="noopener">sökresultat för “Viola odorata” på PubMed</a>.
+      </p>
+      <p class="small"><strong>Viktigt:</strong> Drick inte teet under graviditet/amning eller tillsammans med läkemedel utan att rådgöra med vården. Avbryt vid obehag eller allergiska reaktioner.</p>
+    </section>
+
+    <!-- Källkritik + video under denna sektion -->
+    <section class="panel" aria-labelledby="refs">
+      <h2 id="refs" class="section-title">🧠 Andra som skriver om detta, skriver…</h2>
+      <p>En genomgång av källor om <strong>Viola odorata</strong> visar traditionell användning vid hosta, hudbesvär och oro. Evidensläget är blandat: många bloggar lyfter fördelar utan primärkällor, medan vissa studier antyder antioxidativa effekter. Slutsats: använd med nyfikenhet – inte som medicin – och var källkritisk.</p>
+      <div class="video" style="margin-top:.8rem">
+        <iframe src="https://www.youtube.com/embed/ArntqsUnERs" title="Bryggning av violblommor – video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </section>
+
+    <!-- Smakprofil (graf) -->
+    <section aria-labelledby="flavor-graph" class="panel">
+      <h2 id="flavor-graph" class="section-title">📊 Smakprofil – graf</h2>
+      <canvas id="spiderChart" width="350" height="350" aria-label="Spindeldiagram: smakprofil" role="img"></canvas>
+      <p class="small" style="margin-top:.6rem">
+        <strong>Skala 0–10:</strong> Torrhet 2 · Umami 4 · Gröna toner 6 · Blommighet 5 · Fruktighet 2 · Kryddighet 1 · Träighet 2 · Jordighet 2 · Rostighet 1 · Rökighet 0 · Nötighet 2 · Krämighet 3
+      </p>
     </section>
 
     <!-- Bryggning (kort) -->
@@ -178,28 +235,10 @@
       <p class="small">Rekommenderat: 1 g per 100 ml · 85 °C · 10 min. Justera tid/mängd efter önskad intensitet.</p>
     </section>
 
-    <!-- Kuriosa -->
-    <section class="panel" aria-labelledby="curiosa">
-      <h2 id="curiosa" class="section-title">Kuriosa</h2>
-      <p><strong>Visste du att…</strong> Napoleon bar violettpomada bakom örat. I vissa traditioner har violrot använts som ett milt laxermedel.</p>
-    </section>
-
-    <!-- Hälsa -->
-    <section class="panel" aria-labelledby="health">
-      <h2 id="health" class="section-title">🩺 Hälsopåverkan</h2>
-      <p>Traditionellt använt mot hosta, sömnproblem och inflammation. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank" rel="noopener">Sök studier om <em>Viola odorata</em> på PubMed</a>.</p>
-    </section>
-
     <!-- Personligt -->
     <section class="panel" aria-labelledby="personal">
       <h2 id="personal" class="section-title">🫶 Min personliga relation till teet</h2>
       <p>Det fanns en tid då jag drogs åt det extrema – mer, starkare, mörkare. Med tiden förändrades jag och började uppskatta nyanserna mer än ytterligheterna. Det är i det subtila som detta te rör sig: lyxig mjukhet och blommig rundhet. Jag tycker mycket om det.</p>
-    </section>
-
-    <!-- Källkritik -->
-    <section class="panel" aria-labelledby="refs">
-      <h2 id="refs" class="section-title">🧠 Andra som skriver om detta, skriver…</h2>
-      <p>En genomgång av källor om <strong>Viola odorata</strong> visar traditionell användning vid hosta, hudbesvär och oro. Evidensläget är blandat: många bloggar lyfter fördelar utan primärkällor, medan vissa studier antyder antioxidativa effekter. Slutsats: använd med nyfikenhet – inte som medicin – och var källkritisk.</p>
     </section>
 
     <!-- Dela -->
@@ -219,9 +258,9 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1015082.2654372658!2d9.398152410532478!3d51.49684749088909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bdfcbb32f4f91b%3A0x41eec8c6a3b7bc0!2sTyskland!5e0!3m2!1ssv!2sse!4v1721920000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    <!-- Frakt & Retur -->
+    <!-- Frakt & Retur (policies) -->
     <section id="shipping" class="panel" aria-labelledby="shipping-title">
-      <h2 id="shipping-title" class="section-title">🚚 Frakt & leverans</h2>
+      <h2 id="shipping-title" class="section-title">📦 Frakt & leverans – policy</h2>
       <ul class="small" style="margin:0;padding-left:18px">
         <li><strong>Sverige:</strong> 49 kr · Fri frakt över 500 kr.</li>
         <li><strong>EU/Internationellt:</strong> <span id="dynamicShipping">Dynamisk frakt via Sendcloud (beräknas vid beställning)</span>. Fri frakt över 1000 kr.</li>
@@ -239,6 +278,18 @@
         <li>Kontakta oss innan retur: <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a></li>
       </ul>
     </section>
+
+    <!-- Om oss (Liking/Authority/Scarcity/Unity/Reciprocity) -->
+    <section id="about" class="panel" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">Om oss</h2>
+      <p>Vi handlar delikatesser, teer, kryddor och liknande av särskilt hög kvalitet – ofta i begränsade mängder som skiftar med säsongen. I över 20 år har vi valt hantverket framför det massproducerade, och byggt ett nätverk av likasinnade odlare och förädlare. Genom sidor som denna vill vi låta fler ta del av sådant vi själva uppskattar: små partier, stor omsorg, genuin smak.</p>
+      <p>Om du, liksom vi, är nyfiken på det där lilla extra – prenumerera gärna på vårt nyhetsbrev. Vi hör av oss när vi hittar något nytt som förtjänar din uppmärksamhet.</p>
+      <div style="display:flex;gap:.6rem;align-items:center;margin-top:.6rem">
+        <input id="newsletterEmail" type="email" placeholder="Din e-postadress" style="flex:1;padding:.7rem;border:1px solid var(--line);border-radius:10px">
+        <button type="button" onclick="subscribeNewsletter()" style="background:var(--cta);color:var(--cta-ink);border:0;border-radius:10px;padding:.7rem 1rem">Prenumerera</button>
+      </div>
+      <p id="newsletterThanks" class="small" style="display:none;margin-top:.4rem;color:#16a34a">Tack! Du får ett bekräftelsemejl strax.</p>
+    </section>
   </main>
 
   <!-- Sticky buy panel -->
@@ -250,13 +301,13 @@
   <!-- Email capture modal (insamlar namn, adress, e-post) -->
   <div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
     <div class="card">
-      <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Vi skickar betalningslänken till din e‑post</h3>
+      <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Vi skickar betalningslänken till din e-post</h3>
       <p class="small">Fyll i uppgifterna nedan så skickar vi en unik betalningslänk (Revolut) + ordersammanfattning.</p>
 
       <label class="small" for="fullName" style="display:block;margin-top:.4rem">Namn</label>
       <input id="fullName" type="text" placeholder="För- och efternamn" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
 
-      <label class="small" for="emailInput" style="display:block;margin-top:.6rem">E‑postadress</label>
+      <label class="small" for="emailInput" style="display:block;margin-top:.6rem">E-postadress</label>
       <input id="emailInput" type="email" placeholder="namn@exempel.se" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
 
       <label class="small" for="addr1" style="display:block;margin-top:.6rem">Adress</label>
@@ -280,12 +331,12 @@
   </div>
 
   <footer class="container" id="contact">
-    <div class="section-title" style="text-align:center">Kontakt & policyer</div>
-    <p class="small" style="text-align:center">E‑post: <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a> · Skickas från Ryd, Tingsryds kommun, Sverige.</p>
     <div class="footer-links small">
+      <a href="#shipchoose">Välj frakt</a>
       <a href="#shipping">Frakt & Leverans</a>
       <a href="#returns">Returer & Byten</a>
       <a href="#payment">Betalning & Säkerhet</a>
+      <a href="#about">Om oss</a>
       <a href="#top">Till toppen ↑</a>
     </div>
 
@@ -318,6 +369,15 @@
       if (typeof trackSelectSize === 'function') trackSelectSize(g);
     }
 
+    // Newsletter placeholder
+    function subscribeNewsletter(){
+      const e = document.getElementById('newsletterEmail').value.trim();
+      if(!e || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){ alert('Ange en giltig e-postadress.'); return; }
+      // TODO: POST till din backend/Mailchimp/ConvertKit
+      document.getElementById('newsletterThanks').style.display='block';
+      setTimeout(()=>{ document.getElementById('newsletterThanks').style.display='none'; }, 2000);
+    }
+
     // Email capture modal
     function openEmailCapture(){
       const m = document.getElementById('emailModal');
@@ -344,13 +404,17 @@
       const country = document.getElementById('country').value.trim();
 
       if(!fullName || !email || !addr1 || !postal || !city || !country){
-        alert('Fyll i namn, e‑post och adress (minst rad 1, postnr, ort, land).'); return;
+        alert('Fyll i namn, e-post och adress (minst rad 1, postnr, ort, land).'); return;
       }
       if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-        alert('Ange en giltig e‑postadress.'); return;
+        alert('Ange en giltig e-postadress.'); return;
       }
 
       if (typeof trackEmailCapture === 'function') trackEmailCapture(price, grams);
+
+      // Hämta valt fraktalternativ (placeholder)
+      const shipEl = document.querySelector('input[name="shipping"]:checked');
+      const shippingMethod = shipEl ? shipEl.value : 'SE_tracked_49';
 
       const payload = {
         product_sku: "AB00439",
@@ -358,6 +422,7 @@
         grams: Number(grams),
         price_sek: Number(price),
         language: (document.documentElement.lang || 'sv'),
+        shipping_method: shippingMethod,
         full_name: fullName,
         email: email,
         address1: addr1,
@@ -447,7 +512,8 @@
       {"@type":"Question","name":"Hur brygger jag te på torkade violblommor?","acceptedAnswer":{"@type":"Answer","text":"Använd 1 g per 100 ml vatten vid 85 °C i cirka 10 minuter. Smaken är subtil – justera tid och mängd efter tycke."}},
       {"@type":"Question","name":"Är produkten ekologisk?","acceptedAnswer":{"@type":"Answer","text":"Den är producerad utan gödnings- och bekämpningsmedel, men har ingen ekologisk certifiering."}},
       {"@type":"Question","name":"Hur ska jag förvara blommorna?","acceptedAnswer":{"@type":"Answer","text":"Förvara torrt, mörkt och lufttätt för att bevara aromen."}},
-      {"@type":"Question","name":"Hur många koppar får jag per gram?","acceptedAnswer":{"@type":"Answer","text":"Cirka fem koppar per gram vid lätt bryggning. Experimentera gärna med styrkan."}}
+      {"@type":"Question","name":"Hur många koppar får jag per gram?","acceptedAnswer":{"@type":"Answer","text":"Cirka fem koppar per gram vid lätt bryggning. Experimentera gärna med styrkan."}},
+      {"@type":"Question","name":"Vilken hälsopåverkan har violblommor?","acceptedAnswer":{"@type":"Answer","text":"I traditionella örtbeskrivningar nämns hosta/luftvägar, lugn/sömn, mild inflammation och hudbesvär. Den vetenskapliga evidensen är begränsad och varierar mellan studier. Använd inte som medicinsk behandling. Se PubMed för översikt över forskningsläget: https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata"}}
     ]
   }
   </script>
