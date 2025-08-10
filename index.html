@@ -124,19 +124,8 @@
         <li><strong>Förpackning:</strong> Återvinningsbart papper</li>
         <li><strong>Förvaring:</strong> Torrt, mörkt, lufttätt</li>
         <li><strong>Pris:</strong> 25 kr/g (20 kr/g vid köp ≥ 500 g)</li>
+        <li><strong>Korta smaknoter:</strong> Vårgrön örtighet, rund varm viol, lätt sötma, silkeslen textur, lång len eftersmak.</li>
       </ul>
-    </section>
-
-    <!-- Storlek -->
-    <section aria-labelledby="size" class="panel">
-      <h2 id="size" class="section-title">📦 Välj mängd</h2>
-      <select id="sizeSelect" aria-label="Välj mängd" onchange="updatePrice()">
-        <option value="5">5 g – 125 kr</option>
-        <option value="10">10 g – 250 kr</option>
-        <option value="25">25 g – 600 kr</option>
-        <option value="100">100 g – 2000 kr</option>
-      </select>
-      <p class="small" style="margin:.6rem 0 0">Enhetligt pris: 25 kr/g (20 kr/g vid köp ≥ 500 g).</p>
     </section>
 
     <!-- Välj frakt (placeholder) -->
@@ -159,26 +148,19 @@
       </div>
     </section>
 
-    <!-- Betalning & säkerhet (uppflyttad) -->
-    <section id="payment" class="panel" aria-labelledby="payment-title">
-      <h2 id="payment-title" class="section-title">💳 Betalning & säkerhet</h2>
-      <ul class="small" style="margin:0;padding-left:18px">
-        <li><strong>Flöde:</strong> Välj storlek + frakt → klicka “Skicka betalningslänk” → ange e-post + adress → vi mejlar unik <strong>Revolut</strong>-betalningslänk.</li>
-        <li><strong>Efter betalning:</strong> Vi packar (vi filmar gärna din order) och skickar spårbart från Ryd, Tingsryds kommun.</li>
-        <li><strong>Säkerhet:</strong> Betalning sker på Revoluts säkra sida. Vi lagrar inga kortuppgifter.</li>
-      </ul>
+    <!-- Storlek -->
+    <section aria-labelledby="size" class="panel">
+      <h2 id="size" class="section-title">📦 Välj mängd</h2>
+      <select id="sizeSelect" aria-label="Välj mängd" onchange="updatePrice()">
+        <option value="5">5 g – 125 kr</option>
+        <option value="10">10 g – 250 kr</option>
+        <option value="25">25 g – 600 kr</option>
+        <option value="100">100 g – 2000 kr</option>
+      </select>
+      <p class="small" style="margin:.6rem 0 0">Enhetligt pris: 25 kr/g (20 kr/g vid köp ≥ 500 g).</p>
     </section>
 
-    <!-- Smakprofil -->
-    <section aria-labelledby="flavor" class="panel">
-      <h2 id="flavor" class="section-title">📊 Smakprofil</h2>
-      <canvas id="spiderChart" width="350" height="350" aria-label="Spindeldiagram: smakprofil" role="img"></canvas>
-      <p class="small" style="margin-top:.6rem">
-        <strong>Skala 0–10:</strong> Torrhet 2 · Umami 4 · Gröna toner 6 · Blommighet 5 · Fruktighet 2 · Kryddighet 1 · Träighet 2 · Jordighet 2 · Rostighet 1 · Rökighet 0 · Nötighet 2 · Krämighet 3
-      </p>
-    </section>
-
-    <!-- Lång produkttext – ALL sensorik -->
+    <!-- Lång produkttext – EN smakprofil (löpande) -->
     <section class="panel" aria-labelledby="story">
       <h2 id="story" class="section-title">Om teet – sensorik & karaktär</h2>
       <p>
@@ -190,6 +172,7 @@
       <p>
         Serveras med fördel till smakerna du finner på en sushitallrik: fet fisk, sälta, inlagd ingefära och den klibbiga umamin från riset. Alternativt till något sött och knaprigt – som baklava – där teets runda blomma lyfter både honung och nötter utan att tävla.
       </p>
+      <p class="small"><strong>Bryggtips:</strong> 1 g per 100 ml · 85 °C · 10 min. Justera tid/mängd efter önskad intensitet. Förvara torrt, mörkt och lufttätt.</p>
     </section>
 
     <!-- Hälsa – längre, rich-snippet-vänlig -->
@@ -211,34 +194,13 @@
       <p class="small"><strong>Viktigt:</strong> Drick inte teet under graviditet/amning eller tillsammans med läkemedel utan att rådgöra med vården. Avbryt vid obehag eller allergiska reaktioner.</p>
     </section>
 
-    <!-- Källkritik + video under denna sektion -->
+    <!-- Källkritik + video -->
     <section class="panel" aria-labelledby="refs">
       <h2 id="refs" class="section-title">🧠 Andra som skriver om detta, skriver…</h2>
       <p>En genomgång av källor om <strong>Viola odorata</strong> visar traditionell användning vid hosta, hudbesvär och oro. Evidensläget är blandat: många bloggar lyfter fördelar utan primärkällor, medan vissa studier antyder antioxidativa effekter. Slutsats: använd med nyfikenhet – inte som medicin – och var källkritisk.</p>
       <div class="video" style="margin-top:.8rem">
         <iframe src="https://www.youtube.com/embed/ArntqsUnERs" title="Bryggning av violblommor – video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
-    </section>
-
-    <!-- Smakprofil (graf) -->
-    <section aria-labelledby="flavor-graph" class="panel">
-      <h2 id="flavor-graph" class="section-title">📊 Smakprofil – graf</h2>
-      <canvas id="spiderChart" width="350" height="350" aria-label="Spindeldiagram: smakprofil" role="img"></canvas>
-      <p class="small" style="margin-top:.6rem">
-        <strong>Skala 0–10:</strong> Torrhet 2 · Umami 4 · Gröna toner 6 · Blommighet 5 · Fruktighet 2 · Kryddighet 1 · Träighet 2 · Jordighet 2 · Rostighet 1 · Rökighet 0 · Nötighet 2 · Krämighet 3
-      </p>
-    </section>
-
-    <!-- Bryggning (kort) -->
-    <section class="panel" aria-labelledby="brew">
-      <h2 id="brew" class="section-title">🍵 Bryggning (kort)</h2>
-      <p class="small">Rekommenderat: 1 g per 100 ml · 85 °C · 10 min. Justera tid/mängd efter önskad intensitet.</p>
-    </section>
-
-    <!-- Personligt -->
-    <section class="panel" aria-labelledby="personal">
-      <h2 id="personal" class="section-title">🫶 Min personliga relation till teet</h2>
-      <p>Det fanns en tid då jag drogs åt det extrema – mer, starkare, mörkare. Med tiden förändrades jag och började uppskatta nyanserna mer än ytterligheterna. Det är i det subtila som detta te rör sig: lyxig mjukhet och blommig rundhet. Jag tycker mycket om det.</p>
     </section>
 
     <!-- Dela -->
@@ -258,7 +220,7 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1015082.2654372658!2d9.398152410532478!3d51.49684749088909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bdfcbb32f4f91b%3A0x41eec8c6a3b7bc0!2sTyskland!5e0!3m2!1ssv!2sse!4v1721920000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    <!-- Frakt & Retur (policies) -->
+    <!-- Frakt & Retur (policy) -->
     <section id="shipping" class="panel" aria-labelledby="shipping-title">
       <h2 id="shipping-title" class="section-title">📦 Frakt & leverans – policy</h2>
       <ul class="small" style="margin:0;padding-left:18px">
@@ -279,7 +241,17 @@
       </ul>
     </section>
 
-    <!-- Om oss (Liking/Authority/Scarcity/Unity/Reciprocity) -->
+    <!-- Betalning & säkerhet (flyttad hit) -->
+    <section id="payment" class="panel" aria-labelledby="payment-title">
+      <h2 id="payment-title" class="section-title">💳 Betalning & säkerhet</h2>
+      <ul class="small" style="margin:0;padding-left:18px">
+        <li><strong>Flöde:</strong> Välj frakt + storlek → klicka “Skicka betalningslänk” → ange e-post + adress → vi mejlar unik <strong>Revolut</strong>-betalningslänk.</li>
+        <li><strong>Efter betalning:</strong> Vi packar (vi filmar gärna din order) och skickar spårbart från Ryd, Tingsryds kommun.</li>
+        <li><strong>Säkerhet:</strong> Betalning sker på Revoluts säkra sida. Vi lagrar inga kortuppgifter.</li>
+      </ul>
+    </section>
+
+    <!-- Om oss -->
     <section id="about" class="panel" aria-labelledby="about-title">
       <h2 id="about-title" class="section-title">Om oss</h2>
       <p>Vi handlar delikatesser, teer, kryddor och liknande av särskilt hög kvalitet – ofta i begränsade mängder som skiftar med säsongen. I över 20 år har vi valt hantverket framför det massproducerade, och byggt ett nätverk av likasinnade odlare och förädlare. Genom sidor som denna vill vi låta fler ta del av sådant vi själva uppskattar: små partier, stor omsorg, genuin smak.</p>
@@ -353,9 +325,6 @@
     <p class="small" style="margin-top:.6rem;text-align:center">© <span id="year"></span> Dried Violet Flowers</p>
   </footer>
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <!-- App scripts -->
   <script>
     // Footer year
@@ -371,7 +340,7 @@
 
     // Newsletter placeholder
     function subscribeNewsletter(){
-      const e = document.getElementById('newsletterEmail').value.trim();
+      const e = document.getElementById('newsletterEmail')?.value?.trim();
       if(!e || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){ alert('Ange en giltig e-postadress.'); return; }
       // TODO: POST till din backend/Mailchimp/ConvertKit
       document.getElementById('newsletterThanks').style.display='block';
@@ -412,7 +381,7 @@
 
       if (typeof trackEmailCapture === 'function') trackEmailCapture(price, grams);
 
-      // Hämta valt fraktalternativ (placeholder)
+      // Valt fraktalternativ
       const shipEl = document.querySelector('input[name="shipping"]:checked');
       const shippingMethod = shipEl ? shipEl.value : 'SE_tracked_49';
 
@@ -448,27 +417,6 @@
         alert('Något gick fel vid skickandet. Testa igen om en stund.');
       }
     }
-
-    // Flavor radar
-    const ctx = document.getElementById('spiderChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'radar',
-      data: {
-        labels: ['Torrhet','Umami toner','Gröna toner / gräsighet','Blommighet','Fruktighet','Kryddighet','Träighet','Jordighet','Rostighet','Rökighet','Nötighet','Krämighet'],
-        datasets: [{
-          label: 'Smakprofil',
-          data: [2,4,6,5,2,1,2,2,1,0,2,3],
-          backgroundColor: 'rgba(17,24,39,.10)',
-          borderColor: 'rgba(17,24,39,1)',
-          pointBackgroundColor: 'rgba(17,24,39,1)'
-        }]
-      },
-      options: {
-        responsive: false,
-        scales: { r: { beginAtZero:true, min:0, max:10, ticks:{ stepSize:1 } } },
-        plugins: { legend: { display:false } }
-      }
-    });
   </script>
 
   <!-- Structured data: Product + AggregateOffer -->
