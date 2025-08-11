@@ -32,10 +32,10 @@
   <meta name="twitter:description" content="Subtil blommighet, handplockad kvalitet. Fri frakt över 500 kr.">
   <meta name="twitter:image" content="https://www.driedvioletflowers.com/SweetViolaTea.webp">
 
-  <!-- Förladda splash-GIF för att undvika vit blink -->
-  <link rel="preload" as="image" href="cat-halloween.gif" imagesrcset="cat-halloween.gif 1x">
+  <!-- Förladda splash-GIF -->
+  <link rel="preload" as="image" href="cat-halloween.gif">
 
-  <!-- Google Analytics (GA4) – behåll ditt ID -->
+  <!-- GA4 (behåll ditt ID) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6ZKS3J0ZJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -65,19 +65,16 @@
   </script>
 
   <style>
-    /* ===== Basfärger (ljus) ===== */
     :root{
       --ink:#0f172a; --muted:#334155; --bg:#ffffff; --panel:#f8fafc; --line:#e5e7eb;
       --cta:#0ea5e9; --cta-ink:#ffffff; --link:#0ea5e9;
     }
-
-    /* ===== Dark mode (backdoor) ===== */
     html.dark{
       --ink:#eaeaea; --muted:#cbd5e1; --bg:#0b0b0d; --panel:#141418; --line:#26272b;
       --cta:#38bdf8; --cta-ink:#0b0b0d; --link:#8ab4f8;
     }
 
-    /* ===== Visa/dölj alternativt innehåll ===== */
+    /* Alt/normal-växling */
     [data-alt="true"]{ display:none; }
     html.dark [data-alt="true"]{ display:block; }
     html.dark [data-default="true"]{ display:none; }
@@ -112,17 +109,7 @@
     html.dark footer{ color:#93a3b8; }
     .footer-links{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:.4rem}
 
-    /* ===== Modal ===== */
-    #emailModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;z-index:50}
-    #emailModal .card{background:#fff;border-radius:14px;padding:16px;width:min(520px,92vw);border:1px solid var(--line)}
-    html.dark #emailModal .card{ background:#141418; color:var(--ink); }
-    #emailThanks{display:none;color:#16a34a;margin-top:.6rem}
-
-    /* ===== Video ===== */
-    .video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px}
-    @media(min-width:860px){ h1{font-size:2.2rem} }
-
-    /* ===== Gallery + Lightbox ===== */
+    /* Lightbox */
     .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}
     .gallery img{width:100%;border-radius:10px;cursor:pointer;transition:transform .2s}
     .gallery img:hover{transform:scale(1.04)}
@@ -132,36 +119,47 @@
     #lightbox .prev{left:12px} #lightbox .next{right:12px}
     #lightbox img{max-width:92vw;max-height:86vh;border-radius:12px}
 
-    /* ===== Pi-knapp ===== */
+    /* π-knapp: MITTEN nederkant. På mobil flyttas upp över köpbaren. */
     .pi-trigger{
-      position:fixed; right:12px; bottom:12px; width:36px; height:36px;
-      border-radius:999px; background:var(--panel); color:#666; border:1px solid rgba(127,127,127,.25);
+      position:fixed; left:50%; bottom:12px; transform:translate(-50%,0);
+      width:36px; height:36px; border-radius:999px; z-index:1300;
+      background:var(--panel); color:#666; border:1px solid rgba(127,127,127,.25);
       display:grid; place-items:center; cursor:pointer; user-select:none;
-      opacity:.55; z-index:1200; transition:transform .15s ease, opacity .2s ease, background-color .2s ease;
+      opacity:.55; transition:transform .15s ease, opacity .2s ease, background-color .2s ease;
     }
-    .pi-trigger:hover{ opacity:.9; transform:translateY(-1px); }
+    .pi-trigger:hover{ opacity:.9; transform:translate(-50%,-1px); }
+    @media(max-width:640px){
+      .pi-trigger{ bottom:96px; } /* hamnar ovanför den fasta köpbaren */
+    }
 
-    /* ===== HELSKÄRMS-SPLASH när dark mode triggas ===== */
+    /* Exit-knapp (visas bara i dark) */
+    .exit-dark{
+      position:fixed; left:50%; top:12px; transform:translateX(-50%);
+      width:36px; height:36px; border-radius:999px; z-index:1300;
+      background:var(--panel); color:#666; border:1px solid rgba(127,127,127,.25);
+      display:none; place-items:center; cursor:pointer; user-select:none; opacity:.65;
+    }
+    html.dark .exit-dark{ display:grid; }
+
+    /* Helskärms-splash för GIF (över allt) */
     #darkSplash{
-      position:fixed; inset:0; z-index:1100; display:none; /* visas via JS */
-      background: #000 center center / cover no-repeat;
-      /* fallback-färg och fade */
+      position:fixed; inset:0; z-index:2000; display:none;
+      background:#000 center center / cover no-repeat;
       opacity:0; transition: opacity .35s ease;
     }
     #darkSplash.show{ display:block; opacity:1; }
-    #darkSplash.hide{ opacity:0; } /* när vi går från show till hide, display sätts av JS efter timeout */
-    /* Lägg egen overlay-text om du vill:
-    #darkSplash::after{ content:""; }
-    */
+    #darkSplash.hide{ opacity:0; }
   </style>
 </head>
 <body>
-  <!-- SPLASH-OVERLAY: JS sätter bakgrundsbild till cat-halloween.gif -->
+  <!-- SPLASH-OVERLAY -->
   <div id="darkSplash" aria-hidden="true"></div>
+
+  <!-- EXIT (tillbaka till ljust läge) -->
+  <button class="exit-dark" id="exitDark" title="Återgå till dagsljus" aria-hidden="true">☀</button>
 
   <header class="container hero" id="top">
     <img src="SweetViolaTea.webp" alt="Torkade violblommor – bryggt te i kopp" class="hero-img" data-default="true">
-    <!-- ALT hero-bild kan vara samma; vi låter texten bära stämningen -->
     <img src="SweetViolaTea.webp" alt="Violer i skymningsljus – te som talar lågmält" class="hero-img" data-alt="true">
 
     <h1 data-default="true">Torkade Luktvioler – <em>Viola odorata</em></h1>
@@ -172,12 +170,11 @@
   </header>
 
   <main class="container">
-    <!-- Kort alt-banner (visas bara i dark/backdoor) -->
     <section class="panel" data-alt="true" aria-live="polite">
       <strong>🔮 Välkommen, vandrande vistare.</strong> Här talar vi tyst med örten: låt violens andedräkt bära dig mellan vilans portar och vaket sinne.
     </section>
 
-    <!-- Bildgalleri (samma) -->
+    <!-- Galleri -->
     <section class="panel" aria-labelledby="gallery">
       <h2 id="gallery" class="section-title" data-default="true">Bilder</h2>
       <h2 class="section-title" data-alt="true">Speglar och minnen</h2>
@@ -193,8 +190,6 @@
     <section class="panel" aria-labelledby="facts">
       <h2 id="facts" class="section-title" data-default="true">Fakta</h2>
       <h2 class="section-title" data-alt="true">Vad som är sant i dagsljus</h2>
-
-      <!-- Normal fakta -->
       <ul class="small" style="margin:0;padding-left:18px" data-default="true">
         <li><strong>Ursprung:</strong> Tyskland</li>
         <li><strong>Producent:</strong> Tea & Coffee Factory</li>
@@ -204,8 +199,6 @@
         <li><strong>Pris:</strong> 25 kr/g (20 kr/g vid köp ≥ 500 g)</li>
         <li><strong>Korta smaknoter:</strong> Vårgrön örtighet, rund varm viol, lätt sötma, silkeslen textur, lång len eftersmak.</li>
       </ul>
-
-      <!-- Mystisk motsvarighet (samma sak i annan röst) -->
       <ul class="small" style="margin:0;padding-left:18px" data-alt="true">
         <li><strong>Härkomst:</strong> Tysk jord och stilla vindar.</li>
         <li><strong>Händerna bakom:</strong> Tea & Coffee Factory – vakna förvaltare av blad och blom.</li>
@@ -217,13 +210,12 @@
       </ul>
     </section>
 
-    <!-- Välj frakt -->
+    <!-- Frakt -->
     <section class="panel" aria-labelledby="shipchoose">
       <h2 id="shipchoose" class="section-title" data-default="true">🚚 Välj frakt</h2>
       <h2 class="section-title" data-alt="true">🚚 Val av vägar</h2>
       <p class="small" style="margin-top:0" data-default="true">Välj ett alternativ. Exakta priser för EU/internationellt beräknas via Sendcloud i nästa steg.</p>
       <p class="small" style="margin-top:0" data-alt="true">Välj din väg. Kostnaden räknas i nästa led, efter kartornas vilja.</p>
-
       <div role="group" aria-label="Fraktalternativ" class="small">
         <label style="display:block;margin:.4rem 0"><input type="radio" name="shipping" value="SE_tracked_49" checked onchange="trackShippingChoice('SE_tracked_49')"> <span data-default="true">Sverige – Spårad frakt 49 kr (fri frakt över 500 kr)</span><span data-alt="true">Sverige – Spårad färd 49 kr (fri frakt över 500 kr)</span></label>
         <label style="display:block;margin:.4rem 0"><input type="radio" name="shipping" value="EU_dynamic" onchange="trackShippingChoice('EU_dynamic')"> <span data-default="true">EU – Dynamisk frakt (Sendcloud)</span><span data-alt="true">EU – Vägar som växlar (Sendcloud)</span></label>
@@ -231,7 +223,7 @@
       </div>
     </section>
 
-    <!-- Välj mängd -->
+    <!-- Mängd -->
     <section aria-labelledby="size" class="panel">
       <h2 id="size" class="section-title" data-default="true">📦 Välj mängd</h2>
       <h2 class="section-title" data-alt="true">📦 Mått och måtta</h2>
@@ -245,20 +237,16 @@
       <p class="small" style="margin:.6rem 0 0" data-alt="true">Priset håller sin form: 25 kr/g (20 kr/g när vikten väger tungt, 500 g och uppåt).</p>
     </section>
 
-    <!-- Lång produkttext -->
+    <!-- Story -->
     <section class="panel" aria-labelledby="story">
       <h2 id="story" class="section-title" data-default="true">Om teet – sensorik & karaktär</h2>
       <h2 class="section-title" data-alt="true">Teets väsen – läsning i värme och vatten</h2>
-
-      <!-- Normal text -->
       <div data-default="true">
         <p>De torra violblommorna är små, täta knoppar på 2–3 millimeter – nyanser av lila som bryts av med gröna och gula fästen. När du öppnar förpackningen möts du av en stillsam, grön örtighet där en varm violton redan viskar om vad som väntar. Vid bryggning – 1 g per 100 ml, 85 °C, 10 minuter – sväller knopparna mjukt och färgerna lättar mot lavendel; de gröna och gula delarna blir transparenta, nästan ljusa som glas. Doften skiftar till mer vegetabilisk grönhet, medan violens värme ligger kvar som en låg, rund basnot.</p>
         <p>I koppen är vätskan klar och guldskimrande, inte lila utan bärande på ett milt mysterium. Texturen är elegant och silkeslen; en diskret viskositet som bär smakerna över tungan. Smakbilden är finstämd: vårgrön örtighet möter en varm, rund viol som aldrig blir parfymerad utan förblir behärskad och lyxig. En lätt sötma håller helheten samman. Eftersmaken är lång och len – en blommig viskning som dröjer sig kvar, och i den tomma koppen stannar en ren violton kvar som ett eko av något stillsamt.</p>
         <p>Serveras med fördel till smakerna du finner på en sushitallrik: fet fisk, sälta, inlagd ingefära och den klibbiga umamin från riset. Alternativt till något sött och knaprigt – som baklava – där teets runda blomma lyfter både honung och nötter utan att tävla.</p>
         <p class="small"><strong>Bryggtips:</strong> 1 g per 100 ml · 85 °C · 10 min. Justera tid/mängd efter önskad intensitet. Förvara torrt, mörkt och lufttätt.</p>
       </div>
-
-      <!-- Mystisk text (samma innebörd, annan röst) -->
       <div data-alt="true">
         <p>De torkade violerna ligger som små sigiller, 2–3 millimeter, lila med gröna och gula fästen – väktare av en varm, låg ton. När du bryter förseglingen stiger grönskans ande stilla upp. Vid bryggning – 1 g per 100 ml, 85 °C, 10 minuter – sväller knopparna som om de mindes en vår. Färgerna ljusnar mot lavendel; fästena blir nästan glaslika. Doften vandrar mot växtens djupare kammare, och violen bär på värme som en runa nära elden.</p>
         <p>I koppen: klart guld, ett milt mysterium. Texturen är silkesvävd; bär smakerna över tungan som en tyst procession. Tonerna är finlagda: grönskans första suck möter en rund, varm viol som aldrig blir parfym – bara närvarande och ädel. En lätt sötma håller kretsen sluten. Eftersmaken dröjer, som en viskning som vet vägen tillbaka. I den tomma koppen stannar ett eko – rent, violett, och vänligt.</p>
@@ -271,7 +259,6 @@
     <section class="panel" aria-labelledby="health">
       <h2 id="health" class="section-title" data-default="true">🩺 Hälsopåverkan – vad säger källorna?</h2>
       <h2 class="section-title" data-alt="true">🩺 Om verk och verkan</h2>
-
       <div class="small" data-default="true">
         <p><strong>Sammanfattning:</strong> Torkade blommor av <em>Viola odorata</em> förekommer i traditionella örtbeskrivningar för <strong>hosta och luftvägar</strong>, <strong>lugn/sömn</strong>, <strong>mild inflammation</strong> samt <strong>hudbesvär</strong>. Den moderna forskningen är <strong>begränsad</strong> och resultaten varierar mellan studier. <strong>Använd inte som medicinsk behandling</strong>; se detta som en kulinarisk och sensorisk upplevelse. Rådgör alltid med vård vid frågor om hälsa.</p>
         <ul style="margin:.6rem 0;padding-left:18px">
@@ -283,7 +270,6 @@
         <p><strong>Källkritik:</strong> Många artiklar på nätet återger traditioner utan primärkällor. För en översikt av publicerad forskning, se <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank" rel="noopener">sökresultat för “Viola odorata” på PubMed</a>.</p>
         <p><strong>Viktigt:</strong> Drick inte teet under graviditet/amning eller tillsammans med läkemedel utan att rådgöra med vården. Avbryt vid obehag eller allergiska reaktioner.</p>
       </div>
-
       <div class="small" data-alt="true">
         <p><strong>Sammanhållning:</strong> <em>Viola odorata</em> nämns i gamla växtböcker för luftens vägar, vila och hudens lugn. Den moderna kunskapen är tunnvävd och skiftar. <strong>Detta är ingen medicin</strong> – det är en smaklig rite. Fråga vården när du tvivlar.</p>
         <ul style="margin:.6rem 0;padding-left:18px">
@@ -297,7 +283,7 @@
       </div>
     </section>
 
-    <!-- Källkritik + video (rubriker i två röster) -->
+    <!-- Källor + video -->
     <section class="panel" aria-labelledby="refs">
       <h2 id="refs" class="section-title" data-default="true">🧠 Andra som skriver om detta, skriver…</h2>
       <h2 class="section-title" data-alt="true">🧠 Röster i bibliotekets skugga</h2>
@@ -312,8 +298,6 @@
     <section class="panel" aria-labelledby="faq">
       <h2 id="faq" class="section-title" data-default="true">❓ Vanliga frågor</h2>
       <h2 class="section-title" data-alt="true">❓ Frågor som återkommer i cirkel</h2>
-
-      <!-- Vanlig FAQ -->
       <div data-default="true">
         <details class="small"><summary><strong>Hur brygger jag te på torkade violblommor?</strong></summary><div style="margin-top:.4rem">Använd 1 g per 100 ml vatten vid 85 °C i cirka 10 minuter. Smaken är subtil – justera tid och mängd efter tycke.</div></details>
         <details class="small"><summary><strong>Är produkten ekologisk?</strong></summary><div style="margin-top:.4rem">Den är producerad utan gödnings- och bekämpningsmedel, men har ingen ekologisk certifiering.</div></details>
@@ -321,8 +305,6 @@
         <details class="small"><summary><strong>Hur många koppar får jag per gram?</strong></summary><div style="margin-top:.4rem">Cirka fem koppar per gram vid lätt bryggning. Experimentera gärna med styrkan.</div></details>
         <details class="small"><summary><strong>Vilken hälsopåverkan har violblommor?</strong></summary><div style="margin-top:.4rem">Traditionellt: luftvägar/hosta, lugn/sömn, mild inflammation, hud. Forskning: begränsad och varierad. Inte som medicinsk behandling. Se PubMed för översikt.</div></details>
       </div>
-
-      <!-- Mystisk FAQ -->
       <div data-alt="true">
         <details class="small"><summary><strong>Hur läser jag teet?</strong></summary><div style="margin-top:.4rem">1 g per 100 ml, 85 °C, 10 minuter. Låt din egen hand justera styrkan.</div></details>
         <details class="small"><summary><strong>Är odlingen högtidlig?</strong></summary><div style="margin-top:.4rem">Utan gödnings- och bekämpningsmedel, men utan sigill av certifikat.</div></details>
@@ -332,7 +314,7 @@
       </div>
     </section>
 
-    <!-- Dela (oförändrat) -->
+    <!-- Dela -->
     <section class="panel social" aria-labelledby="share">
       <h2 id="share" class="section-title" data-default="true">📤 Dela denna produkt</h2>
       <h2 class="section-title" data-alt="true">📤 Dela denna viskning</h2>
@@ -354,14 +336,14 @@
       </a>
     </section>
 
-    <!-- Karta (oförändrad) -->
+    <!-- Karta -->
     <section class="panel map" aria-labelledby="map">
       <h2 id="map" class="section-title" data-default="true">🗺️ Odlingsregion</h2>
       <h2 class="section-title" data-alt="true">🗺️ Platsen där vinden minns</h2>
       <iframe src="https://maps.google.com/maps?q=Germany&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:420px;border:0;border-radius:12px"></iframe>
     </section>
 
-    <!-- Frakt & Retur -->
+    <!-- Policy -->
     <section id="shipping" class="panel" aria-labelledby="shipping-title">
       <h2 id="shipping-title" class="section-title" data-default="true">📦 Frakt & leverans – policy</h2>
       <h2 class="section-title" data-alt="true">📦 Hur varor vandrar</h2>
@@ -384,7 +366,6 @@
       <h2 class="section-title" data-alt="true">↩️ När smaken väljer annan väg</h2>
       <p class="small" data-default="true"><em>“Didn’t love it? Give it to someone who might!”</em></p>
       <p class="small" data-alt="true"><em>“Delad växt – delad glädje.”</em></p>
-
       <ul class="small" style="margin:0;padding-left:18px" data-default="true">
         <li>Ångerrätt 14 dagar. Produkten måste vara oöppnad.</li>
         <li>Kund står för returfrakt. Vid godkänd retur: återbetalning eller tillgodohavande.</li>
@@ -397,7 +378,6 @@
       </ul>
     </section>
 
-    <!-- Betalning & säkerhet -->
     <section id="payment" class="panel" aria-labelledby="payment-title">
       <h2 id="payment-title" class="section-title" data-default="true">💳 Betalning & säkerhet</h2>
       <h2 class="section-title" data-alt="true">💳 Köpeband och beskydd</h2>
@@ -413,16 +393,14 @@
       </ul>
     </section>
 
-    <!-- Om oss + Nyhetsbrev -->
+    <!-- Om oss -->
     <section id="about" class="panel" aria-labelledby="about-title">
       <h2 id="about-title" class="section-title" data-default="true">Om oss</h2>
       <h2 class="section-title" data-alt="true">Vilka vi är när ljuset skiftar</h2>
       <p data-default="true">Vi handlar delikatesser, teer, kryddor och liknande av särskilt hög kvalitet – ofta i begränsade mängder som skiftar med säsongen. I över 20 år har vi valt hantverket framför det massproducerade, och byggt ett nätverk av likasinnade odlare och förädlare. Genom sidor som denna vill vi låta fler ta del av sådant vi själva uppskattar: små partier, stor omsorg, genuin smak.</p>
       <p data-default="true">Om du, liksom vi, är nyfiken på det där lilla extra – prenumerera gärna på vårt nyhetsbrev. Vi hör av oss när vi hittar något nytt som förtjänar din uppmärksamhet.</p>
-
       <p data-alt="true">Vi söker och samlar det som bär omsorg och smakens sanning. Små skördar, stor varsamhet. I två decennier har vi vandrat där händerna arbetar långsamt. Här delar vi fynd som vill delas.</p>
       <p data-alt="true">Om du lyssnar efter sådant som viskar – skriv din adress i rutan. Vi kallar när något nytt vill mötas.</p>
-
       <div class="newsletter">
         <input id="newsletterEmail" type="email" placeholder="Din e-postadress">
         <button type="button" class="btn" onclick="subscribeNewsletter()">Prenumerera</button>
@@ -431,13 +409,13 @@
     </section>
   </main>
 
-  <!-- Sticky buy panel -->
+  <!-- Köpbar -->
   <div class="buy-panel" role="region" aria-label="Köp">
     <span class="price" id="totalPrice">5 g – 125 kr</span>
     <button type="button" class="btn" onclick="openEmailCapture()">Skicka betalningslänk</button>
   </div>
 
-  <!-- Email capture modal -->
+  <!-- Email-modal -->
   <div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
     <div class="card">
       <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Vi skickar betalningslänken till din e-post</h3>
@@ -478,7 +456,6 @@
       <a href="#about">Om oss</a>
       <a href="#top">Till toppen ↑</a>
     </div>
-
     <div style="display:flex;justify-content:center;margin-top:14px">
       <span aria-label="Payment by Revolut" title="Payment by Revolut" style="display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:999px;padding:.45rem .8rem;background:#fff">
         <svg width="78" height="18" viewBox="0 0 78 18" role="img" aria-label="Revolut" xmlns="http://www.w3.org/2000/svg">
@@ -487,7 +464,6 @@
         <span class="small" style="color:#111827">Payment by Revolut</span>
       </span>
     </div>
-
     <p class="small" style="margin-top:.6rem;text-align:center">© <span id="year"></span> Dried Violet Flowers</p>
   </footer>
 
@@ -501,10 +477,10 @@
 
   <!-- App scripts -->
   <script>
-    // Footer year
+    // År i footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Pricing logic + GA event
+    // Priser + GA
     const prices = {5:125, 10:250, 25:600, 100:2000};
     function updatePrice(){
       const g = document.getElementById('sizeSelect').value;
@@ -516,12 +492,11 @@
     function subscribeNewsletter(){
       const e = document.getElementById('newsletterEmail')?.value?.trim();
       if(!e || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){ alert('Ange en giltig e-postadress.'); return; }
-      // TODO: POST till din e-posttjänst (Mailchimp/ConvertKit/Apps Script)
       document.getElementById('newsletterThanks').style.display='block';
       setTimeout(()=>{ document.getElementById('newsletterThanks').style.display='none'; }, 2000);
     }
 
-    // Email capture modal
+    // Email-modal
     function openEmailCapture(){
       const m = document.getElementById('emailModal');
       m.style.display='flex'; m.setAttribute('aria-hidden','false');
@@ -533,11 +508,10 @@
       m.style.display='none'; m.setAttribute('aria-hidden','true');
     }
 
-    // Submit order → Apps Script backend
+    // Submit order (dummy backend)
     async function submitOrder(){
       const grams = document.getElementById('sizeSelect').value;
       const price = prices[grams];
-
       const fullName = document.getElementById('fullName').value.trim();
       const email = document.getElementById('emailInput').value.trim();
       const addr1 = document.getElementById('addr1').value.trim();
@@ -545,112 +519,57 @@
       const postal = document.getElementById('postal').value.trim();
       const city = document.getElementById('city').value.trim();
       const country = document.getElementById('country').value.trim();
-
       if(!fullName || !email || !addr1 || !postal || !city || !country){
         alert('Fyll i namn, e-post och adress (minst rad 1, postnr, ort, land).'); return;
       }
       if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
         alert('Ange en giltig e-postadress.'); return;
       }
-
       if (typeof trackEmailCapture === 'function') trackEmailCapture(price, grams);
-
-      // Valt fraktalternativ
       const shipEl = document.querySelector('input[name="shipping"]:checked');
       const shippingMethod = shipEl ? shipEl.value : 'SE_tracked_49';
-
-      const payload = {
-        product_sku: "AB00439",
-        product_name: "Torkade Luktvioler – Viola odorata",
-        grams: Number(grams),
-        price_sek: Number(price),
-        language: (document.documentElement.lang || 'sv'),
-        shipping_method: shippingMethod,
-        full_name: fullName,
-        email: email,
-        address1: addr1,
-        address2: addr2,
-        postal: postal,
-        city: city,
-        country: country,
-        utm_source: "onsite",
-        utm_medium: "email_link_request",
-        utm_campaign: "checkout"
-      };
-
+      const payload = { product_sku:"AB00439", product_name:"Torkade Luktvioler – Viola odorata", grams:Number(grams), price_sek:Number(price), language:(document.documentElement.lang||'sv'), shipping_method:shippingMethod, full_name:fullName, email, address1:addr1, address2:addr2, postal, city, country, utm_source:"onsite", utm_medium:"email_link_request", utm_campaign:"checkout" };
       try{
-        const res = await fetch("YOUR_APPS_SCRIPT_WEBAPP_URL", {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
+        await fetch("YOUR_APPS_SCRIPT_WEBAPP_URL", { method:"POST", mode:"no-cors", headers:{ "Content-Type":"application/json" }, body:JSON.stringify(payload) });
         document.getElementById('emailThanks').style.display='block';
         setTimeout(()=>{ closeEmailCapture(); }, 1400);
-      }catch(e){
-        alert('Något gick fel vid skickandet. Testa igen om en stund.');
-      }
+      }catch(e){ alert('Något gick fel vid skickandet. Testa igen om en stund.'); }
     }
 
-    // GALLERY / LIGHTBOX
-    const galleryImages = [
-      "SweetViolaTea.webp",
-      "SweetViolaTea1.webp",
-      "SweetViolaTea2.webp",
-      "SweetViolaTea3.webp"
-    ];
+    // Lightbox
+    const galleryImages = ["SweetViolaTea.webp","SweetViolaTea1.webp","SweetViolaTea2.webp","SweetViolaTea3.webp"];
     let currentIndex = 0;
-    function openLightbox(index){
-      currentIndex = index;
-      const lb = document.getElementById('lightbox');
-      const img = document.getElementById('lightbox-img');
-      img.src = galleryImages[currentIndex];
-      lb.style.display = 'flex';
-      lb.setAttribute('aria-hidden','false');
-      if (typeof trackGalleryOpen === 'function') trackGalleryOpen(index);
-    }
-    function closeLightbox(){
-      const lb = document.getElementById('lightbox');
-      lb.style.display = 'none';
-      lb.setAttribute('aria-hidden','true');
-    }
-    function nextImage(){
-      currentIndex = (currentIndex + 1) % galleryImages.length;
-      document.getElementById('lightbox-img').src = galleryImages[currentIndex];
-    }
-    function prevImage(){
-      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-      document.getElementById('lightbox-img').src = galleryImages[currentIndex];
-    }
-    document.addEventListener('keydown', (e)=>{
-      const lb = document.getElementById('lightbox');
-      if(lb.style.display !== 'flex') return;
-      if(e.key === 'Escape') closeLightbox();
-      if(e.key === 'ArrowRight') nextImage();
-      if(e.key === 'ArrowLeft') prevImage();
-    });
-    document.getElementById('lightbox').addEventListener('click', (e)=>{
-      if(e.target.id === 'lightbox' || e.target.classList.contains('close')) closeLightbox();
-    });
+    function openLightbox(index){ currentIndex = index; const lb=document.getElementById('lightbox'); const img=document.getElementById('lightbox-img'); img.src = galleryImages[currentIndex]; lb.style.display='flex'; lb.setAttribute('aria-hidden','false'); if (typeof trackGalleryOpen === 'function') trackGalleryOpen(index); }
+    function closeLightbox(){ const lb=document.getElementById('lightbox'); lb.style.display='none'; lb.setAttribute('aria-hidden','true'); }
+    function nextImage(){ currentIndex = (currentIndex + 1) % galleryImages.length; document.getElementById('lightbox-img').src = galleryImages[currentIndex]; }
+    function prevImage(){ currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length; document.getElementById('lightbox-img').src = galleryImages[currentIndex]; }
+    document.addEventListener('keydown', (e)=>{ const lb=document.getElementById('lightbox'); if(lb.style.display!=='flex') return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') nextImage(); if(e.key==='ArrowLeft') prevImage(); });
+    document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id==='lightbox' || e.target.classList.contains('close')) closeLightbox(); });
   </script>
 
-  <!-- ===== Pi-backdoor: knapp + logik + SPLASH ===== -->
+  <!-- π + backdoor + splash -->
   <button class="pi-trigger" id="piTrigger" title="π" aria-hidden="true">π</button>
-
   <script>
     (function () {
       const KEY = "backdoorActive";
       const html = document.documentElement;
       const trigger = document.getElementById("piTrigger");
+      const exitBtn = document.getElementById("exitDark");
       const splash = document.getElementById("darkSplash");
-      const SPLASH_MS = 2200; // hur länge GIF:en visas (ms)
+      const SPLASH_MS = 2000; // exakt 2 sekunder
 
-      // Sätt splash-bild
-      splash.style.backgroundImage = 'url("cat-halloween.gif")';
+      // Förladda GIF i JS också (ökar chansen att den finns i cache)
+      let splashReady = false;
+      const splashImg = new Image();
+      splashImg.onload = () => { splashReady = true; };
+      splashImg.src = "cat-halloween.gif";
 
-      // Visar och döljer splash med fade, och låser scroll
       function showSplash(){
         if (!splash) return;
+        splash.style.backgroundImage = 'url("cat-halloween.gif")'; // funkar även om bilden ej hunnit ladda
+        splash.style.display = 'block';
+        // force reflow så CSS-transition säkert triggar
+        void splash.offsetWidth;
         splash.classList.add('show');
         document.body.style.overflow = 'hidden';
         if (typeof trackSplashShown === 'function') trackSplashShown();
@@ -660,57 +579,67 @@
         setTimeout(()=>{
           splash.classList.add('hide');
           splash.classList.remove('show');
-          // vänta ut CSS-transition innan display:none
           setTimeout(()=>{
             splash.style.display = 'none';
             splash.classList.remove('hide');
             document.body.style.overflow = '';
-          }, 400);
+          }, 400); // matcha CSS-faden
         }, afterMs);
       }
 
-      // Återställ från session (om dark redan är aktivt vid laddning)
-      try {
-        if (sessionStorage.getItem(KEY) === "1") {
-          html.classList.add("dark");
-          // Visa splash på första sidvisningen av redan-aktivt läge
-          showSplash(); hideSplash();
-        }
-      } catch (e) {}
+      function setDark(on){
+        html.classList.toggle('dark', on);
+        try { sessionStorage.setItem(KEY, on ? "1" : "0"); } catch(e){}
+        if (typeof trackPiToggle === 'function') trackPiToggle(on ? "on" : "off");
+      }
 
-      // Hjälpare: Ctrl+Alt (Win/Linux) eller Cmd+Alt (Mac)
-      function hasModifier(evt) {
+      // Desktop-trigger: Ctrl+Alt (Win/Linux) eller Cmd+Alt (Mac) + klick
+      function hasModifier(evt){
         const mac = navigator.platform.toUpperCase().includes("MAC");
         return (mac ? evt.metaKey : evt.ctrlKey) && evt.altKey;
       }
 
-      // Klick på π med rätt tangenter
-      trigger.addEventListener("click", (e) => {
+      // Mobil-trigger: långtryck (0,8 s) på π (ingen modifier behövs)
+      let touchTimer = null;
+      const LONG_MS = 800;
+      trigger.addEventListener('touchstart', ()=>{ touchTimer = setTimeout(()=> toggleDark(), LONG_MS); }, {passive:true});
+      trigger.addEventListener('touchend', ()=>{ clearTimeout(touchTimer); }, {passive:true});
+      trigger.addEventListener('touchmove', ()=>{ clearTimeout(touchTimer); }, {passive:true});
+
+      // Klick (desktop). Om enheten har touch låter vi långtryck sköta togglingen.
+      trigger.addEventListener('click', (e) => {
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouch) return; // undvik att ett lätt klick triggar på mobil
         if (!hasModifier(e)) return;
         e.preventDefault();
-
-        const turningOn = !html.classList.contains("dark");
-        html.classList.toggle("dark", turningOn);
-        try { sessionStorage.setItem(KEY, turningOn ? "1" : "0"); } catch (err) {}
-
-        if (typeof trackPiToggle === "function") trackPiToggle(turningOn ? "on" : "off");
-
-        if (turningOn){
-          // Visa splash innan man ser sidan i dark-läget
-          showSplash(); hideSplash();
-        }
+        toggleDark();
       });
 
-      // Bonus: ?alt=1 aktiverar direkt (med splash)
-      const params = new URLSearchParams(location.search);
-      if (params.get("alt") === "1" && !html.classList.contains('dark')) {
-        html.classList.add("dark");
-        try { sessionStorage.setItem(KEY, "1"); } catch(e) {}
-        if (typeof trackPiToggle === "function") trackPiToggle("on");
-        showSplash(); hideSplash();
+      // Exit-knapp (visas bara i dark)
+      exitBtn.addEventListener('click', ()=>{ setDark(false); });
+
+      function toggleDark(){
+        const turningOn = !html.classList.contains('dark');
+        setDark(turningOn);
+        if (turningOn){ showSplash(); hideSplash(SPLASH_MS); }
       }
 
-      // Styr alt/default-visning när .dark ändras
+      // URL-flagga ?alt=1 → slå på dark + splash
+      const params = new URLSearchParams(location.search);
+      if (params.get("alt") === "1" && !html.classList.contains('dark')) {
+        setDark(true);
+        showSplash(); hideSplash(SPLASH_MS);
+      }
+
+      // Om dark redan var på när sidan laddar → visa splash kort
+      try {
+        if (sessionStorage.getItem(KEY) === "1") {
+          html.classList.add("dark");
+          showSplash(); hideSplash(SPLASH_MS);
+        }
+      } catch (e) {}
+
+      // Synka alt/default-synlighet
       const applyVisibility = () => {
         const isDark = html.classList.contains('dark');
         document.querySelectorAll('[data-alt="true"]').forEach(el => { el.style.display = isDark ? '' : 'none'; });
