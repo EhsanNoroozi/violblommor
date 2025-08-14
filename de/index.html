@@ -1,1 +1,246 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Getrocknete Duftveilchen – Viola odorata</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --panel:#fff; --ink:#111; --line:#ccc;
+}
+html.dark{
+  --panel:#181a1f; --ink:#e2e2e2; --line:#444;
+}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;line-height:1.5;color:var(--ink);background:#fff;}
+.section-title{font-size:1.25rem;margin:0 0 .5rem;}
+.btn{
+  background:#111;color:#fff;border:none;padding:.6rem 1.2rem;
+  border-radius:8px;cursor:pointer;font-weight:600;
+}
+.btn.secondary{background:#777;}
+.small{font-size:.9rem;color:#444;}
+.input{ width:100%; padding:.7rem; border:1px solid var(--line); border-radius:10px; background:#fff; }
+
+/* Modal (Zahlung + Newsletter) */
+#emailModal, #newsletterModal{
+  position:fixed; inset:0; display:none; z-index:1200;
+  align-items:center; justify-content:center; padding:16px;
+  background:rgba(0,0,0,.55); backdrop-filter:blur(4px);
+}
+html.dark #emailModal, html.dark #newsletterModal{ background:rgba(0,0,0,.65); }
+.modal-card{
+  width:min(560px, 92vw); background:var(--panel);
+  border:1px solid var(--line); border-radius:14px; padding:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.modal-actions{ display:flex; gap:.6rem; justify-content:flex-end; margin-top:.9rem; }
+label.small{ display:block; margin-top:.6rem; }
+#emailThanks, #newsletterThanksInline{ display:none; color:#16a34a; margin-top:.4rem; }
+
+/* Layout */
+main{padding:1rem;}
+footer{padding:1rem;background:#f6f7f9;}
+</style>
+</head>
+<body>
+
+<main>
+  <h1 class="section-title">Getrocknete Duftveilchen – <em>Viola odorata</em></h1>
+  <p class="small">Duftende, sorgfältig getrocknete Veilchenblüten. Limitierte Menge.</p>
+
+  <label class="small" for="sizeSelect">Größe wählen</label>
+  <select id="sizeSelect" onchange="updatePrice()" class="input" style="max-width:280px;">
+    <option value="5">5 g</option>
+    <option value="10">10 g</option>
+    <option value="25">25 g</option>
+    <option value="100">100 g</option>
+  </select>
+  <p id="totalPrice" style="margin:.6rem 0 1rem;">5 g – 125 SEK</p>
+
+  <button onclick="openEmailCapture()" class="btn">Zahlungslink senden</button>
+</main>
+
+<footer>
+  <p class="small">Abonniere unseren Newsletter für Neuigkeiten und besondere Angebote.</p>
+  <div style="display:flex; gap:.6rem; max-width:520px; align-items:center;">
+    <input id="newsletterEmail" type="email" class="input" placeholder="deine@email.de">
+    <button type="button" class="btn" onclick="openNewsletterModal()">Abonnieren</button>
+  </div>
+  <p id="newsletterThanks" class="small" style="display:none; color:#16a34a; margin-top:.4rem;">Danke! Bitte bestätige deine Anmeldung in der E‑Mail.</p>
+</footer>
+
+<!-- Zahlungsmodal -->
+<div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
+  <div class="modal-card" role="document">
+    <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Wir senden den Zahlungslink an deine E‑Mail</h3>
+    <p class="small">Fülle deine Daten aus. Wir schicken dir einen eindeutigen Zahlungslink (Revolut) und eine Bestellübersicht.</p>
+
+    <label class="small" for="fullName">Name</label>
+    <input id="fullName" type="text" class="input" placeholder="Vor- und Nachname">
+
+    <label class="small" for="emailInput">E‑Mail‑Adresse</label>
+    <input id="emailInput" type="email" class="input" placeholder="name@beispiel.de">
+
+    <label class="small" for="addr1">Adresse</label>
+    <input id="addr1" type="text" class="input" placeholder="Straße und Hausnummer">
+    <input id="addr2" type="text" class="input" placeholder="Wohnung, c/o (optional)" style="margin-top:.4rem">
+
+    <div style="display:flex; gap:.6rem; margin-top:.6rem">
+      <input id="postal" type="text" class="input" placeholder="PLZ" style="flex:0 0 120px">
+      <input id="city" type="text" class="input" placeholder="Ort" style="flex:1">
+    </div>
+
+    <label class="small" for="country">Land</label>
+    <input id="country" type="text" class="input" value="Deutschland">
+
+    <div class="modal-actions">
+      <button onclick="closeEmailCapture()" class="btn secondary">Abbrechen</button>
+      <button onclick="submitOrder()" class="btn">Senden</button>
+    </div>
+    <p id="emailThanks" class="small">Danke! In Kürze erhältst du eine E‑Mail mit dem Zahlungslink. 💌</p>
+  </div>
+</div>
+
+<!-- Newsletter-Modal -->
+<div id="newsletterModal" aria-hidden="true" role="dialog" aria-labelledby="nlTitle" aria-modal="true">
+  <div class="modal-card" role="document">
+    <h3 id="nlTitle" class="section-title" style="margin:.2rem 0 .4rem">Newsletter abonnieren</h3>
+    <p class="small">Wir schreiben nur, wenn wir wirklich etwas Besonderes zu teilen haben.</p>
+
+    <label class="small" for="nlName">Name (optional)</label>
+    <input id="nlName" type="text" class="input" placeholder="Vor- und Nachname">
+
+    <label class="small" for="nlEmail">E‑Mail‑Adresse</label>
+    <input id="nlEmail" type="email" class="input" placeholder="name@beispiel.de">
+
+    <label class="small" style="display:flex; gap:.5rem; align-items:flex-start; margin-top:.6rem;">
+      <input id="nlConsent" type="checkbox" style="margin-top:.3rem">
+      <span>Ich willige ein, den Newsletter zu erhalten. Abmeldung jederzeit möglich.</span>
+    </label>
+
+    <div class="modal-actions">
+      <button type="button" class="btn secondary" onclick="closeNewsletterModal()">Abbrechen</button>
+      <button type="button" class="btn" onclick="submitNewsletter()">Abonnieren</button>
+    </div>
+    <p id="newsletterThanksInline" class="small">Danke! Bitte bestätige deine Anmeldung per E‑Mail. 💌</p>
+  </div>
+</div>
+
+<script>
+const prices = {5:125, 10:250, 25:600, 100:2000};
+
+function updatePrice(){
+  const g = document.getElementById('sizeSelect').value;
+  document.getElementById('totalPrice').textContent = `${g} g – ${prices[g]} SEK`;
+}
+
+function openNewsletterModal(){
+  const m = document.getElementById('newsletterModal');
+  const pageEmail = document.getElementById('newsletterEmail')?.value?.trim();
+  if(pageEmail) document.getElementById('nlEmail').value = pageEmail;
+  m.style.display = 'flex';
+  m.setAttribute('aria-hidden','false');
+  setTimeout(()=>document.getElementById('nlEmail').focus(), 50);
+}
+function closeNewsletterModal(){
+  const m = document.getElementById('newsletterModal');
+  m.style.display = 'none';
+  m.setAttribute('aria-hidden','true');
+}
+async function submitNewsletter(){
+  const name = document.getElementById('nlName').value.trim();
+  const email = document.getElementById('nlEmail').value.trim();
+  const consent = document.getElementById('nlConsent').checked;
+
+  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+    alert('Bitte gib eine gültige E‑Mail‑Adresse ein.'); return;
+  }
+  if(!consent){
+    alert('Bitte stimme dem Erhalt des Newsletters zu.'); return;
+  }
+
+  try{
+    // Backend hier anbinden (optional):
+    // await fetch("/newsletter/subscribe", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ name, email, lang:"de" }) });
+    document.getElementById('newsletterThanksInline').style.display = 'block';
+    setTimeout(()=>{ closeNewsletterModal(); }, 1400);
+    const thanks = document.getElementById('newsletterThanks');
+    if (thanks) { thanks.style.display='block'; setTimeout(()=>{ thanks.style.display='none'; }, 2000); }
+  }catch(e){
+    alert('Etwas ist schiefgelaufen. Bitte versuche es später erneut.');
+  }
+}
+
+function openEmailCapture(){
+  const m = document.getElementById('emailModal');
+  m.style.display='flex'; m.setAttribute('aria-hidden','false');
+  const ty = document.getElementById('emailThanks'); if (ty) ty.style.display='none';
+  setTimeout(()=>document.getElementById('fullName').focus(),50);
+}
+function closeEmailCapture(){
+  const m = document.getElementById('emailModal');
+  m.style.display='none'; m.setAttribute('aria-hidden','true');
+}
+
+async function submitOrder(){
+  const grams = document.getElementById('sizeSelect').value;
+  const price = prices[grams];
+  const fullName = document.getElementById('fullName').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  const addr1 = document.getElementById('addr1').value.trim();
+  const addr2 = document.getElementById('addr2').value.trim();
+  const postal = document.getElementById('postal').value.trim();
+  const city = document.getElementById('city').value.trim();
+  const country = document.getElementById('country').value.trim();
+
+  if(!fullName || !email || !addr1 || !postal || !city || !country){
+    alert('Bitte fülle Name, E‑Mail und vollständige Adresse aus.'); return;
+  }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+    alert('Bitte gib eine gültige E‑Mail‑Adresse ein.'); return;
+  }
+
+  // Versandart (falls du später mehrere Varianten anbietest)
+  const shippingMethod = 'EU_dynamic';
+
+  const payload = {
+    product_sku:"AB00439",
+    product_name:"Getrocknete Duftveilchen – Viola odorata",
+    grams:Number(grams),
+    price_sek:Number(price),
+    language:"de",
+    shipping_method:shippingMethod,
+    full_name:fullName, email, address1:addr1, address2:addr2, postal, city, country,
+    utm_source:"onsite", utm_medium:"email_link_request", utm_campaign:"checkout"
+  };
+
+  try{
+    await fetch("YOUR_APPS_SCRIPT_WEBAPP_URL", {
+      method:"POST", mode:"no-cors",
+      headers:{ "Content-Type":"application/json" },
+      body:JSON.stringify(payload)
+    });
+    document.getElementById('emailThanks').style.display='block';
+    setTimeout(()=>{ closeEmailCapture(); }, 1400);
+  }catch(e){ alert('Senden fehlgeschlagen. Bitte versuche es erneut.'); }
+}
+
+// Modals per Escape/Overlay schließen
+['emailModal','newsletterModal'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.addEventListener('click', (e)=>{ if(e.target.id===id){ id==='emailModal' ? closeEmailCapture() : closeNewsletterModal(); } });
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='Escape'){
+    const em = document.getElementById('emailModal');
+    const nm = document.getElementById('newsletterModal');
+    if(em && em.style.display==='flex') closeEmailCapture();
+    if(nm && nm.style.display==='flex') closeNewsletterModal();
+  }
+});
+</script>
+
+</body>
+</html>
 
