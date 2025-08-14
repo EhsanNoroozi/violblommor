@@ -119,7 +119,7 @@
     #lightbox .prev{left:12px} #lightbox .next{right:12px}
     #lightbox img{max-width:92vw;max-height:86vh;border-radius:12px}
 
-    /* π-knapp: MITTEN nederkant. På mobil flyttas upp över köpbaren. */
+    /* π-knapp */
     .pi-trigger{
       position:fixed; left:50%; bottom:12px; transform:translate(-50%,0);
       width:36px; height:36px; border-radius:999px; z-index:1300;
@@ -128,9 +128,7 @@
       opacity:.55; transition:transform .15s ease, opacity .2s ease, background-color .2s ease;
     }
     .pi-trigger:hover{ opacity:.9; transform:translate(-50%,-1px); }
-    @media(max-width:640px){
-      .pi-trigger{ bottom:96px; } /* hamnar ovanför den fasta köpbaren */
-    }
+    @media(max-width:640px){ .pi-trigger{ bottom:96px; } }
 
     /* Exit-knapp (visas bara i dark) */
     .exit-dark{
@@ -141,7 +139,7 @@
     }
     html.dark .exit-dark{ display:grid; }
 
-    /* Helskärms-splash för GIF (över allt) */
+    /* Helskärms-splash */
     #darkSplash{
       position:fixed; inset:0; z-index:2000; display:none;
       background:#000 center center / cover no-repeat;
@@ -149,6 +147,24 @@
     }
     #darkSplash.show{ display:block; opacity:1; }
     #darkSplash.hide{ opacity:0; }
+
+    /* ======= MODALER (NYHETSBREV + BETALNING) ======= */
+    #emailModal, #newsletterModal{
+      position:fixed; inset:0; display:none; z-index:1200;
+      align-items:center; justify-content:center; padding:16px;
+      background:rgba(0,0,0,.55); backdrop-filter:blur(4px);
+    }
+    html.dark #emailModal, html.dark #newsletterModal{ background:rgba(0,0,0,.65); }
+    .modal-card{
+      width:min(560px, 92vw); background:var(--panel); color:var(--ink);
+      border:1px solid var(--line); border-radius:14px; padding:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    .modal-actions{ display:flex; gap:.6rem; justify-content:flex-end; margin-top:.9rem; }
+    .input{ width:100%; padding:.7rem; border:1px solid var(--line); border-radius:10px; background:#fff; }
+    html.dark .input{ background:#0f1014; color:var(--ink); }
+    label.small{ display:block; margin-top:.6rem; }
+    #emailThanks, #newsletterThanksInline{ display:none; color:#16a34a; margin-top:.4rem; }
   </style>
 </head>
 <body>
@@ -402,8 +418,9 @@
       <p data-alt="true">Vi söker och samlar det som bär omsorg och smakens sanning. Små skördar, stor varsamhet. I två decennier har vi vandrat där händerna arbetar långsamt. Här delar vi fynd som vill delas.</p>
       <p data-alt="true">Om du lyssnar efter sådant som viskar – skriv din adress i rutan. Vi kallar när något nytt vill mötas.</p>
       <div class="newsletter">
+        <!-- Endast enkel fält för ev. autofyll; modal frågar "på riktigt" -->
         <input id="newsletterEmail" type="email" placeholder="Din e-postadress">
-        <button type="button" class="btn" onclick="subscribeNewsletter()">Prenumerera</button>
+        <button type="button" class="btn" onclick="openNewsletterModal()">Prenumerera</button>
       </div>
       <p id="newsletterThanks" class="small" style="display:none;margin-top:.4rem;color:#16a34a">Tack! Du får ett bekräftelsemejl strax.</p>
     </section>
@@ -415,35 +432,60 @@
     <button type="button" class="btn" onclick="openEmailCapture()">Skicka betalningslänk</button>
   </div>
 
-  <!-- Email-modal -->
+  <!-- Email-modal (betalningslänk) -->
   <div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
-    <div class="card">
-      <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Vi skickar betalningslänken till din e-post</h3>
+    <div class="modal-card" role="document">
+      <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Vi skickar betalningslänken till din e‑post</h3>
       <p class="small">Fyll i uppgifterna nedan så skickar vi en unik betalningslänk (Revolut) + ordersammanfattning.</p>
 
-      <label class="small" for="fullName" style="display:block;margin-top:.4rem">Namn</label>
-      <input id="fullName" type="text" placeholder="För- och efternamn" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+      <label class="small" for="fullName">Namn</label>
+      <input id="fullName" type="text" class="input" placeholder="För- och efternamn">
 
-      <label class="small" for="emailInput" style="display:block;margin-top:.6rem">E-postadress</label>
-      <input id="emailInput" type="email" placeholder="namn@exempel.se" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+      <label class="small" for="emailInput">E‑postadress</label>
+      <input id="emailInput" type="email" class="input" placeholder="namn@exempel.se">
 
-      <label class="small" for="addr1" style="display:block;margin-top:.6rem">Adress</label>
-      <input id="addr1" type="text" placeholder="Gata och nummer" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
-      <input id="addr2" type="text" placeholder="Lgh, c/o (valfritt)" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px;margin-top:.4rem">
+      <label class="small" for="addr1">Adress</label>
+      <input id="addr1" type="text" class="input" placeholder="Gata och nummer">
+      <input id="addr2" type="text" class="input" placeholder="Lgh, c/o (valfritt)" style="margin-top:.4rem">
 
-      <div style="display:flex;gap:.6rem;margin-top:.6rem">
-        <input id="postal" type="text" placeholder="Postnr" style="flex:0 0 120px;padding:.7rem;border:1px solid #ddd;border-radius:10px">
-        <input id="city" type="text" placeholder="Ort" style="flex:1;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+      <div style="display:flex; gap:.6rem; margin-top:.6rem">
+        <input id="postal" type="text" class="input" placeholder="Postnr" style="flex:0 0 120px">
+        <input id="city" type="text" class="input" placeholder="Ort" style="flex:1">
       </div>
 
-      <label class="small" for="country" style="display:block;margin-top:.6rem">Land</label>
-      <input id="country" type="text" value="Sverige" style="width:100%;padding:.7rem;border:1px solid #ddd;border-radius:10px">
+      <label class="small" for="country">Land</label>
+      <input id="country" type="text" class="input" value="Sverige">
 
-      <div style="display:flex;gap:.6rem;justify-content:flex-end;margin-top:.9rem">
-        <button onclick="closeEmailCapture()" class="btn secondary" style="background:#0b7fb6">Avbryt</button>
+      <div class="modal-actions">
+        <button onclick="closeEmailCapture()" class="btn secondary">Avbryt</button>
         <button onclick="submitOrder()" class="btn">Skicka</button>
       </div>
       <p id="emailThanks">Tack! Om en liten stund får du ett mejl med betalningslänk. 💌</p>
+    </div>
+  </div>
+
+  <!-- Newsletter-modal -->
+  <div id="newsletterModal" aria-hidden="true" role="dialog" aria-labelledby="nlTitle" aria-modal="true">
+    <div class="modal-card" role="document">
+      <h3 id="nlTitle" class="section-title" style="margin:.2rem 0 .4rem">Prenumerera på nyhetsbrev</h3>
+      <p class="small">Fyll i dina uppgifter nedan så skickar vi bara e‑post när vi har något riktigt bra att dela.</p>
+
+      <label class="small" for="nlName">Namn (valfritt)</label>
+      <input id="nlName" type="text" class="input" placeholder="För- och efternamn">
+
+      <label class="small" for="nlEmail">E‑postadress</label>
+      <input id="nlEmail" type="email" class="input" placeholder="namn@exempel.se">
+
+      <label class="small" style="display:flex; gap:.5rem; align-items:flex-start; margin-top:.6rem;">
+        <input id="nlConsent" type="checkbox" style="margin-top:.3rem">
+        <span>Jag samtycker till att ta emot nyhetsbrev. Jag kan avsluta när som helst.</span>
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" class="btn secondary" onclick="closeNewsletterModal()">Avbryt</button>
+        <button type="button" class="btn" onclick="submitNewsletter()">Prenumerera</button>
+      </div>
+      <p id="newsletterThanksInline">Tack! Du får ett bekräftelsemejl strax. 💌</p>
     </div>
   </div>
 
@@ -488,19 +530,56 @@
       if (typeof trackSelectSize === 'function') trackSelectSize(g);
     }
 
-    // Newsletter placeholder
-    function subscribeNewsletter(){
-      const e = document.getElementById('newsletterEmail')?.value?.trim();
-      if(!e || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){ alert('Ange en giltig e-postadress.'); return; }
-      document.getElementById('newsletterThanks').style.display='block';
-      setTimeout(()=>{ document.getElementById('newsletterThanks').style.display='none'; }, 2000);
+    /* ========= NYHETSBREV: modalflöde ========= */
+    function openNewsletterModal(){
+      const m = document.getElementById('newsletterModal');
+      const pageEmail = document.getElementById('newsletterEmail')?.value?.trim();
+      if(pageEmail) document.getElementById('nlEmail').value = pageEmail;
+      m.style.display = 'flex';
+      m.setAttribute('aria-hidden','false');
+      setTimeout(()=>document.getElementById('nlEmail').focus(), 50);
+    }
+    function closeNewsletterModal(){
+      const m = document.getElementById('newsletterModal');
+      m.style.display = 'none';
+      m.setAttribute('aria-hidden','true');
+    }
+    async function submitNewsletter(){
+      const name = document.getElementById('nlName').value.trim();
+      const email = document.getElementById('nlEmail').value.trim();
+      const consent = document.getElementById('nlConsent').checked;
+
+      if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+        alert('Ange en giltig e‑postadress.'); return;
+      }
+      if(!consent){
+        alert('Du behöver godkänna att vi skickar nyhetsbrev.'); return;
+      }
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'newsletter_subscribe', {
+          content_language: (document.documentElement.lang || 'sv'),
+          has_name: !!name
+        });
+      }
+
+      try{
+        // Koppla på din backend här om du vill spara riktiga prenumeranter:
+        // await fetch("/newsletter/subscribe", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ name, email, lang:(document.documentElement.lang||'sv') }) });
+        document.getElementById('newsletterThanksInline').style.display = 'block';
+        setTimeout(()=>{ closeNewsletterModal(); }, 1400);
+        const thanks = document.getElementById('newsletterThanks');
+        if (thanks) { thanks.style.display='block'; setTimeout(()=>{ thanks.style.display='none'; }, 2000); }
+      }catch(e){
+        alert('Något gick fel. Försök igen senare.');
+      }
     }
 
-    // Email-modal
+    /* ========= BETALNINGSMODAL ========= */
     function openEmailCapture(){
       const m = document.getElementById('emailModal');
       m.style.display='flex'; m.setAttribute('aria-hidden','false');
-      document.getElementById('emailThanks').style.display='none';
+      const ty = document.getElementById('emailThanks'); if (ty) ty.style.display='none';
       setTimeout(()=>document.getElementById('fullName').focus(),50);
     }
     function closeEmailCapture(){
@@ -520,10 +599,10 @@
       const city = document.getElementById('city').value.trim();
       const country = document.getElementById('country').value.trim();
       if(!fullName || !email || !addr1 || !postal || !city || !country){
-        alert('Fyll i namn, e-post och adress (minst rad 1, postnr, ort, land).'); return;
+        alert('Fyll i namn, e‑post och adress (minst rad 1, postnr, ort, land).'); return;
       }
       if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-        alert('Ange en giltig e-postadress.'); return;
+        alert('Ange en giltig e‑postadress.'); return;
       }
       if (typeof trackEmailCapture === 'function') trackEmailCapture(price, grams);
       const shipEl = document.querySelector('input[name="shipping"]:checked');
@@ -545,6 +624,21 @@
     function prevImage(){ currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length; document.getElementById('lightbox-img').src = galleryImages[currentIndex]; }
     document.addEventListener('keydown', (e)=>{ const lb=document.getElementById('lightbox'); if(lb.style.display!=='flex') return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') nextImage(); if(e.key==='ArrowLeft') prevImage(); });
     document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id==='lightbox' || e.target.classList.contains('close')) closeLightbox(); });
+
+    // Stäng modaler med Escape/overlay-klick
+    ['emailModal','newsletterModal'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener('click', (e)=>{ if(e.target.id===id){ id==='emailModal' ? closeEmailCapture() : closeNewsletterModal(); } });
+    });
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape'){
+        const em = document.getElementById('emailModal');
+        const nm = document.getElementById('newsletterModal');
+        if(em && em.style.display==='flex') closeEmailCapture();
+        if(nm && nm.style.display==='flex') closeNewsletterModal();
+      }
+    });
   </script>
 
   <!-- π + backdoor + splash -->
@@ -556,9 +650,8 @@
       const trigger = document.getElementById("piTrigger");
       const exitBtn = document.getElementById("exitDark");
       const splash = document.getElementById("darkSplash");
-      const SPLASH_MS = 2000; // exakt 2 sekunder
+      const SPLASH_MS = 2000;
 
-      // Förladda GIF i JS också (ökar chansen att den finns i cache)
       let splashReady = false;
       const splashImg = new Image();
       splashImg.onload = () => { splashReady = true; };
@@ -566,9 +659,8 @@
 
       function showSplash(){
         if (!splash) return;
-        splash.style.backgroundImage = 'url("cat-halloween.gif")'; // funkar även om bilden ej hunnit ladda
+        splash.style.backgroundImage = 'url("cat-halloween.gif")';
         splash.style.display = 'block';
-        // force reflow så CSS-transition säkert triggar
         void splash.offsetWidth;
         splash.classList.add('show');
         document.body.style.overflow = 'hidden';
@@ -583,7 +675,7 @@
             splash.style.display = 'none';
             splash.classList.remove('hide');
             document.body.style.overflow = '';
-          }, 400); // matcha CSS-faden
+          }, 400);
         }, afterMs);
       }
 
@@ -593,29 +685,25 @@
         if (typeof trackPiToggle === 'function') trackPiToggle(on ? "on" : "off");
       }
 
-      // Desktop-trigger: Ctrl+Alt (Win/Linux) eller Cmd+Alt (Mac) + klick
       function hasModifier(evt){
         const mac = navigator.platform.toUpperCase().includes("MAC");
         return (mac ? evt.metaKey : evt.ctrlKey) && evt.altKey;
       }
 
-      // Mobil-trigger: långtryck (0,8 s) på π (ingen modifier behövs)
       let touchTimer = null;
       const LONG_MS = 800;
       trigger.addEventListener('touchstart', ()=>{ touchTimer = setTimeout(()=> toggleDark(), LONG_MS); }, {passive:true});
       trigger.addEventListener('touchend', ()=>{ clearTimeout(touchTimer); }, {passive:true});
       trigger.addEventListener('touchmove', ()=>{ clearTimeout(touchTimer); }, {passive:true});
 
-      // Klick (desktop). Om enheten har touch låter vi långtryck sköta togglingen.
       trigger.addEventListener('click', (e) => {
         const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-        if (isTouch) return; // undvik att ett lätt klick triggar på mobil
+        if (isTouch) return;
         if (!hasModifier(e)) return;
         e.preventDefault();
         toggleDark();
       });
 
-      // Exit-knapp (visas bara i dark)
       exitBtn.addEventListener('click', ()=>{ setDark(false); });
 
       function toggleDark(){
@@ -624,14 +712,12 @@
         if (turningOn){ showSplash(); hideSplash(SPLASH_MS); }
       }
 
-      // URL-flagga ?alt=1 → slå på dark + splash
       const params = new URLSearchParams(location.search);
       if (params.get("alt") === "1" && !html.classList.contains('dark')) {
         setDark(true);
         showSplash(); hideSplash(SPLASH_MS);
       }
 
-      // Om dark redan var på när sidan laddar → visa splash kort
       try {
         if (sessionStorage.getItem(KEY) === "1") {
           html.classList.add("dark");
@@ -639,7 +725,6 @@
         }
       } catch (e) {}
 
-      // Synka alt/default-synlighet
       const applyVisibility = () => {
         const isDark = html.classList.contains('dark');
         document.querySelectorAll('[data-alt="true"]').forEach(el => { el.style.display = isDark ? '' : 'none'; });
