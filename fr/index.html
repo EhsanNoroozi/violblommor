@@ -1,245 +1,796 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Violettes odorantes séchées – Viola odorata</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-:root{
-  --panel:#fff; --ink:#111; --line:#ccc;
-}
-html.dark{
-  --panel:#181a1f; --ink:#e2e2e2; --line:#444;
-}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;line-height:1.5;color:var(--ink);background:#fff;}
-.section-title{font-size:1.25rem;margin:0 0 .5rem;}
-.btn{
-  background:#111;color:#fff;border:none;padding:.6rem 1.2rem;
-  border-radius:8px;cursor:pointer;font-weight:600;
-}
-.btn.secondary{background:#777;}
-.small{font-size:.9rem;color:#444;}
-.input{ width:100%; padding:.7rem; border:1px solid var(--line); border-radius:10px; background:#fff; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Violettes odorantes séchées – Viola odorata | Récolte manuelle | Quantité limitée</title>
+  <meta name="description" content="Fleurs de violette (Viola odorata) séchées, récoltées à la main en Allemagne et produites sans engrais ni pesticides. Floralité subtile et luxueuse. Livraison gratuite en Suède à partir de 500 SEK.">
 
-/* Modals (paiement + newsletter) */
-#emailModal, #newsletterModal{
-  position:fixed; inset:0; display:none; z-index:1200;
-  align-items:center; justify-content:center; padding:16px;
-  background:rgba(0,0,0,.55); backdrop-filter:blur(4px);
-}
-html.dark #emailModal, html.dark #newsletterModal{ background:rgba(0,0,0,.65); }
-.modal-card{
-  width:min(560px, 92vw); background:var(--panel);
-  border:1px solid var(--line); border-radius:14px; padding:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
-}
-.modal-actions{ display:flex; gap:.6rem; justify-content:flex-end; margin-top:.9rem; }
-label.small{ display:block; margin-top:.6rem; }
-#emailThanks, #newsletterThanksInline{ display:none; color:#16a34a; margin-top:.4rem; }
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://www.driedvioletflowers.com/fr/">
+  <link rel="alternate" hreflang="sv" href="https://www.driedvioletflowers.com/">
+  <link rel="alternate" hreflang="en" href="https://www.driedvioletflowers.com/en/">
+  <link rel="alternate" hreflang="de" href="https://www.driedvioletflowers.com/de/">
+  <link rel="alternate" hreflang="fr" href="https://www.driedvioletflowers.com/fr/">
+  <link rel="alternate" hreflang="es" href="https://www.driedvioletflowers.com/es/">
+  <link rel="alternate" hreflang="x-default" href="https://www.driedvioletflowers.com/en/">
 
-/* Layout */
-main{padding:1rem;}
-footer{padding:1rem;background:#f6f7f9;}
-</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:site_name" content="Dried Violet Flowers">
+  <meta property="og:title" content="Violettes odorantes séchées – Viola odorata | Récolte manuelle | Quantité limitée">
+  <meta property="og:description" content="Floralité subtile et luxueuse. Produites sans engrais ni pesticides. Livraison gratuite en Suède dès 500 SEK.">
+  <meta property="og:url" content="https://www.driedvioletflowers.com/fr/">
+  <meta property="og:image" content="https://www.driedvioletflowers.com/SweetViolaTea.webp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Violettes odorantes séchées – Viola odorata | Récolte manuelle">
+  <meta name="twitter:description" content="Floralité subtile, qualité récoltée à la main. Livraison offerte dès 500 SEK.">
+  <meta name="twitter:image" content="https://www.driedvioletflowers.com/SweetViolaTea.webp">
+
+  <!-- Préchargement du GIF de splash -->
+  <link rel="preload" as="image" href="/cat-halloween.gif">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6ZKS3J0ZJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6ZKS3J0ZJ');
+
+    const CONTENT_LANG = document.documentElement.lang || 'fr';
+    gtag('set', 'user_properties', { content_language: CONTENT_LANG });
+    gtag('event', 'page_view', { content_language: CONTENT_LANG });
+
+    function trackSelectSize(g){ gtag('event', 'select_size', { value_grams: g, content_language: CONTENT_LANG }); }
+    function trackEmailCapture(price, grams){ gtag('event', 'email_capture_submit', { price_sek: price, value_grams: grams, content_language: CONTENT_LANG }); }
+    function trackShippingChoice(choice){ gtag('event', 'select_shipping_method', { method: choice, content_language: CONTENT_LANG }); }
+    function trackGalleryOpen(index){ gtag('event', 'open_lightbox_image', { index, content_language: CONTENT_LANG }); }
+    function trackPiToggle(state){ gtag('event', 'pi_backdoor_toggled', { state, content_language: CONTENT_LANG }); }
+    function trackSplashShown(){ gtag('event', 'pi_backdoor_splash_shown', { content_language: CONTENT_LANG }); }
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "sriurg95n5");
+  </script>
+
+  <style>
+    :root{
+      --ink:#0f172a; --muted:#334155; --bg:#ffffff; --panel:#f8fafc; --line:#e5e7eb;
+      --cta:#0ea5e9; --cta-ink:#ffffff; --link:#0ea5e9;
+    }
+    html.dark{
+      --ink:#eaeaea; --muted:#cbd5e1; --bg:#0b0b0d; --panel:#141418; --line:#26272b;
+      --cta:#38bdf8; --cta-ink:#0b0b0d; --link:#8ab4f8;
+    }
+
+    /* Alternance texte alt/normal */
+    [data-alt="true"]{ display:none; }
+    html.dark [data-alt="true"]{ display:block; }
+    html.dark [data-default="true"]{ display:none; }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--link);text-decoration:none}
+    .container{max-width:820px;margin:0 auto;padding:16px 16px 180px}
+    header.container{padding-bottom:8px}
+    .hero{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .hero-img{width:100%;border-radius:14px;display:block}
+    h1{color:var(--muted);margin:.75rem 0 .25rem;font-size:2rem}
+    .subtitle{color:#475569;margin:0 0 .75rem;font-style:italic}
+    html.dark .subtitle{ color:#93a3b8; }
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+    .section-title{color:var(--muted);font-weight:800;margin:1rem 0 .5rem}
+    .small{font-size:.95rem;color:#475569}
+    html.dark .small{ color:#93a3b8; }
+    select,button,input{font-size:1rem}
+    select{width:100%;padding:.6rem .8rem;border:1px solid var(--line);border-radius:10px;background:#fff}
+    html.dark select{ background:#0f1014; color:var(--ink); }
+    .btn{background:var(--cta);color:var(--cta-ink);border:0;border-radius:10px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer}
+    .btn.secondary{background:#0b7fb6}
+    .buy-panel{position:fixed;left:0;right:0;bottom:0;background:#ffffffee;backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.9rem 1rem;display:flex;gap:.8rem;justify-content:space-between;align-items:center;z-index:20}
+    html.dark .buy-panel{ background:#0b0b0dee; }
+    .price{font-weight:800;color:var(--muted)}
+    .social a{display:inline-flex;align-items:center;gap:.4rem;margin-right:.6rem;padding:.4rem .6rem;border:1px solid var(--line);border-radius:10px;background:#fff}
+    html.dark .social a{ background:#0f1014; }
+    .social svg{width:18px;height:18px;display:inline-block}
+    .map iframe{width:100%;height:420px;border:0;border-radius:12px}
+    footer{margin:28px 0 140px;text-align:center;color:#64748b}
+    html.dark footer{ color:#93a3b8; }
+    .footer-links{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:.4rem}
+
+    /* Lightbox */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}
+    .gallery img{width:100%;border-radius:10px;cursor:pointer;transition:transform .2s}
+    .gallery img:hover{transform:scale(1.04)}
+    #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1000;align-items:center;justify-content:center}
+    #lightbox .close{position:absolute;top:16px;right:16px;color:#fff;font-size:32px;line-height:1;cursor:pointer}
+    #lightbox .nav{position:absolute;top:50%;transform:translateY(-50%);font-size:42px;color:#fff;cursor:pointer;user-select:none;padding:.4rem .6rem;background:rgba(0,0,0,.3);border-radius:8px}
+    #lightbox .prev{left:12px} #lightbox .next{right:12px}
+    #lightbox img{max-width:92vw;max-height:86vh;border-radius:12px}
+
+    /* Bouton π */
+    .pi-trigger{
+      position:fixed; left:50%; bottom:12px; transform:translate(-50%,0);
+      width:36px; height:36px; border-radius:999px; z-index:1300;
+      background:var(--panel); color:#666; border:1px solid rgba(127,127,127,.25);
+      display:grid; place-items:center; cursor:pointer; user-select:none;
+      opacity:.55; transition:transform .15s ease, opacity .2s ease, background-color .2s ease;
+    }
+    .pi-trigger:hover{ opacity:.9; transform:translate(-50%,-1px); }
+    @media(max-width:640px){ .pi-trigger{ bottom:96px; } }
+
+    /* Bouton sortie (mode clair) */
+    .exit-dark{
+      position:fixed; left:50%; top:12px; transform:translateX(-50%);
+      width:36px; height:36px; border-radius:999px; z-index:1300;
+      background:var(--panel); color:#666; border:1px solid rgba(127,127,127,.25);
+      display:none; place-items:center; cursor:pointer; user-select:none; opacity:.65;
+    }
+    html.dark .exit-dark{ display:grid; }
+
+    /* Splash plein écran */
+    #darkSplash{
+      position:fixed; inset:0; z-index:2000; display:none;
+      background:#000 center center / cover no-repeat;
+      opacity:0; transition: opacity .35s ease;
+    }
+    #darkSplash.show{ display:block; opacity:1; }
+    #darkSplash.hide{ opacity:0; }
+
+    /* ======= MODALES (NEWSLETTER + PAIEMENT) ======= */
+    #emailModal, #newsletterModal{
+      position:fixed; inset:0; display:none; z-index:1200;
+      align-items:center; justify-content:center; padding:16px;
+      background:rgba(0,0,0,.55); backdrop-filter:blur(4px);
+    }
+    html.dark #emailModal, html.dark #newsletterModal{ background:rgba(0,0,0,.65); }
+    #emailModal .card, #newsletterModal .modal-card, #emailModal .modal-card{
+      width:min(560px, 92vw); background:var(--panel); color:var(--ink);
+      border:1px solid var(--line); border-radius:14px; padding:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    .modal-actions{ display:flex; gap:.6rem; justify-content:flex-end; margin-top:.9rem; }
+    .input{ width:100%; padding:.7rem; border:1px solid var(--line); border-radius:10px; background:#fff; }
+    html.dark .input{ background:#0f1014; color:var(--ink); }
+    label.small{ display:block; margin-top:.6rem; }
+    #emailThanks, #newsletterThanksInline{ display:none; color:#16a34a; margin-top:.4rem; }
+  </style>
 </head>
 <body>
+  <!-- SPLASH -->
+  <div id="darkSplash" aria-hidden="true"></div>
 
-<main>
-  <h1 class="section-title">Violettes odorantes séchées – <em>Viola odorata</em></h1>
-  <p class="small">Fleurs parfumées de violette odorante, soigneusement séchées. Quantité limitée.</p>
+  <!-- BOUTON SORTIE (retour au clair) -->
+  <button class="exit-dark" id="exitDark" title="Revenir à la lumière" aria-hidden="true">☀</button>
 
-  <label class="small" for="sizeSelect">Choisir la taille</label>
-  <select id="sizeSelect" onchange="updatePrice()" class="input" style="max-width:280px;">
-    <option value="5">5 g</option>
-    <option value="10">10 g</option>
-    <option value="25">25 g</option>
-    <option value="100">100 g</option>
-  </select>
-  <p id="totalPrice" style="margin:.6rem 0 1rem;">5 g – 125 SEK</p>
+  <header class="container hero" id="top">
+    <img src="/SweetViolaTea.webp" alt="Fleurs de violette séchées – thé infusé dans une tasse" class="hero-img" data-default="true">
+    <img src="/SweetViolaTea.webp" alt="Violettes au crépuscule – un thé qui parle à voix basse" class="hero-img" data-alt="true">
 
-  <button onclick="openEmailCapture()" class="btn">Envoyer le lien de paiement</button>
-</main>
+    <h1 data-default="true">Violettes odorantes séchées – <em>Viola odorata</em></h1>
+    <h2 data-alt="true">Violettes odorantes – <em>Viola odorata</em> pour celles et ceux qui lisent les signes du thé</h2>
 
-<footer>
-  <p class="small">Abonnez-vous à notre newsletter pour recevoir nos nouveautés et offres spéciales.</p>
-  <div style="display:flex; gap:.6rem; max-width:520px; align-items:center;">
-    <input id="newsletterEmail" type="email" class="input" placeholder="votre@email.fr">
-    <button type="button" class="btn" onclick="openNewsletterModal()">S’abonner</button>
+    <p class="subtitle" data-default="true">Récoltées à la main en Allemagne · À consommer de préférence avant juin 2026 · Produites sans engrais ni pesticides · Quantité limitée</p>
+    <p class="subtitle" data-alt="true">Cueillies à l’aube fraîche · Conservent leur force jusqu’en juin 2026 · Cultivées sans agents étrangers · Quantité dictée par la récolte</p>
+  </header>
+
+  <main class="container">
+    <section class="panel" data-alt="true" aria-live="polite">
+      <strong>🔮 Bienvenue, visiteur en quête silencieuse.</strong> Ici, nous parlons doucement avec l’herbe : que le souffle de la violette te porte entre repos et veille.
+    </section>
+
+    <!-- Galerie -->
+    <section class="panel" aria-labelledby="gallery">
+      <h2 id="gallery" class="section-title" data-default="true">Images</h2>
+      <h2 class="section-title" data-alt="true">Miroirs et souvenirs</h2>
+      <div class="gallery">
+        <img src="/SweetViolaTea.webp" alt="Fleurs de violette séchées – image principale" onclick="openLightbox(0)">
+        <img src="/SweetViolaTea1.webp" alt="Fleurs de violette séchées – gros plan" onclick="openLightbox(1)">
+        <img src="/SweetViolaTea2.webp" alt="Thé infusé à partir de violettes" onclick="openLightbox(2)">
+        <img src="/SweetViolaTea3.webp" alt="Suggestion de service – thé à la violette" onclick="openLightbox(3)">
+      </div>
+    </section>
+
+    <!-- Faits -->
+    <section class="panel" aria-labelledby="facts">
+      <h2 id="facts" class="section-title" data-default="true">Faits</h2>
+      <h2 class="section-title" data-alt="true">Ce qui demeure vrai en pleine lumière</h2>
+      <ul class="small" style="margin:0;padding-left:18px" data-default="true">
+        <li><strong>Origine :</strong> Allemagne</li>
+        <li><strong>Producteur :</strong> Tea & Coffee Factory</li>
+        <li><strong>Lot :</strong> AB00439 · <strong>Stock :</strong> 900 g</li>
+        <li><strong>Emballage :</strong> Papier recyclable</li>
+        <li><strong>Conservation :</strong> Au sec, à l’abri de la lumière, hermétique</li>
+        <li><strong>Prix :</strong> 25 SEK/g (20 SEK/g pour ≥ 500 g)</li>
+        <li><strong>Notes rapides :</strong> Herbacé vert de printemps, violette chaude et ronde, douce sucrosité, texture soyeuse, longue finale délicate.</li>
+      </ul>
+      <ul class="small" style="margin:0;padding-left:18px" data-alt="true">
+        <li><strong>Provenance :</strong> Sol allemand et vents paisibles.</li>
+        <li><strong>Mains à l’œuvre :</strong> Tea & Coffee Factory — veilleurs des feuilles et des fleurs.</li>
+        <li><strong>Signes :</strong> Lot AB00439 · <strong>Réserve :</strong> 900 g dans une ombre bienveillante.</li>
+        <li><strong>Compagnon :</strong> Un papier qui retourne au papier.</li>
+        <li><strong>Repos :</strong> Sec, ombragé, scellé — là où l’arôme monte la garde.</li>
+        <li><strong>Valeur :</strong> 25 SEK/g (20 SEK/g dès 500 g).</li>
+        <li><strong>Tons :</strong> Premier souffle de vert, violette chaude, douceur discrète, trame soyeuse, une finale qui s’attarde comme un murmure.</li>
+      </ul>
+    </section>
+
+    <!-- Livraison -->
+    <section class="panel" aria-labelledby="shipchoose">
+      <h2 id="shipchoose" class="section-title" data-default="true">🚚 Choisir la livraison</h2>
+      <h2 class="section-title" data-alt="true">🚚 Choisir les routes</h2>
+      <p class="small" style="margin-top:0" data-default="true">Sélectionnez une option. Les tarifs exacts pour l’UE/international sont calculés via Sendcloud à l’étape suivante.</p>
+      <p class="small" style="margin-top:0" data-alt="true">Choisis ta route. Le coût sera compté au pas suivant, selon la carte.</p>
+      <div role="group" aria-label="Options de livraison" class="small">
+        <label style="display:block;margin:.4rem 0"><input type="radio" name="shipping" value="SE_tracked_49" checked onchange="trackShippingChoice('SE_tracked_49')"> <span data-default="true">Suède – Suivi 49 SEK (offert dès 500 SEK)</span><span data-alt="true">Suède – Route tracée 49 SEK (offert dès 500 SEK)</span></label>
+        <label style="display:block;margin:.4rem 0"><input type="radio" name="shipping" value="EU_dynamic" onchange="trackShippingChoice('EU_dynamic')"> <span data-default="true">UE – Tarifs dynamiques (Sendcloud)</span><span data-alt="true">UE – Routes mouvantes (Sendcloud)</span></label>
+        <label style="display:block;margin:.4rem 0"><input type="radio" name="shipping" value="INTL_dynamic" onchange="trackShippingChoice('INTL_dynamic')"> <span data-default="true">International – Tarifs dynamiques (Sendcloud)</span><span data-alt="true">Au‑delà des frontières – Routes changeantes (Sendcloud)</span></label>
+      </div>
+    </section>
+
+    <!-- Quantité -->
+    <section aria-labelledby="size" class="panel">
+      <h2 id="size" class="section-title" data-default="true">📦 Choisir la quantité</h2>
+      <h2 class="section-title" data-alt="true">📦 Mesure et mesure encore</h2>
+      <select id="sizeSelect" aria-label="Choisir la quantité" onchange="updatePrice()">
+        <option value="5">5 g – 125 SEK</option>
+        <option value="10">10 g – 250 SEK</option>
+        <option value="25">25 g – 600 SEK</option>
+        <option value="100">100 g – 2000 SEK</option>
+      </select>
+      <p class="small" style="margin:.6rem 0 0" data-default="true">Prix unitaire : 25 SEK/g (20 SEK/g dès 500 g).</p>
+      <p class="small" style="margin:.6rem 0 0" data-alt="true">Le prix tient sa forme : 25 SEK/g (20 SEK/g quand le poids pèse, 500 g et plus).</p>
+    </section>
+
+    <!-- Histoire / Sensoriel -->
+    <section class="panel" aria-labelledby="story">
+      <h2 id="story" class="section-title" data-default="true">À propos du thé – sensoriel & caractère</h2>
+      <h2 class="section-title" data-alt="true">La nature du thé — lue dans la chaleur et l’eau</h2>
+      <div data-default="true">
+        <p>Les violettes séchées sont de petits boutons serrés de 2–3 millimètres — des nuances de violet ponctuées de tiges vertes et jaunes. À l’ouverture du sachet, une herbacée verte et tranquille s’élève, où une note de violette chaude annonce déjà la suite. À l’infusion — 1 g pour 100 ml, 85 °C, 10 minutes — les boutons gonflent doucement et les couleurs tirent vers la lavande ; les parties vertes et jaunes deviennent translucides, presque vitrées. Le parfum glisse vers un vert plus végétal, tandis que la chaleur de la violette demeure comme une base grave et ronde.</p>
+        <p>Dans la tasse, la liqueur est claire aux reflets d’or — non pas violette, mais porteuse d’un mystère doux. La texture est élégante et soyeuse ; une viscosité discrète qui transporte les saveurs sur la langue. Le profil est finement réglé : herbacé vert printanier, violette chaude et ronde jamais trop parfumée, restant contenue et luxueuse. Une légère douceur tient l’ensemble. La finale est longue et délicate — un murmure floral qui reste, et dans la tasse vide persiste un ton de violette pur, comme l’écho d’un calme.</p>
+        <p>À servir avec les saveurs d’un plateau de sushi : poisson gras, sel, gingembre mariné et l’umami collant du riz. Ou avec quelque chose de sucré et croustillant — comme la baklava — où la rondeur florale du thé élève miel et noix sans rivaliser.</p>
+        <p class="small"><strong>Conseil d’infusion :</strong> 1 g pour 100 ml · 85 °C · 10 min. Ajustez temps/quantité selon vos goûts. Conserver au sec, à l’abri de la lumière et hermétiquement.</p>
+      </div>
+      <div data-alt="true">
+        <p>Les violettes reposent comme de petits sceaux, 2–3 millimètres, violettes aux attaches vertes et jaunes — gardiennes d’une note basse et chaude. Romps le sceau et l’esprit du vert s’élève calmement. À l’infusion — 1 g pour 100 ml, 85 °C, 10 minutes — les boutons gonflent comme s’ils se souvenaient d’un printemps. Les couleurs pâlissent vers la lavande ; les attaches deviennent presque de verre. Le parfum marche vers les chambres profondes de la plante, et la violette porte la chaleur comme une rune près du feu.</p>
+        <p>Dans la tasse : or clair, mystère doux. La texture est tissée de soie ; elle porte les saveurs sur la langue comme une procession tranquille. Les tons sont posés avec soin : premier soupir de vert, violette ronde et chaude qui ne devient jamais parfum — seulement présente et noble. Une douceur légère ferme le cercle. La rémanence demeure, comme un murmure qui connaît le chemin du retour. Dans la tasse vide reste un écho — net, violet, amène.</p>
+        <p>Accorde avec des assiettes où jouent gras, sel et gingembre mariné — carte du sushi — ou avec quelque chose de sucré et croustillant comme les couches de baklava, où miel et noix sont portés par la fleur — sans lutte.</p>
+        <p class="small"><strong>Infusion :</strong> 1 g pour 100 ml · 85 °C · 10 min. Ajustez selon l’envie. Laissez le thé au sec, dans l’ombre, scellé.</p>
+      </div>
+    </section>
+
+    <!-- Santé -->
+    <section class="panel" aria-labelledby="health">
+      <h2 id="health" class="section-title" data-default="true">🩺 Santé — que disent les sources ?</h2>
+      <h2 class="section-title" data-alt="true">🩺 Des œuvres et des effets</h2>
+      <div class="small" data-default="true">
+        <p><strong>Résumé :</strong> Les fleurs séchées de <em>Viola odorata</em> apparaissent dans les herbiers traditionnels pour la <strong>toux/voies respiratoires</strong>, le <strong>calme/sommeil</strong>, la <strong>légère inflammation</strong> et des <strong>problèmes cutanés</strong>. La recherche moderne est <strong>limitée</strong> et hétérogène. <strong>Ne pas utiliser comme traitement médical</strong> ; envisagez‑le comme une expérience culinaire et sensorielle. Consultez un professionnel de santé pour toute question médicale.</p>
+        <ul style="margin:.6rem 0;padding-left:18px">
+          <li><strong>Voies respiratoires & toux :</strong> Traditionnellement en tisanes et sirops apaisants. Preuves scientifiques non concluantes.</li>
+          <li><strong>Calme & sommeil :</strong> Usage populaire pour favoriser le repos. Données limitées ; effets subtils et subjectifs.</li>
+          <li><strong>Inflammation/antioxydant :</strong> Certains travaux in vitro suggèrent des mécanismes potentiels, mais les conclusions cliniques sont incertaines.</li>
+          <li><strong>Peau :</strong> Mentionnée traditionnellement en usage externe ; soutien clinique limité.</li>
+        </ul>
+        <p><strong>Esprit critique :</strong> Beaucoup d’articles en ligne répètent la tradition sans sources primaires. Pour un aperçu des publications, voir <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank" rel="noopener">la recherche « Viola odorata » sur PubMed</a>.</p>
+        <p><strong>Important :</strong> Évitez pendant la grossesse/l’allaitement ou avec des médicaments sans avis médical. Arrêtez en cas d’inconfort ou de réaction allergique.</p>
+      </div>
+      <div class="small" data-alt="true">
+        <p><strong>Tenir ensemble :</strong> <em>Viola odorata</em> est nommé dans les vieux livres pour respirer, se reposer, apaiser la peau. Le savoir moderne est fin et changeant. <strong>Ce n’est pas un remède</strong> — c’est un rite de goût. Cherchez conseil en cas de doute.</p>
+        <ul style="margin:.6rem 0;padding-left:18px">
+          <li><strong>Souffle :</strong> Sirops et tisanes de la tradition ; la science d’aujourd’hui hésite encore.</li>
+          <li><strong>Repos :</strong> Usage populaire pour calmer ; effet doux, personnel.</li>
+          <li><strong>Feu & rouille :</strong> Les labos voient des indices de protection ; le chemin vers l’humain reste flou.</li>
+          <li><strong>Peau :</strong> Vieux onguents parlent de violette ; peu de preuves.</li>
+        </ul>
+        <p><strong>Orientation :</strong> Cherchez des sources qui éclairent. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank" rel="noopener">PubMed</a> rassemble les écrits.</p>
+        <p><strong>Prudence :</strong> Évitez en grossesse/allaitement ou avec traitements sans avis. Cessez au moindre signe de gêne.</p>
+      </div>
+    </section>
+
+    <!-- Sources + vidéo -->
+    <section class="panel" aria-labelledby="refs">
+      <h2 id="refs" class="section-title" data-default="true">🧠 Ce que d’autres en disent…</h2>
+      <h2 class="section-title" data-alt="true">🧠 Voix dans l’ombre de la bibliothèque</h2>
+      <p data-default="true">Un tour d’horizon des sources sur <strong>Viola odorata</strong> montre des usages traditionnels pour la toux, la peau et l’apaisement. Les preuves sont partagées : de nombreux blogs vantent des bienfaits sans sources primaires, tandis que certaines études suggèrent des effets antioxydants. Conclusion : explorez avec curiosité — pas comme médecine — et gardez l’esprit critique.</p>
+      <p data-alt="true">En lisant les marges, on trouve la violette au service de la toux, de la peau et du repos. Beaucoup de mots, des preuves plus fines. Avance doucement : essaie par curiosité, non comme remède. Que l’esprit critique soit ta lanterne.</p>
+      <div class="video" style="margin-top:.8rem">
+        <iframe src="https://www.youtube.com/embed/ArntqsUnERs" title="Infusion de violettes – vidéo" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="panel" aria-labelledby="faq">
+      <h2 id="faq" class="section-title" data-default="true">❓ Foire aux questions</h2>
+      <h2 class="section-title" data-alt="true">❓ Questions qui reviennent en cercle</h2>
+      <div data-default="true">
+        <details class="small"><summary><strong>Comment préparer un thé à partir de violettes séchées ?</strong></summary><div style="margin-top:.4rem">Utilisez 1 g pour 100 ml d’eau à 85 °C pendant environ 10 minutes. La saveur est subtile — ajustez le temps et la quantité à votre goût.</div></details>
+        <details class="small"><summary><strong>Le produit est‑il biologique ?</strong></summary><div style="margin-top:.4rem">Il est produit sans engrais ni pesticides, mais ne porte pas de certification biologique.</div></details>
+        <details class="small"><summary><strong>Comment conserver les fleurs ?</strong></summary><div style="margin-top:.4rem">Au sec, à l’abri de la lumière et hermétiquement pour préserver l’arôme.</div></details>
+        <details class="small"><summary><strong>Combien de tasses par gramme ?</strong></summary><div style="margin-top:.4rem">Environ cinq tasses par gramme pour une infusion légère. N’hésitez pas à expérimenter.</div></details>
+        <details class="small"><summary><strong>Quels sont les effets sur la santé ?</strong></summary><div style="margin-top:.4rem">Traditionnellement : voies respiratoires/toux, calme/sommeil, légère inflammation, peau. Recherche : limitée et variable. Pas un traitement médical. Voir PubMed pour un aperçu.</div></details>
+      </div>
+      <div data-alt="true">
+        <details class="small"><summary><strong>Comment « lire » le thé ?</strong></summary><div style="margin-top:.4rem">1 g pour 100 ml, 85 °C, 10 minutes. Ajustez la force à votre main.</div></details>
+        <details class="small"><summary><strong>La culture est‑elle solennelle ?</strong></summary><div style="margin-top:.4rem">Sans engrais ni pesticides, mais sans sceau de certificat.</div></details>
+        <details class="small"><summary><strong>Comment laisser l’arôme veiller ?</strong></summary><div style="margin-top:.4rem">Sec. Ombragé. Scellé. Là, le parfum veille.</div></details>
+        <details class="small"><summary><strong>Combien de tasses pour ce poids ?</strong></summary><div style="margin-top:.4rem">Environ cinq par gramme pour une infusion douce. Avancez au feeling.</div></details>
+        <details class="small"><summary><strong>Que dit l’herbe de la santé ?</strong></summary><div style="margin-top:.4rem">La tradition parle, la science éprouve. Rite de goût, non remède. Cherchez conseil en cas de doute.</div></details>
+      </div>
+    </section>
+
+    <!-- Partager -->
+    <section class="panel social" aria-labelledby="share">
+      <h2 id="share" class="section-title" data-default="true">📤 Partager ce produit</h2>
+      <h2 class="section-title" data-alt="true">📤 Partager ce murmure</h2>
+      <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href));return false;" aria-label="Partager sur Facebook">
+        <svg viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M22 12.06C22 6.49 17.52 2 11.94 2S2 6.49 2 12.06c0 4.99 3.66 9.13 8.44 9.94v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.62.77-1.62 1.56v1.87h2.77l-.44 2.9h-2.33V22c4.78-.81 8.44-4.95 8.44-9.94z"/></svg>
+        Facebook
+      </a>
+      <a href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(location.href));return false;" aria-label="Partager sur X">
+        <svg viewBox="0 0 24 24" fill="#111" aria-hidden="true"><path d="M3 3h3.7l5.3 7.2L17.9 3H21l-7.8 10.5L21 21h-3.7l-6-8.2L6.1 21H3l8.2-10.8L3 3z"/></svg>
+        X
+      </a>
+      <a href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href));return false;" aria-label="Partager sur LinkedIn">
+        <svg viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.7-2.2 3.6-2.2 3.8 0 4.5 2.5 4.5 5.8V24h-4v-7.1c0-1.7 0-3.9-2.4-3.9-2.4 0-2.8 1.8-2.8 3.8V24h-4V8z"/></svg>
+        LinkedIn
+      </a>
+      <a href="#" onclick="window.open('https://www.pinterest.com/pin/create/button/?url='+encodeURIComponent(location.href)+'&media='+encodeURIComponent(document.querySelector(\'img.hero-img\')?.src||location.href)+'&description='+encodeURIComponent(document.title));return false;" aria-label="Partager sur Pinterest">
+        <svg viewBox="0 0 24 24" fill="#E60023" aria-hidden="true"><path d="M12.04 2C6.58 2 3 5.64 3 9.87c0 2.34 1.31 5.27 3.41 6.19.32.14.5.08.57-.22.06-.23.2-.81.27-1.05.09-.22.05-.33-.13-.54-.67-.78-1.21-2.21-1.21-3.56 0-3.44 2.73-6.76 7.43-6.76 4.04 0 6.84 2.46 6.84 5.98 0 4.06-2.17 6.88-5 6.88-1 0-2.16-.54-2.52-1.18 0 0-.6 2.36-.73 2.82-.22.83-.65 1.67-1.04 2.32.79.24 1.62.37 2.49.37 5.46 0 9.04-3.64 9.04-7.87C21.99 5.65 18.4 2 12.94 2h-.9z"/></svg>
+        Pinterest
+      </a>
+    </section>
+
+    <!-- Carte -->
+    <section class="panel map" aria-labelledby="map">
+      <h2 id="map" class="section-title" data-default="true">🗺️ Région de culture</h2>
+      <h2 class="section-title" data-alt="true">🗺️ Le lieu où le vent se souvient</h2>
+      <iframe src="https://maps.google.com/maps?q=Germany&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:420px;border:0;border-radius:12px"></iframe>
+    </section>
+
+    <!-- Politique d’expédition -->
+    <section id="shipping" class="panel" aria-labelledby="shipping-title">
+      <h2 id="shipping-title" class="section-title" data-default="true">📦 Livraison — politique</h2>
+      <h2 class="section-title" data-alt="true">📦 Comment voyagent les biens</h2>
+      <ul class="small" style="margin:0;padding-left:18px" data-default="true">
+        <li><strong>Suède :</strong> 49 SEK · Livraison offerte dès 500 SEK.</li>
+        <li><strong>UE/International :</strong> <span id="dynamicShipping">Tarifs dynamiques via Sendcloud (calculés à la commande)</span>. Livraison offerte dès 1000 SEK.</li>
+        <li><strong>Suivi :</strong> Oui, suivi par défaut.</li>
+        <li><strong>Délai de préparation :</strong> 1–2 jours ouvrés. Expédition depuis Ryd (commune de Tingsryd).</li>
+      </ul>
+      <ul class="small" style="margin:0;padding-left:18px" data-alt="true">
+        <li><strong>Suède :</strong> 49 SEK · Offert dès 500 SEK.</li>
+        <li><strong>UE/Au‑delà :</strong> Calculé à l’étape suivante ; offert dès 1000 SEK.</li>
+        <li><strong>Trace :</strong> Chaque colis porte sa rune.</li>
+        <li><strong>Temps :</strong> 1–2 jours ouvrés avant le départ. Expédié de Ryd, Tingsryd.</li>
+      </ul>
+    </section>
+
+    <section id="returns" class="panel" aria-labelledby="returns-title">
+      <h2 id="returns-title" class="section-title" data-default="true">↩️ Retours & échanges</h2>
+      <h2 class="section-title" data-alt="true">↩️ Quand le goût prend une autre route</h2>
+      <p class="small" data-default="true"><em>« Pas conquis ? Offrez‑le à quelqu’un qui le sera peut‑être ! »</em></p>
+      <p class="small" data-alt="true"><em>« Plante partagée — joie partagée. »</em></p>
+      <ul class="small" style="margin:0;padding-left:18px" data-default="true">
+        <li>Droit de rétractation de 14 jours. Produit non ouvert.</li>
+        <li>Frais de retour à la charge du client. En cas d’acceptation : remboursement ou avoir.</li>
+        <li>Contactez‑nous avant tout retour : <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a></li>
+      </ul>
+      <ul class="small" style="margin:0;padding-left:18px" data-alt="true">
+        <li>14 jours pour laisser parler le cœur. Produit scellé pouvant revenir.</li>
+        <li>Vous assumez le coût du chemin. En cas d’accord : remboursement ou avoir.</li>
+        <li>Envoyez un mot avant d’envoyer : <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a></li>
+      </ul>
+    </section>
+
+    <section id="payment" class="panel" aria-labelledby="payment-title">
+      <h2 id="payment-title" class="section-title" data-default="true">💳 Paiement & sécurité</h2>
+      <h2 class="section-title" data-alt="true">💳 Liens et sauvegardes</h2>
+      <ul class="small" style="margin:0;padding-left:18px" data-default="true">
+        <li><strong>Parcours :</strong> Choisir livraison + taille → cliquer « Envoyer le lien de paiement » → saisir e‑mail + adresse → nous envoyons un lien <strong>Revolut</strong> unique.</li>
+        <li><strong>Après paiement :</strong> Nous emballons (nous pouvons filmer votre commande) et expédions avec suivi depuis Ryd (commune de Tingsryd).</li>
+        <li><strong>Sécurité :</strong> Paiement sur la page sécurisée de Revolut. Nous ne stockons aucune donnée de carte.</li>
+      </ul>
+      <ul class="small" style="margin:0;padding-left:18px" data-alt="true">
+        <li><strong>Rite :</strong> Choisir route et mesure → demander un lien → vous remplissez nom et refuge → <strong>Revolut</strong> ouvre la porte.</li>
+        <li><strong>Ensuite :</strong> Nous emballons sous bon regard (vidéo sur demande) et envoyons avec suivi.</li>
+        <li><strong>Garde :</strong> Paiement chez Revolut. Aucun talisman de carte chez nous.</li>
+      </ul>
+    </section>
+
+    <!-- À propos -->
+    <section id="about" class="panel" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title" data-default="true">À propos de nous</h2>
+      <h2 class="section-title" data-alt="true">Qui nous sommes quand la lumière change</h2>
+      <p data-default="true">Nous sourçons des délicatesses, thés, épices et autres produits de très haute qualité — souvent en quantités limitées qui varient avec les saisons. Depuis plus de 20 ans, nous préférons l’artisanat à la production de masse et avons tissé un réseau de cultivateurs et d’artisans partageant ces valeurs. Avec des pages comme celle‑ci, nous partageons ce que nous aimons : petits lots, grand soin, goût authentique.</p>
+      <p data-default="true">Si, comme nous, vous aimez ce petit supplément d’âme — abonnez‑vous à notre newsletter. Nous écrirons quand nous trouverons quelque chose qui mérite votre attention.</p>
+      <p data-alt="true">Nous cherchons et rassemblons ce qui porte soin et vérité du goût. Petites récoltes, grande délicatesse. Depuis deux décennies, nous marchons là où les mains avancent lentement. Ici, nous partageons des trouvailles qui veulent être partagées.</p>
+      <p data-alt="true">Si vous tendez l’oreille aux murmures — écrivez votre adresse dans la case. Nous appellerons quand quelque chose de nouveau voudra vous rencontrer.</p>
+      <div class="newsletter">
+        <input id="newsletterEmail" type="email" placeholder="Votre adresse e‑mail">
+        <button type="button" class="btn" onclick="openNewsletterModal()">S’abonner</button>
+      </div>
+      <p id="newsletterThanks" class="small" style="display:none;margin-top:.4rem;color:#16a34a">Merci ! Vous recevrez bientôt un e‑mail de confirmation.</p>
+    </section>
+  </main>
+
+  <!-- Barre d’achat -->
+  <div class="buy-panel" role="region" aria-label="Achat">
+    <span class="price" id="totalPrice">5 g – 125 SEK</span>
+    <button type="button" class="btn" onclick="openEmailCapture()">Envoyer le lien de paiement</button>
   </div>
-  <p id="newsletterThanks" class="small" style="display:none; color:#16a34a; margin-top:.4rem;">Merci ! Veuillez confirmer votre inscription par e-mail.</p>
-</footer>
 
-<!-- Modal Paiement -->
-<div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
-  <div class="modal-card" role="document">
-    <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Nous vous enverrons le lien de paiement par e-mail</h3>
-    <p class="small">Remplissez vos coordonnées. Nous vous enverrons un lien de paiement unique (Revolut) avec le récapitulatif de la commande.</p>
+  <!-- Modale e‑mail (paiement) -->
+  <div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
+    <div class="modal-card card" role="document">
+      <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Nous vous enverrons le lien de paiement par e‑mail</h3>
+      <p class="small">Remplissez les informations ci‑dessous et nous enverrons un lien de paiement unique (Revolut) + le récapitulatif de commande.</p>
 
-    <label class="small" for="fullName">Nom</label>
-    <input id="fullName" type="text" class="input" placeholder="Prénom et nom">
+      <label class="small" for="fullName" style="display:block;margin-top:.4rem">Nom</label>
+      <input id="fullName" type="text" placeholder="Nom et prénom" class="input">
 
-    <label class="small" for="emailInput">Adresse e-mail</label>
-    <input id="emailInput" type="email" class="input" placeholder="nom@exemple.fr">
+      <label class="small" for="emailInput" style="display:block;margin-top:.6rem">Adresse e‑mail</label>
+      <input id="emailInput" type="email" placeholder="nom@exemple.com" class="input">
 
-    <label class="small" for="addr1">Adresse</label>
-    <input id="addr1" type="text" class="input" placeholder="Rue et numéro">
-    <input id="addr2" type="text" class="input" placeholder="Appartement, c/o (optionnel)" style="margin-top:.4rem">
+      <label class="small" for="addr1" style="display:block;margin-top:.6rem">Adresse</label>
+      <input id="addr1" type="text" placeholder="Rue et numéro" class="input">
+      <input id="addr2" type="text" placeholder="Appartement, c/o (facultatif)" class="input" style="margin-top:.4rem">
 
-    <div style="display:flex; gap:.6rem; margin-top:.6rem">
-      <input id="postal" type="text" class="input" placeholder="Code postal" style="flex:0 0 120px">
-      <input id="city" type="text" class="input" placeholder="Ville" style="flex:1">
+      <div style="display:flex;gap:.6rem;margin-top:.6rem">
+        <input id="postal" type="text" placeholder="Code postal" class="input" style="flex:0 0 120px">
+        <input id="city" type="text" placeholder="Ville" class="input" style="flex:1">
+      </div>
+
+      <label class="small" for="country" style="display:block;margin-top:.6rem">Pays</label>
+      <input id="country" type="text" value="Suède" class="input">
+
+      <div class="modal-actions">
+        <button onclick="closeEmailCapture()" class="btn secondary">Annuler</button>
+        <button onclick="submitOrder()" class="btn">Envoyer</button>
+      </div>
+      <p id="emailThanks">Merci ! Vous allez recevoir un e‑mail avec le lien de paiement. 💌</p>
     </div>
-
-    <label class="small" for="country">Pays</label>
-    <input id="country" type="text" class="input" value="France">
-
-    <div class="modal-actions">
-      <button onclick="closeEmailCapture()" class="btn secondary">Annuler</button>
-      <button onclick="submitOrder()" class="btn">Envoyer</button>
-    </div>
-    <p id="emailThanks" class="small">Merci ! Vous recevrez bientôt un e-mail avec le lien de paiement. 💌</p>
   </div>
-</div>
 
-<!-- Modal Newsletter -->
-<div id="newsletterModal" aria-hidden="true" role="dialog" aria-labelledby="nlTitle" aria-modal="true">
-  <div class="modal-card" role="document">
-    <h3 id="nlTitle" class="section-title" style="margin:.2rem 0 .4rem">S’abonner à la newsletter</h3>
-    <p class="small">Nous n’écrivons que lorsque nous avons vraiment quelque chose d’intéressant à partager.</p>
+  <!-- Modale newsletter -->
+  <div id="newsletterModal" aria-hidden="true" role="dialog" aria-labelledby="nlTitle" aria-modal="true">
+    <div class="modal-card" role="document">
+      <h3 id="nlTitle" class="section-title" style="margin:.2rem 0 .4rem">S’abonner à la newsletter</h3>
+      <p class="small">Nous n’écrivons que lorsque nous avons vraiment quelque chose de spécial à partager.</p>
 
-    <label class="small" for="nlName">Nom (optionnel)</label>
-    <input id="nlName" type="text" class="input" placeholder="Prénom et nom">
+      <label class="small" for="nlName">Nom (facultatif)</label>
+      <input id="nlName" type="text" class="input" placeholder="Nom et prénom">
 
-    <label class="small" for="nlEmail">Adresse e-mail</label>
-    <input id="nlEmail" type="email" class="input" placeholder="nom@exemple.fr">
+      <label class="small" for="nlEmail">Adresse e‑mail</label>
+      <input id="nlEmail" type="email" class="input" placeholder="nom@exemple.com">
 
-    <label class="small" style="display:flex; gap:.5rem; align-items:flex-start; margin-top:.6rem;">
-      <input id="nlConsent" type="checkbox" style="margin-top:.3rem">
-      <span>J’accepte de recevoir la newsletter. Désabonnement possible à tout moment.</span>
-    </label>
+      <label class="small" style="display:flex; gap:.5rem; align-items:flex-start; margin-top:.6rem;">
+        <input id="nlConsent" type="checkbox" style="margin-top:.3rem">
+        <span>J’accepte de recevoir la newsletter. Désinscription possible à tout moment.</span>
+      </label>
 
-    <div class="modal-actions">
-      <button type="button" class="btn secondary" onclick="closeNewsletterModal()">Annuler</button>
-      <button type="button" class="btn" onclick="submitNewsletter()">S’abonner</button>
+      <div class="modal-actions">
+        <button type="button" class="btn secondary" onclick="closeNewsletterModal()">Annuler</button>
+        <button type="button" class="btn" onclick="submitNewsletter()">S’abonner</button>
+      </div>
+      <p id="newsletterThanksInline">Merci ! Veuillez confirmer votre inscription par e‑mail. 💌</p>
     </div>
-    <p id="newsletterThanksInline" class="small">Merci ! Veuillez confirmer votre inscription par e-mail. 💌</p>
   </div>
-</div>
 
-<script>
-const prices = {5:125, 10:250, 25:600, 100:2000};
+  <footer class="container" id="contact">
+    <div class="footer-links small">
+      <a href="#shipchoose">Choisir la livraison</a>
+      <a href="#shipping">Livraison — Politique</a>
+      <a href="#returns">Retours & Échanges</a>
+      <a href="#payment">Paiement & Sécurité</a>
+      <a href="#about">À propos</a>
+      <a href="#top">Haut de page ↑</a>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:14px">
+      <span aria-label="Payment by Revolut" title="Payment by Revolut" style="display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:999px;padding:.45rem .8rem;background:#fff">
+        <svg width="78" height="18" viewBox="0 0 78 18" role="img" aria-label="Revolut" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="14" font-size="14" font-weight="700" fill="#111827" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Revolut</text>
+        </svg>
+        <span class="small" style="color:#111827">Payment by Revolut</span>
+      </span>
+    </div>
+    <p class="small" style="margin-top:.6rem;text-align:center">© <span id="year"></span> Dried Violet Flowers</p>
+  </footer>
 
-function updatePrice(){
-  const g = document.getElementById('sizeSelect').value;
-  document.getElementById('totalPrice').textContent = `${g} g – ${prices[g]} SEK`;
-}
+  <!-- Lightbox -->
+  <div id="lightbox" aria-hidden="true" role="dialog" aria-label="Visionneuse d’images (lightbox)">
+    <span class="close" onclick="closeLightbox()" aria-label="Fermer">&times;</span>
+    <span class="nav prev" onclick="prevImage()" aria-label="Précédente">‹</span>
+    <img id="lightbox-img" alt="Image produit agrandie">
+    <span class="nav next" onclick="nextImage()" aria-label="Suivante">›</span>
+  </div>
 
-function openNewsletterModal(){
-  const m = document.getElementById('newsletterModal');
-  const pageEmail = document.getElementById('newsletterEmail')?.value?.trim();
-  if(pageEmail) document.getElementById('nlEmail').value = pageEmail;
-  m.style.display = 'flex';
-  m.setAttribute('aria-hidden','false');
-  setTimeout(()=>document.getElementById('nlEmail').focus(), 50);
-}
-function closeNewsletterModal(){
-  const m = document.getElementById('newsletterModal');
-  m.style.display = 'none';
-  m.setAttribute('aria-hidden','true');
-}
-async function submitNewsletter(){
-  const name = document.getElementById('nlName').value.trim();
-  const email = document.getElementById('nlEmail').value.trim();
-  const consent = document.getElementById('nlConsent').checked;
+  <!-- Scripts appli -->
+  <script>
+    // Année dans le pied de page
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-    alert('Veuillez saisir une adresse e-mail valide.'); return;
-  }
-  if(!consent){
-    alert('Veuillez accepter de recevoir la newsletter.'); return;
-  }
+    // Prix + GA
+    const prices = {5:125, 10:250, 25:600, 100:2000};
+    function updatePrice(){
+      const g = document.getElementById('sizeSelect').value;
+      document.getElementById('totalPrice').textContent = `${g} g – ${prices[g]} SEK`;
+      if (typeof trackSelectSize === 'function') trackSelectSize(g);
+    }
 
-  try{
-    // Envoi vers le backend si nécessaire :
-    // await fetch("/newsletter/subscribe", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ name, email, lang:"fr" }) });
-    document.getElementById('newsletterThanksInline').style.display = 'block';
-    setTimeout(()=>{ closeNewsletterModal(); }, 1400);
-    const thanks = document.getElementById('newsletterThanks');
-    if (thanks) { thanks.style.display='block'; setTimeout(()=>{ thanks.style.display='none'; }, 2000); }
-  }catch(e){
-    alert('Une erreur est survenue. Veuillez réessayer plus tard.');
-  }
-}
+    /* ========= NEWSLETTER ========= */
+    function openNewsletterModal(){
+      const m = document.getElementById('newsletterModal');
+      const pageEmail = document.getElementById('newsletterEmail')?.value?.trim();
+      if(pageEmail) document.getElementById('nlEmail').value = pageEmail;
+      m.style.display = 'flex';
+      m.setAttribute('aria-hidden','false');
+      setTimeout(()=>document.getElementById('nlEmail').focus(), 50);
+    }
+    function closeNewsletterModal(){
+      const m = document.getElementById('newsletterModal');
+      m.style.display = 'none';
+      m.setAttribute('aria-hidden','true');
+    }
+    async function submitNewsletter(){
+      const name = document.getElementById('nlName').value.trim();
+      const email = document.getElementById('nlEmail').value.trim();
+      const consent = document.getElementById('nlConsent').checked;
 
-function openEmailCapture(){
-  const m = document.getElementById('emailModal');
-  m.style.display='flex'; m.setAttribute('aria-hidden','false');
-  const ty = document.getElementById('emailThanks'); if (ty) ty.style.display='none';
-  setTimeout(()=>document.getElementById('fullName').focus(),50);
-}
-function closeEmailCapture(){
-  const m = document.getElementById('emailModal');
-  m.style.display='none'; m.setAttribute('aria-hidden','true');
-}
+      if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+        alert('Veuillez saisir une adresse e‑mail valide.'); return;
+      }
+      if(!consent){
+        alert('Veuillez accepter de recevoir la newsletter.'); return;
+      }
 
-async function submitOrder(){
-  const grams = document.getElementById('sizeSelect').value;
-  const price = prices[grams];
-  const fullName = document.getElementById('fullName').value.trim();
-  const email = document.getElementById('emailInput').value.trim();
-  const addr1 = document.getElementById('addr1').value.trim();
-  const addr2 = document.getElementById('addr2').value.trim();
-  const postal = document.getElementById('postal').value.trim();
-  const city = document.getElementById('city').value.trim();
-  const country = document.getElementById('country').value.trim();
+      if (typeof gtag === 'function') {
+        gtag('event', 'newsletter_subscribe', {
+          content_language: (document.documentElement.lang || 'fr'),
+          has_name: !!name
+        });
+      }
 
-  if(!fullName || !email || !addr1 || !postal || !city || !country){
-    alert('Veuillez remplir le nom, l’e-mail et l’adresse complète.'); return;
-  }
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-    alert('Veuillez saisir une adresse e-mail valide.'); return;
-  }
+      try{
+        // À raccorder à votre backend si besoin :
+        // await fetch("/newsletter/subscribe", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ name, email, lang:(document.documentElement.lang||'fr') }) });
+        document.getElementById('newsletterThanksInline').style.display = 'block';
+        setTimeout(()=>{ closeNewsletterModal(); }, 1400);
+        const thanks = document.getElementById('newsletterThanks');
+        if (thanks) { thanks.style.display='block'; setTimeout(()=>{ thanks.style.display='none'; }, 2000); }
+      }catch(e){
+        alert('Une erreur est survenue. Merci de réessayer plus tard.');
+      }
+    }
 
-  const shippingMethod = 'EU_dynamic';
+    /* ========= MODALE PAIEMENT ========= */
+    function openEmailCapture(){
+      const m = document.getElementById('emailModal');
+      m.style.display='flex'; m.setAttribute('aria-hidden','false');
+      const ty = document.getElementById('emailThanks'); if (ty) ty.style.display='none';
+      setTimeout(()=>document.getElementById('fullName').focus(),50);
+    }
+    function closeEmailCapture(){
+      const m = document.getElementById('emailModal');
+      m.style.display='none'; m.setAttribute('aria-hidden','true');
+    }
 
-  const payload = {
-    product_sku:"AB00439",
-    product_name:"Violettes odorantes séchées – Viola odorata",
-    grams:Number(grams),
-    price_sek:Number(price),
-    language:"fr",
-    shipping_method:shippingMethod,
-    full_name:fullName, email, address1:addr1, address2:addr2, postal, city, country,
-    utm_source:"onsite", utm_medium:"email_link_request", utm_campaign:"checkout"
-  };
+    // Envoi de commande (backend factice)
+    async function submitOrder(){
+      const grams = document.getElementById('sizeSelect').value;
+      const price = prices[grams];
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+      const addr1 = document.getElementById('addr1').value.trim();
+      const addr2 = document.getElementById('addr2').value.trim();
+      const postal = document.getElementById('postal').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const country = document.getElementById('country').value.trim();
+      if(!fullName || !email || !addr1 || !postal || !city || !country){
+        alert('Veuillez renseigner nom, e‑mail et adresse (au minimum : ligne 1, code postal, ville, pays).'); return;
+      }
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+        alert('Veuillez saisir une adresse e‑mail valide.'); return;
+      }
+      if (typeof trackEmailCapture === 'function') trackEmailCapture(price, grams);
+      const shipEl = document.querySelector('input[name="shipping"]:checked');
+      const shippingMethod = shipEl ? shipEl.value : 'SE_tracked_49';
+      const payload = { product_sku:"AB00439", product_name:"Violettes odorantes séchées – Viola odorata", grams:Number(grams), price_sek:Number(price), language:(document.documentElement.lang||'fr'), shipping_method:shippingMethod, full_name:fullName, email, address1:addr1, address2:addr2, postal, city, country, utm_source:"onsite", utm_medium:"email_link_request", utm_campaign:"checkout" };
+      try{
+        await fetch("YOUR_APPS_SCRIPT_WEBAPP_URL", { method:"POST", mode:"no-cors", headers:{ "Content-Type":"application/json" }, body:JSON.stringify(payload) });
+        document.getElementById('emailThanks').style.display='block';
+        setTimeout(()=>{ closeEmailCapture(); }, 1400);
+      }catch(e){ alert('L’envoi a échoué. Merci de réessayer bientôt.'); }
+    }
 
-  try{
-    await fetch("YOUR_APPS_SCRIPT_WEBAPP_URL", {
-      method:"POST", mode:"no-cors",
-      headers:{ "Content-Type":"application/json" },
-      body:JSON.stringify(payload)
+    // Lightbox
+    const galleryImages = ["/SweetViolaTea.webp","/SweetViolaTea1.webp","/SweetViolaTea2.webp","/SweetViolaTea3.webp"];
+    let currentIndex = 0;
+    function openLightbox(index){ currentIndex = index; const lb=document.getElementById('lightbox'); const img=document.getElementById('lightbox-img'); img.src = galleryImages[currentIndex]; lb.style.display='flex'; lb.setAttribute('aria-hidden','false'); if (typeof trackGalleryOpen === 'function') trackGalleryOpen(index); }
+    function closeLightbox(){ const lb=document.getElementById('lightbox'); lb.style.display='none'; lb.setAttribute('aria-hidden','true'); }
+    function nextImage(){ currentIndex = (currentIndex + 1) % galleryImages.length; document.getElementById('lightbox-img').src = galleryImages[currentIndex]; }
+    function prevImage(){ currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length; document.getElementById('lightbox-img').src = galleryImages[currentIndex]; }
+    document.addEventListener('keydown', (e)=>{ const lb=document.getElementById('lightbox'); if(lb.style.display!=='flex') return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') nextImage(); if(e.key==='ArrowLeft') prevImage(); });
+    document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id==='lightbox' || e.target.classList.contains('close')) closeLightbox(); });
+
+    // Fermer modales par Échap/overlay
+    ['emailModal','newsletterModal'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener('click', (e)=>{ if(e.target.id===id){ id==='emailModal' ? closeEmailCapture() : closeNewsletterModal(); } });
     });
-    document.getElementById('emailThanks').style.display='block';
-    setTimeout(()=>{ closeEmailCapture(); }, 1400);
-  }catch(e){ alert('Échec de l’envoi. Veuillez réessayer.'); }
-}
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape'){
+        const em = document.getElementById('emailModal');
+        const nm = document.getElementById('newsletterModal');
+        if(em && em.style.display==='flex') closeEmailCapture();
+        if(nm && nm.style.display==='flex') closeNewsletterModal();
+      }
+    });
+  </script>
 
-// Fermeture modals (clic extérieur / touche Échap)
-['emailModal','newsletterModal'].forEach(id=>{
-  const el = document.getElementById(id);
-  if(!el) return;
-  el.addEventListener('click', (e)=>{ if(e.target.id===id){ id==='emailModal' ? closeEmailCapture() : closeNewsletterModal(); } });
-});
-document.addEventListener('keydown', (e)=>{
-  if(e.key==='Escape'){
-    const em = document.getElementById('emailModal');
-    const nm = document.getElementById('newsletterModal');
-    if(em && em.style.display==='flex') closeEmailCapture();
-    if(nm && nm.style.display==='flex') closeNewsletterModal();
+  <!-- π + backdoor + splash -->
+  <button class="pi-trigger" id="piTrigger" title="π" aria-hidden="true">π</button>
+  <script>
+    (function () {
+      const KEY = "backdoorActive";
+      const html = document.documentElement;
+      const trigger = document.getElementById("piTrigger");
+      const exitBtn = document.getElementById("exitDark");
+      const splash = document.getElementById("darkSplash");
+      const SPLASH_MS = 2000;
+
+      // Préchargement GIF
+      let splashReady = false;
+      const splashImg = new Image();
+      splashImg.onload = () => { splashReady = true; };
+      splashImg.src = "/cat-halloween.gif";
+
+      function showSplash(){
+        if (!splash) return;
+        splash.style.backgroundImage = 'url("/cat-halloween.gif")';
+        splash.style.display = 'block';
+        void splash.offsetWidth;
+        splash.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        if (typeof trackSplashShown === 'function') trackSplashShown();
+      }
+      function hideSplash(afterMs = SPLASH_MS){
+        if (!splash) return;
+        setTimeout(()=>{
+          splash.classList.add('hide');
+          splash.classList.remove('show');
+          setTimeout(()=>{
+            splash.style.display = 'none';
+            splash.classList.remove('hide');
+            document.body.style.overflow = '';
+          }, 400);
+        }, afterMs);
+      }
+
+      function setDark(on){
+        html.classList.toggle('dark', on);
+        try { sessionStorage.setItem(KEY, on ? "1" : "0"); } catch(e){}
+        if (typeof trackPiToggle === 'function') trackPiToggle(on ? "on" : "off");
+      }
+
+      function hasModifier(evt){
+        const mac = navigator.platform.toUpperCase().includes("MAC");
+        return (mac ? evt.metaKey : evt.ctrlKey) && evt.altKey;
+      }
+
+      // Mobile : appui long (0,8 s)
+      let touchTimer = null;
+      const LONG_MS = 800;
+      trigger.addEventListener('touchstart', ()=>{ touchTimer = setTimeout(()=> toggleDark(), LONG_MS); }, {passive:true});
+      trigger.addEventListener('touchend', ()=>{ clearTimeout(touchTimer); }, {passive:true});
+      trigger.addEventListener('touchmove', ()=>{ clearTimeout(touchTimer); }, {passive:true});
+
+      // Desktop : modif + clic
+      trigger.addEventListener('click', (e) => {
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouch) return;
+        if (!hasModifier(e)) return;
+        e.preventDefault();
+        toggleDark();
+      });
+
+      exitBtn.addEventListener('click', ()=>{ setDark(false); });
+
+      function toggleDark(){
+        const turningOn = !html.classList.contains('dark');
+        setDark(turningOn);
+        if (turningOn){ showSplash(); hideSplash(SPLASH_MS); }
+      }
+
+      // Flag ?alt=1 → dark + splash
+      const params = new URLSearchParams(location.search);
+      if (params.get("alt") === "1" && !html.classList.contains('dark')) {
+        setDark(true);
+        showSplash(); hideSplash(SPLASH_MS);
+      }
+
+      // Si dark déjà actif, montrer un bref splash
+      try {
+        if (sessionStorage.getItem(KEY) === "1") {
+          html.classList.add("dark");
+          showSplash(); hideSplash(SPLASH_MS);
+        }
+      } catch (e) {}
+
+      // Sync visibilité alt/default
+      const applyVisibility = () => {
+        const isDark = html.classList.contains('dark');
+        document.querySelectorAll('[data-alt="true"]').forEach(el => { el.style.display = isDark ? '' : 'none'; });
+        document.querySelectorAll('[data-default="true"]').forEach(el => { el.style.display = isDark ? 'none' : ''; });
+      };
+      const obs = new MutationObserver(applyVisibility);
+      obs.observe(html, { attributes: true, attributeFilter: ['class'] });
+      applyVisibility();
+    })();
+  </script>
+
+  <!-- Données structurées : Produit -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Violettes odorantes séchées – Viola odorata",
+    "description":"Fleurs de violette séchées, récoltées à la main en Allemagne. Floralité subtile et luxueuse. Produites sans engrais ni pesticides.",
+    "image":[
+      "https://www.driedvioletflowers.com/SweetViolaTea.webp",
+      "https://www.driedvioletflowers.com/SweetViolaTea1.webp",
+      "https://www.driedvioletflowers.com/SweetViolaTea2.webp",
+      "https://www.driedvioletflowers.com/SweetViolaTea3.webp"
+    ],
+    "brand":{"@type":"Brand","name":"Dried Violet Flowers"},
+    "sku":"AB00439",
+    "category":"HerbalTea",
+    "additionalProperty":[
+      {"@type":"PropertyValue","name":"À consommer de préférence avant","value":"2026-06"},
+      {"@type":"PropertyValue","name":"Lot","value":"AB00439"},
+      {"@type":"PropertyValue","name":"Méthode de culture","value":"Produites sans engrais ni pesticides"}
+    ],
+    "offers":{
+      "@type":"AggregateOffer",
+      "priceCurrency":"SEK",
+      "lowPrice":"125",
+      "highPrice":"2000",
+      "offerCount":"4",
+      "offers":[
+        {"@type":"Offer","price":"125","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/fr/#size-5","itemCondition":"https://schema.org/NewCondition"},
+        {"@type":"Offer","price":"250","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/fr/#size-10","itemCondition":"https://schema.org/NewCondition"},
+        {"@type":"Offer","price":"600","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/fr/#size-25","itemCondition":"https://schema.org/NewCondition"},
+        {"@type":"Offer","price":"2000","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/fr/#size-100","itemCondition":"https://schema.org/NewCondition"}
+      ]
+    }
   }
-});
-</script>
+  </script>
 
+  <!-- Données structurées : FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Comment préparer un thé à partir de violettes séchées ?","acceptedAnswer":{"@type":"Answer","text":"Utilisez 1 g pour 100 ml d’eau à 85 °C pendant environ 10 minutes. La saveur est subtile — ajustez le temps et la quantité à votre goût."}},
+      {"@type":"Question","name":"Le produit est‑il biologique ?","acceptedAnswer":{"@type":"Answer","text":"Il est produit sans engrais ni pesticides, mais ne possède pas de certification biologique."}},
+      {"@type":"Question","name":"Comment conserver les fleurs ?","acceptedAnswer":{"@type":"Answer","text":"Au sec, à l’abri de la lumière et hermétiquement pour préserver l’arôme."}},
+      {"@type":"Question","name":"Combien de tasses par gramme ?","acceptedAnswer":{"@type":"Answer","text":"Environ cinq tasses par gramme pour une infusion légère. Vous pouvez ajuster la force."}},
+      {"@type":"Question","name":"Quels sont les effets sur la santé ?","acceptedAnswer":{"@type":"Answer","text":"Usages traditionnels : voies respiratoires/toux, calme/sommeil, légère inflammation, peau. Recherche : limitée et variable. Non destiné à un traitement médical. Aperçu : https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata"}}
+    ]
+  }
+  </script>
 </body>
 </html>
-
