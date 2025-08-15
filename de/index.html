@@ -1,246 +1,796 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Getrocknete Duftveilchen – Viola odorata</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-:root{
-  --panel:#fff; --ink:#111; --line:#ccc;
-}
-html.dark{
-  --panel:#181a1f; --ink:#e2e2e2; --line:#444;
-}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0;line-height:1.5;color:var(--ink);background:#fff;}
-.section-title{font-size:1.25rem;margin:0 0 .5rem;}
-.btn{
-  background:#111;color:#fff;border:none;padding:.6rem 1.2rem;
-  border-radius:8px;cursor:pointer;font-weight:600;
-}
-.btn.secondary{background:#777;}
-.small{font-size:.9rem;color:#444;}
-.input{ width:100%; padding:.7rem; border:1px solid var(--line); border-radius:10px; background:#fff; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getrocknete Duftveilchen – Viola odorata | Handgepflückt | Limitierte Menge</title>
+  <meta name="description" content="Getrocknete Veilchenblüten (Viola odorata), handgepflückt in Deutschland und ohne Dünger oder Pestizide produziert. Subtile, luxuriöse Blütennoten. Kostenfreier Versand in Schweden ab 500 SEK.">
 
-/* Modal (Zahlung + Newsletter) */
-#emailModal, #newsletterModal{
-  position:fixed; inset:0; display:none; z-index:1200;
-  align-items:center; justify-content:center; padding:16px;
-  background:rgba(0,0,0,.55); backdrop-filter:blur(4px);
-}
-html.dark #emailModal, html.dark #newsletterModal{ background:rgba(0,0,0,.65); }
-.modal-card{
-  width:min(560px, 92vw); background:var(--panel);
-  border:1px solid var(--line); border-radius:14px; padding:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
-}
-.modal-actions{ display:flex; gap:.6rem; justify-content:flex-end; margin-top:.9rem; }
-label.small{ display:block; margin-top:.6rem; }
-#emailThanks, #newsletterThanksInline{ display:none; color:#16a34a; margin-top:.4rem; }
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://www.driedvioletflowers.com/de/">
+  <link rel="alternate" hreflang="sv" href="https://www.driedvioletflowers.com/">
+  <link rel="alternate" hreflang="en" href="https://www.driedvioletflowers.com/en/">
+  <link rel="alternate" hreflang="de" href="https://www.driedvioletflowers.com/de/">
+  <link rel="alternate" hreflang="fr" href="https://www.driedvioletflowers.com/fr/">
+  <link rel="alternate" hreflang="es" href="https://www.driedvioletflowers.com/es/">
+  <link rel="alternate" hreflang="x-default" href="https://www.driedvioletflowers.com/en/">
 
-/* Layout */
-main{padding:1rem;}
-footer{padding:1rem;background:#f6f7f9;}
-</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:site_name" content="Dried Violet Flowers">
+  <meta property="og:title" content="Getrocknete Duftveilchen – Viola odorata | Handgepflückt | Limitierte Menge">
+  <meta property="og:description" content="Luxuriös, subtil blumig. Produziert ohne Dünger und Pestizide. Kostenfreier Versand in Schweden ab 500 SEK.">
+  <meta property="og:url" content="https://www.driedvioletflowers.com/de/">
+  <meta property="og:image" content="https://www.driedvioletflowers.com/SweetViolaTea.webp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Getrocknete Duftveilchen – Viola odorata | Handgepflückt">
+  <meta name="twitter:description" content="Subtile Blütenaromen, handgepflückte Qualität. Kostenfreier Versand ab 500 SEK.">
+  <meta name="twitter:image" content="https://www.driedvioletflowers.com/SweetViolaTea.webp">
+
+  <!-- Splash-GIF vorladen -->
+  <link rel="preload" as="image" href="/cat-halloween.gif">
+
+  <!-- GA4 (deine ID beibehalten) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6ZKS3J0ZJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X6ZKS3J0ZJ');
+
+    const CONTENT_LANG = document.documentElement.lang || 'de';
+    gtag('set', 'user_properties', { content_language: CONTENT_LANG });
+    gtag('event', 'page_view', { content_language: CONTENT_LANG });
+
+    function trackSelectSize(g){ gtag('event', 'select_size', { value_grams: g, content_language: CONTENT_LANG }); }
+    function trackEmailCapture(price, grams){ gtag('event', 'email_capture_submit', { price_sek: price, value_grams: grams, content_language: CONTENT_LANG }); }
+    function trackShippingChoice(choice){ gtag('event', 'select_shipping_method', { method: choice, content_language: CONTENT_LANG }); }
+    function trackGalleryOpen(index){ gtag('event', 'open_lightbox_image', { index, content_language: CONTENT_LANG }); }
+    function trackPiToggle(state){ gtag('event', 'pi_backdoor_toggled', { state, content_language: CONTENT_LANG }); }
+    function trackSplashShown(){ gtag('event', 'pi_backdoor_splash_shown', { content_language: CONTENT_LANG }); }
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "sriurg95n5");
+  </script>
+
+  <style>
+    :root{
+      --ink:#0f172a; --muted:#334155; --bg:#ffffff; --panel:#f8fafc; --line:#e5e7eb;
+      --cta:#0ea5e9; --cta-ink:#ffffff; --link:#0ea5e9;
+    }
+    html.dark{
+      --ink:#eaeaea; --muted:#cbd5e1; --bg:#0b0b0d; --panel:#141418; --line:#26272b;
+      --cta:#38bdf8; --cta-ink:#0b0b0d; --link:#8ab4f8;
+    }
+
+    /* Alt/Normal umschalten */
+    [data-alt="true"]{ display:none; }
+    html.dark [data-alt="true"]{ display:block; }
+    html.dark [data-default="true"]{ display:none; }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--link);text-decoration:none}
+    .container{max-width:820px;margin:0 auto;padding:16px 16px 180px}
+    header.container{padding-bottom:8px}
+    .hero{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .hero-img{width:100%;border-radius:14px;display:block}
+    h1{color:var(--muted);margin:.75rem 0 .25rem;font-size:2rem}
+    .subtitle{color:#475569;margin:0 0 .75rem;font-style:italic}
+    html.dark .subtitle{ color:#93a3b8; }
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+    .section-title{color:var(--muted);font-weight:800;margin:1rem 0 .5rem}
+    .small{font-size:.95rem;color:#475569}
+    html.dark .small{ color:#93a3b8; }
+    select,button,input{font-size:1rem}
+    select{width:100%;padding:.6rem .8rem;border:1px solid var(--line);border-radius:10px;background:#fff}
+    html.dark select{ background:#0f1014; color:var(--ink); }
+    .btn{background:var(--cta);color:var(--cta-ink);border:0;border-radius:10px;padding:.7rem 1.1rem;font-weight:700;cursor:pointer}
+    .btn.secondary{background:#0b7fb6}
+    .buy-panel{position:fixed;left:0;right:0;bottom:0;background:#ffffffee;backdrop-filter:blur(6px);border-top:1px solid var(--line);padding:.9rem 1rem;display:flex;gap:.8rem;justify-content:space-between;align-items:center;z-index:20}
+    html.dark .buy-panel{ background:#0b0b0dee; }
+    .price{font-weight:800;color:var(--muted)}
+    .social a{display:inline-flex;align-items:center;gap:.4rem;margin-right:.6rem;padding:.4rem .6rem;border:1px solid var(--line);border-radius:10px;background:#fff}
+    html.dark .social a{ background:#0f1014; }
+    .social svg{width:18px;height:18px;display:inline-block}
+    .map iframe{width:100%;height:420px;border:0;border-radius:12px}
+    footer{margin:28px 0 140px;text-align:center;color:#64748b}
+    html.dark footer{ color:#93a3b8; }
+    .footer-links{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:.4rem}
+
+    /* Lightbox */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}
+    .gallery img{width:100%;border-radius:10px;cursor:pointer;transition:transform .2s}
+    .gallery img:hover{transform:scale(1.04)}
+    #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1000;align-items:center;justify-content:center}
+    #lightbox .close{position:absolute;top:16px;right:16px;color:#fff;font-size:32px;line-height:1;cursor:pointer}
+    #lightbox .nav{position:absolute;top:50%;transform:translateY(-50%);font-size:42px;color:#fff;cursor:pointer;user-select:none;padding:.4rem .6rem;background:rgba(0,0,0,.3);border-radius:8px}
+    #lightbox .prev{left:12px} #lightbox .next{right:12px}
+    #lightbox img{max-width:92vw;max-height:86vh;border-radius:12px}
+
+    /* π-Button */
+    .pi-trigger{
+      position:fixed; left:50%; bottom:12px; transform:translate(-50%,0);
+      width:36px; height:36px; border-radius:999px; z-index:1300;
+      background:var(--panel); color:#666; border:1px solid rgba(127,127,127,.25);
+      display:grid; place-items:center; cursor:pointer; user-select:none;
+      opacity:.55; transition:transform .15s ease, opacity .2s ease, background-color .2s ease;
+    }
+    .pi-trigger:hover{ opacity:.9; transform:translate(-50%,-1px); }
+    @media(max-width:640px){ .pi-trigger{ bottom:96px; } }
+
+    /* Exit (nur in dark) */
+    .exit-dark{
+      position:fixed; left:50%; top:12px; transform:translateX(-50%);
+      width:36px; height:36px; border-radius:999px; z-index:1300;
+      background:var(--panel); color:#666; border:1px solid rgba(127,127,127,.25);
+      display:none; place-items:center; cursor:pointer; user-select:none; opacity:.65;
+    }
+    html.dark .exit-dark{ display:grid; }
+
+    /* Splash */
+    #darkSplash{
+      position:fixed; inset:0; z-index:2000; display:none;
+      background:#000 center center / cover no-repeat;
+      opacity:0; transition: opacity .35s ease;
+    }
+    #darkSplash.show{ display:block; opacity:1; }
+    #darkSplash.hide{ opacity:0; }
+
+    /* ======= MODALS (NEWSLETTER + PAYMENT) ======= */
+    #emailModal, #newsletterModal{
+      position:fixed; inset:0; display:none; z-index:1200;
+      align-items:center; justify-content:center; padding:16px;
+      background:rgba(0,0,0,.55); backdrop-filter:blur(4px);
+    }
+    html.dark #emailModal, html.dark #newsletterModal{ background:rgba(0,0,0,.65); }
+    #emailModal .card, #newsletterModal .modal-card, #emailModal .modal-card{
+      width:min(560px, 92vw); background:var(--panel); color:var(--ink);
+      border:1px solid var(--line); border-radius:14px; padding:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    .modal-actions{ display:flex; gap:.6rem; justify-content:flex-end; margin-top:.9rem; }
+    .input{ width:100%; padding:.7rem; border:1px solid var(--line); border-radius:10px; background:#fff; }
+    html.dark .input{ background:#0f1014; color:var(--ink); }
+    label.small{ display:block; margin-top:.6rem; }
+    #emailThanks, #newsletterThanksInline{ display:none; color:#16a34a; margin-top:.4rem; }
+  </style>
 </head>
 <body>
+  <!-- SPLASH-OVERLAY -->
+  <div id="darkSplash" aria-hidden="true"></div>
 
-<main>
-  <h1 class="section-title">Getrocknete Duftveilchen – <em>Viola odorata</em></h1>
-  <p class="small">Duftende, sorgfältig getrocknete Veilchenblüten. Limitierte Menge.</p>
+  <!-- EXIT (zurück zu hell) -->
+  <button class="exit-dark" id="exitDark" title="Zurück zum Tageslicht" aria-hidden="true">☀</button>
 
-  <label class="small" for="sizeSelect">Größe wählen</label>
-  <select id="sizeSelect" onchange="updatePrice()" class="input" style="max-width:280px;">
-    <option value="5">5 g</option>
-    <option value="10">10 g</option>
-    <option value="25">25 g</option>
-    <option value="100">100 g</option>
-  </select>
-  <p id="totalPrice" style="margin:.6rem 0 1rem;">5 g – 125 SEK</p>
+  <header class="container hero" id="top">
+    <img src="/SweetViolaTea.webp" alt="Getrocknete Veilchenblüten – aufgebrühter Tee in der Tasse" class="hero-img" data-default="true">
+    <img src="/SweetViolaTea.webp" alt="Veilchen in der Dämmerung – Tee, der leise spricht" class="hero-img" data-alt="true">
 
-  <button onclick="openEmailCapture()" class="btn">Zahlungslink senden</button>
-</main>
+    <h1 data-default="true">Getrocknete Duftveilchen – <em>Viola odorata</em></h1>
+    <h2 data-alt="true">Duftveilchen – <em>Viola odorata</em> für jene, die die Zeichen des Tees lesen</h2>
 
-<footer>
-  <p class="small">Abonniere unseren Newsletter für Neuigkeiten und besondere Angebote.</p>
-  <div style="display:flex; gap:.6rem; max-width:520px; align-items:center;">
-    <input id="newsletterEmail" type="email" class="input" placeholder="deine@email.de">
-    <button type="button" class="btn" onclick="openNewsletterModal()">Abonnieren</button>
+    <p class="subtitle" data-default="true">Handgepflückt in Deutschland · Mindestens haltbar bis Juni 2026 · Produziert ohne Dünger und Pestizide · Limitierte Menge</p>
+    <p class="subtitle" data-alt="true">In der kühlen Morgenstunde gesammelt · Behält seine Kraft bis Juni 2026 · Gewachsen ohne fremde Mittel · Die Menge folgt dem Willen der Ernte</p>
+  </header>
+
+  <main class="container">
+    <section class="panel" data-alt="true" aria-live="polite">
+      <strong>🔮 Willkommen, wandernde Leserin, wandernder Leser.</strong> Hier sprechen wir leise mit dem Kraut: Lass den Atem der Veilchen dich zwischen die Tore von Ruhe und Wachen tragen.
+    </section>
+
+    <!-- Galerie -->
+    <section class="panel" aria-labelledby="gallery">
+      <h2 id="gallery" class="section-title" data-default="true">Bilder</h2>
+      <h2 class="section-title" data-alt="true">Spiegel und Erinnerungen</h2>
+      <div class="gallery">
+        <img src="/SweetViolaTea.webp" alt="Getrocknete Veilchenblüten – Hauptbild" onclick="openLightbox(0)">
+        <img src="/SweetViolaTea1.webp" alt="Getrocknete Veilchenblüten – Nahaufnahme" onclick="openLightbox(1)">
+        <img src="/SweetViolaTea2.webp" alt="Aufgegossener Tee aus Veilchenblüten" onclick="openLightbox(2)">
+        <img src="/SweetViolaTea3.webp" alt="Serviervorschlag für Veilchentee" onclick="openLightbox(3)">
+      </div>
+    </section>
+
+    <!-- Fakten -->
+    <section class="panel" aria-labelledby="facts">
+      <h2 id="facts" class="section-title" data-default="true">Fakten</h2>
+      <h2 class="section-title" data-alt="true">Was im Tageslicht gilt</h2>
+      <ul class="small" style="margin:0;padding-left:18px" data-default="true">
+        <li><strong>Herkunft:</strong> Deutschland</li>
+        <li><strong>Produzent:</strong> Tea & Coffee Factory</li>
+        <li><strong>Charge:</strong> AB00439 · <strong>Bestand:</strong> 900 g</li>
+        <li><strong>Verpackung:</strong> Recycelbares Papier</li>
+        <li><strong>Aufbewahrung:</strong> Trocken, dunkel, luftdicht</li>
+        <li><strong>Preis:</strong> 25 SEK/g (20 SEK/g beim Kauf von ≥ 500 g)</li>
+        <li><strong>Kurznotizen:</strong> Frühlingsgrüne Kräutrigkeit, warme runde Veilchennote, leichte Süße, seidig, langer sanfter Abgang.</li>
+      </ul>
+      <ul class="small" style="margin:0;padding-left:18px" data-alt="true">
+        <li><strong>Provenienz:</strong> Deutscher Boden und stille Winde.</li>
+        <li><strong>Hände dahinter:</strong> Tea & Coffee Factory — wache Hüter von Blatt und Blüte.</li>
+        <li><strong>Zeichen:</strong> Charge AB00439 · <strong>Vorrat:</strong> 900 g im gesegneten Dunkel.</li>
+        <li><strong>Begleiter:</strong> Papier, das wieder zu Papier wird.</li>
+        <li><strong>Rast:</strong> Trocken, schattig, verschlossen — wo das Aroma Wache hält.</li>
+        <li><strong>Wert:</strong> 25 SEK/g (20 SEK/g ab 500 g und mehr).</li>
+        <li><strong>Töne:</strong> Erster Hauch von Grün, warme Veilchenwärme, leise Süße, seidenweiche Textur, ein Abgang wie ein Flüstern in einer alten Halle.</li>
+      </ul>
+    </section>
+
+    <!-- Versand -->
+    <section class="panel" aria-labelledby="shipchoose">
+      <h2 id="shipchoose" class="section-title" data-default="true">🚚 Versand wählen</h2>
+      <h2 class="section-title" data-alt="true">🚚 Wege wählen</h2>
+      <p class="small" style="margin-top:0" data-default="true">Wähle eine Option. Exakte Preise für EU/international werden im Checkout über Sendcloud berechnet.</p>
+      <p class="small" style="margin-top:0" data-alt="true">Wähle deinen Weg. Die Kosten werden im nächsten Schritt gezählt — nach dem Willen der Karten.</p>
+      <div role="group" aria-label="Versandoptionen" class="small">
+        <label style="display:block;margin:.4rem 0"><input type="radio" name="shipping" value="SE_tracked_49" checked onchange="trackShippingChoice('SE_tracked_49')"> <span data-default="true">Schweden – Sendungsverfolgung 49 SEK (frei ab 500 SEK)</span><span data-alt="true">Schweden – Gezeichneter Pfad 49 SEK (frei ab 500 SEK)</span></label>
+        <label style="display:block;margin:.4rem 0"><input type="radio" name="shipping" value="EU_dynamic" onchange="trackShippingChoice('EU_dynamic')"> <span data-default="true">EU – Dynamische Tarife (Sendcloud)</span><span data-alt="true">EU – Wege, die sich wandeln (Sendcloud)</span></label>
+        <label style="display:block;margin:.4rem 0"><input type="radio" name="shipping" value="INTL_dynamic" onchange="trackShippingChoice('INTL_dynamic')"> <span data-default="true">International – Dynamische Tarife (Sendcloud)</span><span data-alt="true">Jenseits der Grenzen – Wandelnde Wege (Sendcloud)</span></label>
+      </div>
+    </section>
+
+    <!-- Größe -->
+    <section aria-labelledby="size" class="panel">
+      <h2 id="size" class="section-title" data-default="true">📦 Menge wählen</h2>
+      <h2 class="section-title" data-alt="true">📦 Maß und Maßhalten</h2>
+      <select id="sizeSelect" aria-label="Menge wählen" onchange="updatePrice()">
+        <option value="5">5 g – 125 SEK</option>
+        <option value="10">10 g – 250 SEK</option>
+        <option value="25">25 g – 600 SEK</option>
+        <option value="100">100 g – 2000 SEK</option>
+      </select>
+      <p class="small" style="margin:.6rem 0 0" data-default="true">Einheitspreis: 25 SEK/g (20 SEK/g ab 500 g).</p>
+      <p class="small" style="margin:.6rem 0 0" data-alt="true">Der Preis hält Form: 25 SEK/g (20 SEK/g, wenn das Gewicht schwer wird, ab 500 g).</p>
+    </section>
+
+    <!-- Story / Sensorik -->
+    <section class="panel" aria-labelledby="story">
+      <h2 id="story" class="section-title" data-default="true">Über den Tee – Sensorik & Charakter</h2>
+      <h2 class="section-title" data-alt="true">Wesen des Tees — gelesen in Wärme und Wasser</h2>
+      <div data-default="true">
+        <p>Die getrockneten Veilchenblüten sind kleine, kompakte Knospen von 2–3 Millimetern — Violetttöne, gebrochen von grünen und gelben Stielen. Beim Öffnen begegnet dir eine stille, grüne Kräutrigkeit, in der eine warme Veilchennote bereits andeutet, was kommt. Beim Aufguss — 1 g je 100 ml, 85 °C, 10 Minuten — schwellen die Knospen sanft an, die Farben hellen zu Lavendel; die grünen und gelben Teile werden durchscheinend, fast gläsern. Der Duft wandert in ein pflanzlicheres Grün, während die Wärme des Veilchens als tiefe, runde Basis bleibt.</p>
+        <p>In der Tasse ist der Aufguss klar und goldschimmernd — nicht violett, doch mit leisem Geheimnis. Die Textur ist elegant und seidig; eine diskrete Viskosität trägt die Aromen über die Zunge. Das Geschmackbild ist fein abgestimmt: frühlingsgrüne Kräutrigkeit trifft auf warme, runde Veilche, die nie parfümiert wirkt, sondern zurückhaltend und edel bleibt. Eine leichte Süße bindet alles zusammen. Der Nachhall ist lang und sanft — ein blumiges Flüstern, das verweilt; in der leeren Tasse bleibt ein reiner Veilchenton wie das Echo von Ruhe.</p>
+        <p>Serviere dazu, was man auf einer Sushi‑Platte findet: fetter Fisch, Salz, eingelegter Ingwer und die klebrige Umami des Reises. Oder etwas Süßes und Knuspriges — etwa Baklava — wo die runde Blüte des Tees Honig und Nuss hebt, ohne zu konkurrieren.</p>
+        <p class="small"><strong>Brühtipp:</strong> 1 g je 100 ml · 85 °C · 10 Min. Zeit/Menge nach Geschmack anpassen. Trocken, dunkel, luftdicht lagern.</p>
+      </div>
+      <div data-alt="true">
+        <p>Die Veilchen liegen wie kleine Siegel, 2–3 Millimeter, violett mit grünen und gelben Stielen — Hüter eines warmen, leisen Tons. Brich die Versiegelung, und der Geist des Grüns steigt still auf. Beim Aufguss — 1 g je 100 ml, 85 °C, 10 Minuten — schwellen die Knospen, als erinnerten sie sich an einen Frühling. Farben hellen zu Lavendel; die Stiele werden beinahe glasig. Der Duft geht tiefer in die Kammern der Pflanze, und das Veilchen trägt Wärme wie eine Rune am Feuer.</p>
+        <p>In der Tasse: klares Gold, ein mildes Geheimnis. Die Textur ist Seidengewebe; sie trägt die Aromen über die Zunge wie eine stille Prozession. Die Töne sind sorgsam gesetzt: erster Seufzer von Grün trifft warme, runde Veilche, die nie Parfüm wird — nur anwesend und edel. Eine leichte Süße schließt den Kreis. Der Nachhall verweilt, wie ein Flüstern, das den Weg zurück kennt. In der leeren Tasse bleibt ein Echo — rein, veilchig, freundlich.</p>
+        <p>Kombiniere mit Tellern, auf denen Fett, Salz und eingelegter Ingwer spielen — die Karte des Sushi — oder mit etwas Süßem und Knusprigem wie den Lagen von Baklava, wo Honig und Nuss von der Blüte getragen werden — ohne Streit.</p>
+        <p class="small"><strong>Brühen:</strong> 1 g je 100 ml · 85 °C · 10 Min. Nach Gefallen anpassen. Lass den Tee trocken, dunkel, verschlossen ruhen.</p>
+      </div>
+    </section>
+
+    <!-- Gesundheit -->
+    <section class="panel" aria-labelledby="health">
+      <h2 id="health" class="section-title" data-default="true">🩺 Gesundheit — was sagen Quellen?</h2>
+      <h2 class="section-title" data-alt="true">🩺 Von Wirkung und Werk</h2>
+      <div class="small" data-default="true">
+        <p><strong>Zusammenfassung:</strong> Getrocknete Blüten von <em>Viola odorata</em> erscheinen in traditionellen Beschreibungen bei <strong>Husten/Atemwegen</strong>, <strong>Ruhe/Schlaf</strong>, <strong>milder Entzündung</strong> und <strong>Haut</strong>. Die moderne Forschung ist <strong>begrenzt</strong> und uneinheitlich. <strong>Nicht</strong> als medizinische Behandlung verwenden; sieh es als kulinarische und sensorische Erfahrung. Bei Gesundheitsfragen immer medizinischen Rat einholen.</p>
+        <ul style="margin:.6rem 0;padding-left:18px">
+          <li><strong>Atemwege & Husten:</strong> Traditionell in Tees/Sirupen beruhigend eingesetzt. Evidenz uneindeutig.</li>
+          <li><strong>Ruhe & Schlaf:</strong> Volksmedizinische Nutzung für Entspannung; Datenlage begrenzt, Wirkung subtil und subjektiv.</li>
+          <li><strong>Entzündung/Antioxidativ:</strong> Manche Laborbefunde deuten Mechanismen an; klinische Schlüsse unsicher.</li>
+          <li><strong>Haut:</strong> Traditionell äußerlich erwähnt; klinische Stütze begrenzt.</li>
+        </ul>
+        <p><strong>Quellenkritik:</strong> Viele Artikel wiederholen Traditionen ohne Primärnachweise. Für einen Überblick siehe <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank" rel="noopener">PubMed‑Suche „Viola odorata“</a>.</p>
+        <p><strong>Wichtig:</strong> Nicht in Schwangerschaft/Stillzeit oder zusammen mit Medikamenten ohne Rücksprache verwenden. Bei Unwohlsein/Allergie absetzen.</p>
+      </div>
+      <div class="small" data-alt="true">
+        <p><strong>Zusammenhalt:</strong> <em>Viola odorata</em> wird in alten Kräuterbüchern für Atem, Ruhe und Haut genannt. Das moderne Wissen ist dünn gewebt. <strong>Das ist keine Medizin</strong> — eher ein Ritus des Geschmacks. Frage Fachleute, wenn du zweifelst.</p>
+        <ul style="margin:.6rem 0;padding-left:18px">
+          <li><strong>Atemweg:</strong> Sirupe und Tees der Tradition; heutiges Wissen ist noch uneins.</li>
+          <li><strong>Rast:</strong> Volksgebrauch für Ruhe; Wirkung sanft, persönlich.</li>
+          <li><strong>Feuer & Rost:</strong> Labore sehen Spuren von Schutz; der Weg zum Menschen ist unklar.</li>
+          <li><strong>Haut:</strong> Alte Salben sprechen vom Veilchen; Belege sind wenige.</li>
+        </ul>
+        <p><strong>Ausrichtung:</strong> Suche Quellen mit Licht. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata" target="_blank" rel="noopener">PubMed</a> sammelt die Schriften.</p>
+        <p><strong>Umsicht:</strong> Meide in Schwangerschaft/Stillzeit oder mit Medikamenten ohne Rat. Brich ab bei der kleinsten Dissonanz.</p>
+      </div>
+    </section>
+
+    <!-- Quellen + Video -->
+    <section class="panel" aria-labelledby="refs">
+      <h2 id="refs" class="section-title" data-default="true">🧠 Andere schreiben darüber …</h2>
+      <h2 class="section-title" data-alt="true">🧠 Stimmen im Schatten der Bibliothek</h2>
+      <p data-default="true">Ein Blick in Quellen zu <strong>Viola odorata</strong> zeigt traditionelle Nutzung bei Husten, Haut und Ruhe. Die Evidenz ist gemischt: Viele Blogs nennen Vorteile ohne Primärquellen; manche Studien deuten antioxidative Effekte an. Fazit: mit Neugier probieren — nicht als Medizin — und stets quellkritisch bleiben.</p>
+      <p data-alt="true">Liest man am Rand, dient das Veilchen Husten, Haut und Rast. Viele Worte, dünnere Belege. Tritt behutsam: probiere neugierig, nicht als Heilung. Lass Quellenkritik deine Laterne sein.</p>
+      <div class="video" style="margin-top:.8rem">
+        <iframe src="https://www.youtube.com/embed/ArntqsUnERs" title="Aufguss von Veilchenblüten – Video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="panel" aria-labelledby="faq">
+      <h2 id="faq" class="section-title" data-default="true">❓ Häufige Fragen</h2>
+      <h2 class="section-title" data-alt="true">❓ Fragen, die im Kreis wiederkehren</h2>
+      <div data-default="true">
+        <details class="small"><summary><strong>Wie bereite ich Tee aus getrockneten Veilchenblüten zu?</strong></summary><div style="margin-top:.4rem">1 g je 100 ml Wasser bei 85 °C etwa 10 Minuten ziehen lassen. Der Geschmack ist subtil — Zeit und Menge nach Vorliebe anpassen.</div></details>
+        <details class="small"><summary><strong>Ist das Produkt bio?</strong></summary><div style="margin-top:.4rem">Es wird ohne Dünger und Pestizide produziert, trägt jedoch kein Bio‑Zertifikat.</div></details>
+        <details class="small"><summary><strong>Wie lagere ich die Blüten?</strong></summary><div style="margin-top:.4rem">Trocken, dunkel und luftdicht, um das Aroma zu bewahren.</div></details>
+        <details class="small"><summary><strong>Wie viele Tassen bekomme ich pro Gramm?</strong></summary><div style="margin-top:.4rem">Etwa fünf Tassen pro Gramm bei leichtem Aufguss. Gerne experimentieren.</div></details>
+        <details class="small"><summary><strong>Welche gesundheitliche Wirkung haben Veilchenblüten?</strong></summary><div style="margin-top:.4rem">Traditionell: Atemwege/Husten, Ruhe/Schlaf, milde Entzündung, Haut. Forschung: begrenzt und variabel. Nicht als medizinische Behandlung. Überblick auf PubMed.</div></details>
+      </div>
+      <div data-alt="true">
+        <details class="small"><summary><strong>Wie lese ich den Tee?</strong></summary><div style="margin-top:.4rem">1 g je 100 ml, 85 °C, 10 Minuten. Passe die Stärke deiner Hand an.</div></details>
+        <details class="small"><summary><strong>Ist der Anbau feierlich?</strong></summary><div style="margin-top:.4rem">Ohne Dünger und Pestizide, doch ohne Siegel des Zertifikats.</div></details>
+        <details class="small"><summary><strong>Wie lasse ich das Aroma wachen?</strong></summary><div style="margin-top:.4rem">Trocken. Schattig. Versiegelt. Dort hält der Duft Wache.</div></details>
+        <details class="small"><summary><strong>Wie viele Tassen aus dem Gewicht?</strong></summary><div style="margin-top:.4rem">Ungefähr fünf pro Gramm bei sanfter Infusion. Fühle dich heran.</div></details>
+        <details class="small"><summary><strong>Was sagt das Kraut zur Gesundheit?</strong></summary><div style="margin-top:.4rem">Die Tradition spricht, die Wissenschaft prüft. Ein Ritus des Geschmacks, keine Kur. Suche Rat, wenn du zweifelst.</div></details>
+      </div>
+    </section>
+
+    <!-- Teilen -->
+    <section class="panel social" aria-labelledby="share">
+      <h2 id="share" class="section-title" data-default="true">📤 Dieses Produkt teilen</h2>
+      <h2 class="section-title" data-alt="true">📤 Dieses Flüstern teilen</h2>
+      <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href));return false;" aria-label="Auf Facebook teilen">
+        <svg viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M22 12.06C22 6.49 17.52 2 11.94 2S2 6.49 2 12.06c0 4.99 3.66 9.13 8.44 9.94v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.62.77-1.62 1.56v1.87h2.77l-.44 2.9h-2.33V22c4.78-.81 8.44-4.95 8.44-9.94z"/></svg>
+        Facebook
+      </a>
+      <a href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(location.href));return false;" aria-label="Auf X teilen">
+        <svg viewBox="0 0 24 24" fill="#111" aria-hidden="true"><path d="M3 3h3.7l5.3 7.2L17.9 3H21l-7.8 10.5L21 21h-3.7l-6-8.2L6.1 21H3l8.2-10.8L3 3z"/></svg>
+        X
+      </a>
+      <a href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href));return false;" aria-label="Auf LinkedIn teilen">
+        <svg viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.7-2.2 3.6-2.2 3.8 0 4.5 2.5 4.5 5.8V24h-4v-7.1c0-1.7 0-3.9-2.4-3.9-2.4 0-2.8 1.8-2.8 3.8V24h-4V8z"/></svg>
+        LinkedIn
+      </a>
+      <a href="#" onclick="window.open('https://www.pinterest.com/pin/create/button/?url='+encodeURIComponent(location.href)+'&media='+encodeURIComponent(document.querySelector(\'img.hero-img\')?.src||location.href)+'&description='+encodeURIComponent(document.title));return false;" aria-label="Auf Pinterest teilen">
+        <svg viewBox="0 0 24 24" fill="#E60023" aria-hidden="true"><path d="M12.04 2C6.58 2 3 5.64 3 9.87c0 2.34 1.31 5.27 3.41 6.19.32.14.5.08.57-.22.06-.23.2-.81.27-1.05.09-.22.05-.33-.13-.54-.67-.78-1.21-2.21-1.21-3.56 0-3.44 2.73-6.76 7.43-6.76 4.04 0 6.84 2.46 6.84 5.98 0 4.06-2.17 6.88-5 6.88-1 0-2.16-.54-2.52-1.18 0 0-.6 2.36-.73 2.82-.22.83-.65 1.67-1.04 2.32.79.24 1.62.37 2.49.37 5.46 0 9.04-3.64 9.04-7.87C21.99 5.65 18.4 2 12.94 2h-.9z"/></svg>
+        Pinterest
+      </a>
+    </section>
+
+    <!-- Karte -->
+    <section class="panel map" aria-labelledby="map">
+      <h2 id="map" class="section-title" data-default="true">🗺️ Anbauregion</h2>
+      <h2 class="section-title" data-alt="true">🗺️ Der Ort, den der Wind erinnert</h2>
+      <iframe src="https://maps.google.com/maps?q=Germany&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:420px;border:0;border-radius:12px"></iframe>
+    </section>
+
+    <!-- Policy -->
+    <section id="shipping" class="panel" aria-labelledby="shipping-title">
+      <h2 id="shipping-title" class="section-title" data-default="true">📦 Versand & Lieferung — Richtlinien</h2>
+      <h2 class="section-title" data-alt="true">📦 Wie Waren reisen</h2>
+      <ul class="small" style="margin:0;padding-left:18px" data-default="true">
+        <li><strong>Schweden:</strong> 49 SEK · Kostenloser Versand ab 500 SEK.</li>
+        <li><strong>EU/International:</strong> <span id="dynamicShipping">Dynamische Tarife über Sendcloud (berechnet bei Bestellung)</span>. Kostenlos ab 1000 SEK.</li>
+        <li><strong>Sendungsverfolgung:</strong> Ja, standardmäßig verfolgt.</li>
+        <li><strong>Bearbeitungszeit:</strong> 1–2 Werktage. Versand aus Ryd, Gemeinde Tingsryd.</li>
+      </ul>
+      <ul class="small" style="margin:0;padding-left:18px" data-alt="true">
+        <li><strong>Schweden:</strong> 49 SEK · Frei ab 500 SEK.</li>
+        <li><strong>EU/Darüber hinaus:</strong> Im nächsten Schritt berechnet; frei ab 1000 SEK.</li>
+        <li><strong>Spur:</strong> Jedes Paket trägt seine Rune.</li>
+        <li><strong>Zeit:</strong> 1–2 Werktage, bevor die Reise beginnt. Abgang aus Ryd, Tingsryd.</li>
+      </ul>
+    </section>
+
+    <section id="returns" class="panel" aria-labelledby="returns-title">
+      <h2 id="returns-title" class="section-title" data-default="true">↩️ Rückgabe & Umtausch</h2>
+      <h2 class="section-title" data-alt="true">↩️ Wenn der Geschmack einen anderen Weg wählt</h2>
+      <p class="small" data-default="true"><em>„Nicht begeistert? Verschenke es an jemanden, der es sein könnte!“</em></p>
+      <p class="small" data-alt="true"><em>„Geteilte Pflanze — geteilte Freude.“</em></p>
+      <ul class="small" style="margin:0;padding-left:18px" data-default="true">
+        <li>Widerrufsrecht 14 Tage. Produkt muss ungeöffnet sein.</li>
+        <li>Rücksendekosten trägt der Kunde. Bei Genehmigung: Erstattung oder Guthaben.</li>
+        <li>Vor Rücksendung Kontakt: <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a></li>
+      </ul>
+      <ul class="small" style="margin:0;padding-left:18px" data-alt="true">
+        <li>14 Tage, damit das Herz spricht. Versiegelte Ware darf zurückkehren.</li>
+        <li>Du trägst die Kosten des Wegs. Bei Annahme: Erstattung oder Guthaben.</li>
+        <li>Sende ein Wort vor dem Senden: <a href="mailto:support@driedvioletflowers.com">support@driedvioletflowers.com</a></li>
+      </ul>
+    </section>
+
+    <section id="payment" class="panel" aria-labelledby="payment-title">
+      <h2 id="payment-title" class="section-title" data-default="true">💳 Zahlung & Sicherheit</h2>
+      <h2 class="section-title" data-alt="true">💳 Bänder und Schutz</h2>
+      <ul class="small" style="margin:0;padding-left:18px" data-default="true">
+        <li><strong>Ablauf:</strong> Versand + Größe wählen → „Zahlungslink senden“ klicken → E‑Mail + Adresse eintragen → wir senden einen einzigartigen <strong>Revolut</strong>-Zahlungslink.</li>
+        <li><strong>Nach der Zahlung:</strong> Wir packen (auf Wunsch filmen wir deine Bestellung) und versenden mit Sendungsverfolgung aus Ryd (Gemeinde Tingsryd).</li>
+        <li><strong>Sicherheit:</strong> Zahlung erfolgt auf der sicheren Seite von Revolut. Wir speichern keine Kartendaten.</li>
+      </ul>
+      <ul class="small" style="margin:0;padding-left:18px" data-alt="true">
+        <li><strong>Ritus:</strong> Weg und Maß wählen → um einen Link bitten → du füllst Namen und Herberge → <strong>Revolut</strong> öffnet das Tor.</li>
+        <li><strong>Danach:</strong> Wir packen unter gutem Blick (Film auf Wunsch) und senden mit Spur.</li>
+        <li><strong>Schutz:</strong> Zahlung bei Revolut. Keine Talismane der Karten bei uns.</li>
+      </ul>
+    </section>
+
+    <!-- Über uns -->
+    <section id="about" class="panel" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title" data-default="true">Über uns</h2>
+      <h2 class="section-title" data-alt="true">Wer wir sind, wenn das Licht sich ändert</h2>
+      <p data-default="true">Wir beschaffen Delikatessen, Tees, Gewürze und Ähnliches von besonders hoher Qualität — oft in kleinen, saisonal schwankenden Mengen. Seit über 20 Jahren wählen wir Handwerk statt Massenware und haben ein Netzwerk gleichgesinnter Anbauer und Veredler aufgebaut. Mit Seiten wie dieser teilen wir, was wir selbst schätzen: kleine Partien, große Sorgfalt, echter Geschmack.</p>
+      <p data-default="true">Wenn du — wie wir — neugierig auf das gewisse Etwas bist, abonniere unseren Newsletter. Wir melden uns, wenn wir etwas Neues finden, das deine Aufmerksamkeit verdient.</p>
+      <p data-alt="true">Wir suchen und sammeln, was Sorgfalt trägt und die Wahrheit des Geschmacks. Kleine Ernten, große Behutsamkeit. Seit zwei Jahrzehnten gehen wir dort, wo Hände langsam arbeiten. Hier teilen wir Funde, die geteilt werden wollen.</p>
+      <p data-alt="true">Wenn du nach dem Flüstern lauschst — schreib deine Adresse in das Feld. Wir rufen, wenn Neues begegnen will.</p>
+      <div class="newsletter">
+        <input id="newsletterEmail" type="email" placeholder="Deine E‑Mail‑Adresse">
+        <button type="button" class="btn" onclick="openNewsletterModal()">Abonnieren</button>
+      </div>
+      <p id="newsletterThanks" class="small" style="display:none;margin-top:.4rem;color:#16a34a">Danke! Du erhältst gleich eine Bestätigungs‑E‑Mail.</p>
+    </section>
+  </main>
+
+  <!-- Kaufleiste -->
+  <div class="buy-panel" role="region" aria-label="Kaufen">
+    <span class="price" id="totalPrice">5 g – 125 SEK</span>
+    <button type="button" class="btn" onclick="openEmailCapture()">Zahlungslink senden</button>
   </div>
-  <p id="newsletterThanks" class="small" style="display:none; color:#16a34a; margin-top:.4rem;">Danke! Bitte bestätige deine Anmeldung in der E‑Mail.</p>
-</footer>
 
-<!-- Zahlungsmodal -->
-<div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
-  <div class="modal-card" role="document">
-    <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Wir senden den Zahlungslink an deine E‑Mail</h3>
-    <p class="small">Fülle deine Daten aus. Wir schicken dir einen eindeutigen Zahlungslink (Revolut) und eine Bestellübersicht.</p>
+  <!-- E‑Mail‑Modal (Zahlungslink) -->
+  <div id="emailModal" aria-hidden="true" role="dialog" aria-labelledby="emailTitle" aria-modal="true">
+    <div class="modal-card card" role="document">
+      <h3 id="emailTitle" class="section-title" style="margin:.2rem 0 .4rem">Wir senden den Zahlungslink an deine E‑Mail</h3>
+      <p class="small">Fülle unten deine Daten aus, dann senden wir dir einen einzigartigen Zahlungslink (Revolut) + Bestellübersicht.</p>
 
-    <label class="small" for="fullName">Name</label>
-    <input id="fullName" type="text" class="input" placeholder="Vor- und Nachname">
+      <label class="small" for="fullName" style="display:block;margin-top:.4rem">Name</label>
+      <input id="fullName" type="text" placeholder="Vor- und Nachname" class="input">
 
-    <label class="small" for="emailInput">E‑Mail‑Adresse</label>
-    <input id="emailInput" type="email" class="input" placeholder="name@beispiel.de">
+      <label class="small" for="emailInput" style="display:block;margin-top:.6rem">E‑Mail‑Adresse</label>
+      <input id="emailInput" type="email" placeholder="name@beispiel.de" class="input">
 
-    <label class="small" for="addr1">Adresse</label>
-    <input id="addr1" type="text" class="input" placeholder="Straße und Hausnummer">
-    <input id="addr2" type="text" class="input" placeholder="Wohnung, c/o (optional)" style="margin-top:.4rem">
+      <label class="small" for="addr1" style="display:block;margin-top:.6rem">Adresse</label>
+      <input id="addr1" type="text" placeholder="Straße und Hausnummer" class="input">
+      <input id="addr2" type="text" placeholder="Wohnung, c/o (optional)" class="input" style="margin-top:.4rem">
 
-    <div style="display:flex; gap:.6rem; margin-top:.6rem">
-      <input id="postal" type="text" class="input" placeholder="PLZ" style="flex:0 0 120px">
-      <input id="city" type="text" class="input" placeholder="Ort" style="flex:1">
+      <div style="display:flex;gap:.6rem;margin-top:.6rem">
+        <input id="postal" type="text" placeholder="PLZ" class="input" style="flex:0 0 120px">
+        <input id="city" type="text" placeholder="Ort" class="input" style="flex:1">
+      </div>
+
+      <label class="small" for="country" style="display:block;margin-top:.6rem">Land</label>
+      <input id="country" type="text" value="Deutschland" class="input">
+
+      <div class="modal-actions">
+        <button onclick="closeEmailCapture()" class="btn secondary">Abbrechen</button>
+        <button onclick="submitOrder()" class="btn">Senden</button>
+      </div>
+      <p id="emailThanks">Danke! In Kürze erhältst du eine E‑Mail mit dem Zahlungslink. 💌</p>
     </div>
-
-    <label class="small" for="country">Land</label>
-    <input id="country" type="text" class="input" value="Deutschland">
-
-    <div class="modal-actions">
-      <button onclick="closeEmailCapture()" class="btn secondary">Abbrechen</button>
-      <button onclick="submitOrder()" class="btn">Senden</button>
-    </div>
-    <p id="emailThanks" class="small">Danke! In Kürze erhältst du eine E‑Mail mit dem Zahlungslink. 💌</p>
   </div>
-</div>
 
-<!-- Newsletter-Modal -->
-<div id="newsletterModal" aria-hidden="true" role="dialog" aria-labelledby="nlTitle" aria-modal="true">
-  <div class="modal-card" role="document">
-    <h3 id="nlTitle" class="section-title" style="margin:.2rem 0 .4rem">Newsletter abonnieren</h3>
-    <p class="small">Wir schreiben nur, wenn wir wirklich etwas Besonderes zu teilen haben.</p>
+  <!-- Newsletter‑Modal -->
+  <div id="newsletterModal" aria-hidden="true" role="dialog" aria-labelledby="nlTitle" aria-modal="true">
+    <div class="modal-card" role="document">
+      <h3 id="nlTitle" class="section-title" style="margin:.2rem 0 .4rem">Newsletter abonnieren</h3>
+      <p class="small">Wir schreiben nur, wenn wir wirklich etwas Besonderes zu teilen haben.</p>
 
-    <label class="small" for="nlName">Name (optional)</label>
-    <input id="nlName" type="text" class="input" placeholder="Vor- und Nachname">
+      <label class="small" for="nlName">Name (optional)</label>
+      <input id="nlName" type="text" class="input" placeholder="Vor- und Nachname">
 
-    <label class="small" for="nlEmail">E‑Mail‑Adresse</label>
-    <input id="nlEmail" type="email" class="input" placeholder="name@beispiel.de">
+      <label class="small" for="nlEmail">E‑Mail‑Adresse</label>
+      <input id="nlEmail" type="email" class="input" placeholder="name@beispiel.de">
 
-    <label class="small" style="display:flex; gap:.5rem; align-items:flex-start; margin-top:.6rem;">
-      <input id="nlConsent" type="checkbox" style="margin-top:.3rem">
-      <span>Ich willige ein, den Newsletter zu erhalten. Abmeldung jederzeit möglich.</span>
-    </label>
+      <label class="small" style="display:flex; gap:.5rem; align-items:flex-start; margin-top:.6rem;">
+        <input id="nlConsent" type="checkbox" style="margin-top:.3rem">
+        <span>Ich willige ein, den Newsletter zu erhalten. Abmeldung jederzeit möglich.</span>
+      </label>
 
-    <div class="modal-actions">
-      <button type="button" class="btn secondary" onclick="closeNewsletterModal()">Abbrechen</button>
-      <button type="button" class="btn" onclick="submitNewsletter()">Abonnieren</button>
+      <div class="modal-actions">
+        <button type="button" class="btn secondary" onclick="closeNewsletterModal()">Abbrechen</button>
+        <button type="button" class="btn" onclick="submitNewsletter()">Abonnieren</button>
+      </div>
+      <p id="newsletterThanksInline">Danke! Bitte bestätige deine Anmeldung per E‑Mail. 💌</p>
     </div>
-    <p id="newsletterThanksInline" class="small">Danke! Bitte bestätige deine Anmeldung per E‑Mail. 💌</p>
   </div>
-</div>
 
-<script>
-const prices = {5:125, 10:250, 25:600, 100:2000};
+  <footer class="container" id="contact">
+    <div class="footer-links small">
+      <a href="#shipchoose">Versand wählen</a>
+      <a href="#shipping">Versand & Lieferung</a>
+      <a href="#returns">Rückgabe & Umtausch</a>
+      <a href="#payment">Zahlung & Sicherheit</a>
+      <a href="#about">Über uns</a>
+      <a href="#top">Nach oben ↑</a>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:14px">
+      <span aria-label="Payment by Revolut" title="Payment by Revolut" style="display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:999px;padding:.45rem .8rem;background:#fff">
+        <svg width="78" height="18" viewBox="0 0 78 18" role="img" aria-label="Revolut" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="14" font-size="14" font-weight="700" fill="#111827" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Revolut</text>
+        </svg>
+        <span class="small" style="color:#111827">Payment by Revolut</span>
+      </span>
+    </div>
+    <p class="small" style="margin-top:.6rem;text-align:center">© <span id="year"></span> Dried Violet Flowers</p>
+  </footer>
 
-function updatePrice(){
-  const g = document.getElementById('sizeSelect').value;
-  document.getElementById('totalPrice').textContent = `${g} g – ${prices[g]} SEK`;
-}
+  <!-- Lightbox -->
+  <div id="lightbox" aria-hidden="true" role="dialog" aria-label="Bildanzeige (Lightbox)">
+    <span class="close" onclick="closeLightbox()" aria-label="Schließen">&times;</span>
+    <span class="nav prev" onclick="prevImage()" aria-label="Zurück">‹</span>
+    <img id="lightbox-img" alt="Vergrößertes Produktbild">
+    <span class="nav next" onclick="nextImage()" aria-label="Weiter">›</span>
+  </div>
 
-function openNewsletterModal(){
-  const m = document.getElementById('newsletterModal');
-  const pageEmail = document.getElementById('newsletterEmail')?.value?.trim();
-  if(pageEmail) document.getElementById('nlEmail').value = pageEmail;
-  m.style.display = 'flex';
-  m.setAttribute('aria-hidden','false');
-  setTimeout(()=>document.getElementById('nlEmail').focus(), 50);
-}
-function closeNewsletterModal(){
-  const m = document.getElementById('newsletterModal');
-  m.style.display = 'none';
-  m.setAttribute('aria-hidden','true');
-}
-async function submitNewsletter(){
-  const name = document.getElementById('nlName').value.trim();
-  const email = document.getElementById('nlEmail').value.trim();
-  const consent = document.getElementById('nlConsent').checked;
+  <!-- App Scripts -->
+  <script>
+    // Jahr im Footer
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-    alert('Bitte gib eine gültige E‑Mail‑Adresse ein.'); return;
-  }
-  if(!consent){
-    alert('Bitte stimme dem Erhalt des Newsletters zu.'); return;
-  }
+    // Preise + GA
+    const prices = {5:125, 10:250, 25:600, 100:2000};
+    function updatePrice(){
+      const g = document.getElementById('sizeSelect').value;
+      document.getElementById('totalPrice').textContent = `${g} g – ${prices[g]} SEK`;
+      if (typeof trackSelectSize === 'function') trackSelectSize(g);
+    }
 
-  try{
-    // Backend hier anbinden (optional):
-    // await fetch("/newsletter/subscribe", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ name, email, lang:"de" }) });
-    document.getElementById('newsletterThanksInline').style.display = 'block';
-    setTimeout(()=>{ closeNewsletterModal(); }, 1400);
-    const thanks = document.getElementById('newsletterThanks');
-    if (thanks) { thanks.style.display='block'; setTimeout(()=>{ thanks.style.display='none'; }, 2000); }
-  }catch(e){
-    alert('Etwas ist schiefgelaufen. Bitte versuche es später erneut.');
-  }
-}
+    /* ========= NEWSLETTER ========= */
+    function openNewsletterModal(){
+      const m = document.getElementById('newsletterModal');
+      const pageEmail = document.getElementById('newsletterEmail')?.value?.trim();
+      if(pageEmail) document.getElementById('nlEmail').value = pageEmail;
+      m.style.display = 'flex';
+      m.setAttribute('aria-hidden','false');
+      setTimeout(()=>document.getElementById('nlEmail').focus(), 50);
+    }
+    function closeNewsletterModal(){
+      const m = document.getElementById('newsletterModal');
+      m.style.display = 'none';
+      m.setAttribute('aria-hidden','true');
+    }
+    async function submitNewsletter(){
+      const name = document.getElementById('nlName').value.trim();
+      const email = document.getElementById('nlEmail').value.trim();
+      const consent = document.getElementById('nlConsent').checked;
 
-function openEmailCapture(){
-  const m = document.getElementById('emailModal');
-  m.style.display='flex'; m.setAttribute('aria-hidden','false');
-  const ty = document.getElementById('emailThanks'); if (ty) ty.style.display='none';
-  setTimeout(()=>document.getElementById('fullName').focus(),50);
-}
-function closeEmailCapture(){
-  const m = document.getElementById('emailModal');
-  m.style.display='none'; m.setAttribute('aria-hidden','true');
-}
+      if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+        alert('Bitte gib eine gültige E‑Mail‑Adresse ein.'); return;
+      }
+      if(!consent){
+        alert('Bitte stimme dem Erhalt des Newsletters zu.'); return;
+      }
 
-async function submitOrder(){
-  const grams = document.getElementById('sizeSelect').value;
-  const price = prices[grams];
-  const fullName = document.getElementById('fullName').value.trim();
-  const email = document.getElementById('emailInput').value.trim();
-  const addr1 = document.getElementById('addr1').value.trim();
-  const addr2 = document.getElementById('addr2').value.trim();
-  const postal = document.getElementById('postal').value.trim();
-  const city = document.getElementById('city').value.trim();
-  const country = document.getElementById('country').value.trim();
+      if (typeof gtag === 'function') {
+        gtag('event', 'newsletter_subscribe', {
+          content_language: (document.documentElement.lang || 'de'),
+          has_name: !!name
+        });
+      }
 
-  if(!fullName || !email || !addr1 || !postal || !city || !country){
-    alert('Bitte fülle Name, E‑Mail und vollständige Adresse aus.'); return;
-  }
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-    alert('Bitte gib eine gültige E‑Mail‑Adresse ein.'); return;
-  }
+      try{
+        // Hier ggf. Backend anbinden:
+        // await fetch("/newsletter/subscribe", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ name, email, lang:(document.documentElement.lang||'de') }) });
+        document.getElementById('newsletterThanksInline').style.display = 'block';
+        setTimeout(()=>{ closeNewsletterModal(); }, 1400);
+        const thanks = document.getElementById('newsletterThanks');
+        if (thanks) { thanks.style.display='block'; setTimeout(()=>{ thanks.style.display='none'; }, 2000); }
+      }catch(e){
+        alert('Etwas ist schiefgelaufen. Bitte versuche es später erneut.');
+      }
+    }
 
-  // Versandart (falls du später mehrere Varianten anbietest)
-  const shippingMethod = 'EU_dynamic';
+    /* ========= ZAHLUNGS‑MODAL ========= */
+    function openEmailCapture(){
+      const m = document.getElementById('emailModal');
+      m.style.display='flex'; m.setAttribute('aria-hidden','false');
+      const ty = document.getElementById('emailThanks'); if (ty) ty.style.display='none';
+      setTimeout(()=>document.getElementById('fullName').focus(),50);
+    }
+    function closeEmailCapture(){
+      const m = document.getElementById('emailModal');
+      m.style.display='none'; m.setAttribute('aria-hidden','true');
+    }
 
-  const payload = {
-    product_sku:"AB00439",
-    product_name:"Getrocknete Duftveilchen – Viola odorata",
-    grams:Number(grams),
-    price_sek:Number(price),
-    language:"de",
-    shipping_method:shippingMethod,
-    full_name:fullName, email, address1:addr1, address2:addr2, postal, city, country,
-    utm_source:"onsite", utm_medium:"email_link_request", utm_campaign:"checkout"
-  };
+    // Bestellung absenden (Dummy‑Backend)
+    async function submitOrder(){
+      const grams = document.getElementById('sizeSelect').value;
+      const price = prices[grams];
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+      const addr1 = document.getElementById('addr1').value.trim();
+      const addr2 = document.getElementById('addr2').value.trim();
+      const postal = document.getElementById('postal').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const country = document.getElementById('country').value.trim();
+      if(!fullName || !email || !addr1 || !postal || !city || !country){
+        alert('Bitte Name, E‑Mail und Adresse ausfüllen (mind. Zeile 1, PLZ, Ort, Land).'); return;
+      }
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+        alert('Bitte gib eine gültige E‑Mail‑Adresse ein.'); return;
+      }
+      if (typeof trackEmailCapture === 'function') trackEmailCapture(price, grams);
+      const shipEl = document.querySelector('input[name="shipping"]:checked');
+      const shippingMethod = shipEl ? shipEl.value : 'SE_tracked_49';
+      const payload = { product_sku:"AB00439", product_name:"Getrocknete Duftveilchen – Viola odorata", grams:Number(grams), price_sek:Number(price), language:(document.documentElement.lang||'de'), shipping_method:shippingMethod, full_name:fullName, email, address1:addr1, address2:addr2, postal, city, country, utm_source:"onsite", utm_medium:"email_link_request", utm_campaign:"checkout" };
+      try{
+        await fetch("YOUR_APPS_SCRIPT_WEBAPP_URL", { method:"POST", mode:"no-cors", headers:{ "Content-Type":"application/json" }, body:JSON.stringify(payload) });
+        document.getElementById('emailThanks').style.display='block';
+        setTimeout(()=>{ closeEmailCapture(); }, 1400);
+      }catch(e){ alert('Beim Senden ist ein Fehler aufgetreten. Bitte später erneut versuchen.'); }
+    }
 
-  try{
-    await fetch("YOUR_APPS_SCRIPT_WEBAPP_URL", {
-      method:"POST", mode:"no-cors",
-      headers:{ "Content-Type":"application/json" },
-      body:JSON.stringify(payload)
+    // Lightbox
+    const galleryImages = ["/SweetViolaTea.webp","/SweetViolaTea1.webp","/SweetViolaTea2.webp","/SweetViolaTea3.webp"];
+    let currentIndex = 0;
+    function openLightbox(index){ currentIndex = index; const lb=document.getElementById('lightbox'); const img=document.getElementById('lightbox-img'); img.src = galleryImages[currentIndex]; lb.style.display='flex'; lb.setAttribute('aria-hidden','false'); if (typeof trackGalleryOpen === 'function') trackGalleryOpen(index); }
+    function closeLightbox(){ const lb=document.getElementById('lightbox'); lb.style.display='none'; lb.setAttribute('aria-hidden','true'); }
+    function nextImage(){ currentIndex = (currentIndex + 1) % galleryImages.length; document.getElementById('lightbox-img').src = galleryImages[currentIndex]; }
+    function prevImage(){ currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length; document.getElementById('lightbox-img').src = galleryImages[currentIndex]; }
+    document.addEventListener('keydown', (e)=>{ const lb=document.getElementById('lightbox'); if(lb.style.display!=='flex') return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') nextImage(); if(e.key==='ArrowLeft') prevImage(); });
+    document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id==='lightbox' || e.target.classList.contains('close')) closeLightbox(); });
+
+    // Modals via Escape/Overlay schließen
+    ['emailModal','newsletterModal'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener('click', (e)=>{ if(e.target.id===id){ id==='emailModal' ? closeEmailCapture() : closeNewsletterModal(); } });
     });
-    document.getElementById('emailThanks').style.display='block';
-    setTimeout(()=>{ closeEmailCapture(); }, 1400);
-  }catch(e){ alert('Senden fehlgeschlagen. Bitte versuche es erneut.'); }
-}
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape'){
+        const em = document.getElementById('emailModal');
+        const nm = document.getElementById('newsletterModal');
+        if(em && em.style.display==='flex') closeEmailCapture();
+        if(nm && nm.style.display==='flex') closeNewsletterModal();
+      }
+    });
+  </script>
 
-// Modals per Escape/Overlay schließen
-['emailModal','newsletterModal'].forEach(id=>{
-  const el = document.getElementById(id);
-  if(!el) return;
-  el.addEventListener('click', (e)=>{ if(e.target.id===id){ id==='emailModal' ? closeEmailCapture() : closeNewsletterModal(); } });
-});
-document.addEventListener('keydown', (e)=>{
-  if(e.key==='Escape'){
-    const em = document.getElementById('emailModal');
-    const nm = document.getElementById('newsletterModal');
-    if(em && em.style.display==='flex') closeEmailCapture();
-    if(nm && nm.style.display==='flex') closeNewsletterModal();
+  <!-- π + Backdoor + Splash -->
+  <button class="pi-trigger" id="piTrigger" title="π" aria-hidden="true">π</button>
+  <script>
+    (function () {
+      const KEY = "backdoorActive";
+      const html = document.documentElement;
+      const trigger = document.getElementById("piTrigger");
+      const exitBtn = document.getElementById("exitDark");
+      const splash = document.getElementById("darkSplash");
+      const SPLASH_MS = 2000;
+
+      // GIF vorladen
+      let splashReady = false;
+      const splashImg = new Image();
+      splashImg.onload = () => { splashReady = true; };
+      splashImg.src = "/cat-halloween.gif";
+
+      function showSplash(){
+        if (!splash) return;
+        splash.style.backgroundImage = 'url("/cat-halloween.gif")';
+        splash.style.display = 'block';
+        void splash.offsetWidth;
+        splash.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        if (typeof trackSplashShown === 'function') trackSplashShown();
+      }
+      function hideSplash(afterMs = SPLASH_MS){
+        if (!splash) return;
+        setTimeout(()=>{
+          splash.classList.add('hide');
+          splash.classList.remove('show');
+          setTimeout(()=>{
+            splash.style.display = 'none';
+            splash.classList.remove('hide');
+            document.body.style.overflow = '';
+          }, 400);
+        }, afterMs);
+      }
+
+      function setDark(on){
+        html.classList.toggle('dark', on);
+        try { sessionStorage.setItem(KEY, on ? "1" : "0"); } catch(e){}
+        if (typeof trackPiToggle === 'function') trackPiToggle(on ? "on" : "off");
+      }
+
+      function hasModifier(evt){
+        const mac = navigator.platform.toUpperCase().includes("MAC");
+        return (mac ? evt.metaKey : evt.ctrlKey) && evt.altKey;
+      }
+
+      // Mobil: Long‑Press auf π (0,8 s)
+      let touchTimer = null;
+      const LONG_MS = 800;
+      trigger.addEventListener('touchstart', ()=>{ touchTimer = setTimeout(()=> toggleDark(), LONG_MS); }, {passive:true});
+      trigger.addEventListener('touchend', ()=>{ clearTimeout(touchTimer); }, {passive:true});
+      trigger.addEventListener('touchmove', ()=>{ clearTimeout(touchTimer); }, {passive:true});
+
+      // Desktop: Modifikatortaste + Klick
+      trigger.addEventListener('click', (e) => {
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouch) return;
+        if (!hasModifier(e)) return;
+        e.preventDefault();
+        toggleDark();
+      });
+
+      exitBtn.addEventListener('click', ()=>{ setDark(false); });
+
+      function toggleDark(){
+        const turningOn = !html.classList.contains('dark');
+        setDark(turningOn);
+        if (turningOn){ showSplash(); hideSplash(SPLASH_MS); }
+      }
+
+      // URL‑Flag ?alt=1 → dark + splash
+      const params = new URLSearchParams(location.search);
+      if (params.get("alt") === "1" && !html.classList.contains('dark')) {
+        setDark(true);
+        showSplash(); hideSplash(SPLASH_MS);
+      }
+
+      // War dark bereits an, Splash kurz zeigen
+      try {
+        if (sessionStorage.getItem(KEY) === "1") {
+          html.classList.add("dark");
+          showSplash(); hideSplash(SPLASH_MS);
+        }
+      } catch (e) {}
+
+      // Sichtbarkeit alt/default synchronisieren
+      const applyVisibility = () => {
+        const isDark = html.classList.contains('dark');
+        document.querySelectorAll('[data-alt="true"]').forEach(el => { el.style.display = isDark ? '' : 'none'; });
+        document.querySelectorAll('[data-default="true"]').forEach(el => { el.style.display = isDark ? 'none' : ''; });
+      };
+      const obs = new MutationObserver(applyVisibility);
+      obs.observe(html, { attributes: true, attributeFilter: ['class'] });
+      applyVisibility();
+    })();
+  </script>
+
+  <!-- Strukturierte Daten: Product -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Product",
+    "name":"Getrocknete Duftveilchen – Viola odorata",
+    "description":"Getrocknete Veilchenblüten, handgepflückt in Deutschland. Subtile, luxuriöse Blütennoten. Produziert ohne Dünger und Pestizide.",
+    "image":[
+      "https://www.driedvioletflowers.com/SweetViolaTea.webp",
+      "https://www.driedvioletflowers.com/SweetViolaTea1.webp",
+      "https://www.driedvioletflowers.com/SweetViolaTea2.webp",
+      "https://www.driedvioletflowers.com/SweetViolaTea3.webp"
+    ],
+    "brand":{"@type":"Brand","name":"Dried Violet Flowers"},
+    "sku":"AB00439",
+    "category":"HerbalTea",
+    "additionalProperty":[
+      {"@type":"PropertyValue","name":"Mindestens haltbar bis","value":"2026-06"},
+      {"@type":"PropertyValue","name":"Charge","value":"AB00439"},
+      {"@type":"PropertyValue","name":"Anbaumethode","value":"Produziert ohne Dünger und Pestizide"}
+    ],
+    "offers":{
+      "@type":"AggregateOffer",
+      "priceCurrency":"SEK",
+      "lowPrice":"125",
+      "highPrice":"2000",
+      "offerCount":"4",
+      "offers":[
+        {"@type":"Offer","price":"125","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/de/#size-5","itemCondition":"https://schema.org/NewCondition"},
+        {"@type":"Offer","price":"250","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/de/#size-10","itemCondition":"https://schema.org/NewCondition"},
+        {"@type":"Offer","price":"600","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/de/#size-25","itemCondition":"https://schema.org/NewCondition"},
+        {"@type":"Offer","price":"2000","priceCurrency":"SEK","availability":"https://schema.org/InStock","url":"https://www.driedvioletflowers.com/de/#size-100","itemCondition":"https://schema.org/NewCondition"}
+      ]
+    }
   }
-});
-</script>
+  </script>
 
+  <!-- Strukturierte Daten: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Wie bereite ich Tee aus getrockneten Veilchenblüten zu?","acceptedAnswer":{"@type":"Answer","text":"1 g je 100 ml Wasser bei 85 °C etwa 10 Minuten ziehen lassen. Der Geschmack ist subtil — Zeit und Menge nach Vorliebe anpassen."}},
+      {"@type":"Question","name":"Ist das Produkt bio?","acceptedAnswer":{"@type":"Answer","text":"Es wird ohne Dünger und Pestizide produziert, trägt jedoch kein Bio‑Zertifikat."}},
+      {"@type":"Question","name":"Wie lagere ich die Blüten?","acceptedAnswer":{"@type":"Answer","text":"Trocken, dunkel und luftdicht lagern, um das Aroma zu bewahren."}},
+      {"@type":"Question","name":"Wie viele Tassen pro Gramm?","acceptedAnswer":{"@type":"Answer","text":"Etwa fünf Tassen pro Gramm bei leichtem Aufguss. Stärke gerne variieren."}},
+      {"@type":"Question","name":"Welche gesundheitliche Wirkung haben Veilchenblüten?","acceptedAnswer":{"@type":"Answer","text":"Traditionell: Atemwege/Husten, Ruhe/Schlaf, milde Entzündung, Haut. Forschung: begrenzt und variabel. Keine medizinische Behandlung. Überblick: https://pubmed.ncbi.nlm.nih.gov/?term=viola+odorata"}}
+    ]
+  }
+  </script>
 </body>
 </html>
-
